@@ -40,7 +40,8 @@ Non-functional requirements are requirements that are not directly related to th
 1. Security
 1. Usability
 1. Testability
-1. etc….
+1. etc
+
 Pick 2 Non-functional requirements and describe it’s functionality in your application. If you are stuck on what non-functional requirements are, do a quick online search and do some research. Write a minimum of 3-5 sentences to describe how the non-functional requirements fits into your app.  
 
 You MUST describe what the non-functional requirement is and how it will be implemented. Simply saying “Our project will be testable for testibility” is NOT acceptable. Tell us how, why, and what.  
