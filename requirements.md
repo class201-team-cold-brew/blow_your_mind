@@ -18,6 +18,7 @@ Example:
 - Each shop will contain reviews of the customer’s experiences
 
 **OUT - What will your product not do.**
+
 These should be features that you will make very clear from the beginning that you will not do during development. These should be limited and very few. Pick your battles wisely. This should only be 1 or 2 things. Example: My website will never turn into an IOS or Android app.
 
 **MVP**
@@ -47,4 +48,5 @@ Pick 2 Non-functional requirements and describe it’s functionality in your app
 You MUST describe what the non-functional requirement is and how it will be implemented. Simply saying “Our project will be testable for testibility” is NOT acceptable. Tell us how, why, and what.  
 
 **Data Flow**
+
 Describe the flow of data in your application. Write out what happens from the time the user enters the app to the time the request process completes (The user is done with the app). Think about the “Happy Path” of the application. Describe through visuals and text what requests are made, and what data is received, in addition to any other details about how the user moves through the site.
