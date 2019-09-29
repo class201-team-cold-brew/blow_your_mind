@@ -7,7 +7,7 @@ Class 201 Final Group Project
 - Vitaliy Drobyshev
 - Ting Luo
 
-## Wire Frames:
+## Wire Frame:
 
 index.html
 
