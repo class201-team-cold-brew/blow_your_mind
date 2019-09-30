@@ -1,0 +1,42 @@
+* {
+  outline: 1px solid white;
+}
+
+main {
+  text-align: center;
+}
+
+.logo {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.index-form-section {
+  width: 30%;
+  background: #f2b85c;
+  border: 1em solid #8f631d;
+  border-radius: 10px;
+}
+
+.index-form-section form, .welcome-msg {
+  width: 81%;
+}
+
+.index-form-section fieldset {
+  border-width: 0px;
+  text-align: left;
+}
+
+.index-form-section ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.index-form-section ul li:first-child label {
+  margin-right: 1em;
+}
+
+.index-form-section ul li:nth-child(2) label {
+  margin-right: 1.7em;
+}
+
