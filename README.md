@@ -13,4 +13,4 @@ Class 201 Final Group Project
 
 ## Domain Model:
 
-![domain-model](https://github.com/class201-team-cold-brew/blow_your_mind/blob/master/img/wireframe/domain-modeling.jpg)
+![domain-model](https://github.com/class201-team-cold-brew/blow_your_mind/blob/master/img/wireframe/domain-modeling.png)
