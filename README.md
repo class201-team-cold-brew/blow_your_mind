@@ -1,6 +1,10 @@
 # blow_your_mind
 Class 201 Final Group Project
 
+Description: 
+
+Blow your mind is not just a game, but a virtual experience where you would be challenged in a fun and intriguing way.
+
 ## Team Members:
 - DJ Grant
 - Will Huang

@@ -4,6 +4,7 @@
 
 **What is the vision of this product?**
 
+Blow your mind is not just a game, but a virtual experience where you would be challenged in a fun and intriguing way.
 Nowadays people turn to games apps as a way to decompress and relieve stress. Blow Your Mind offers a fun, but challenging way to engage users with a fun and intriguing way to relax, but still, keep your mind sharp. The vision of this product is to entertain users with a game that challenges them to solve riddles within a time constraint. 
 
 **What pain point does this project solve?**
