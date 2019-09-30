@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Blow Your Mind</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-  </head>
 
-  <body onload="init()">
-    <header></header>
+<head>
+  <meta charset="UTF-8">
+  <title>Blow Your Mind</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
 
-    <main>
-    </main>
+<body onload="init()">
+  <header></header>
 
-    <footer></footer>
+  <main>
+    <form id="user-form">
 
-    <script src="js/index.js"></script>
-  </body>
+      <fieldset>
+
+        <label for="name">Your Name</label>
+
+        <input id="name" type="text" name="name" autocomplete="off" required="required" autofocus="autofocus" />
+
+        </title> <br />
+
+        <label>Difficulty</label>
+        <select name="difficulty">
+          <option value="easy">Easy (20 mins)</option>
+          <option value="normal">Normal (15 mins)</option>
+          <option value="hard">Hard (10 mins)</option>
+
+        </select>
+
+
+
+        <input id="submit" type="submit" value="Submit">
+
+
+
+      </fieldset>
+
+    </form>
+    <!-- Place the welcome window here -->
+    <div id="welcome"> 
+      
+    </div>
+
+  </main>
+
+  <footer></footer>
+
+  <script src="js/index.js"></script>
+</body>
+
 </html>
