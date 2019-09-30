@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Blow Your Mind</title>
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+      </head>
 
   <body onload="init()" class="bg-yellow">
     <header></header>
@@ -8,10 +13,10 @@
     <main class="txt-center">
       <img class="logo" src="http://via.placeholder.com/800x500.jpg/111"/>
       <section class="index-form-section center">
-        <form class="center">
+        <form id="user-form" class="center">
           <fieldset class="index-form">
             <ul>
-              <li><label for= "username">Your Name:</label><input type="text" id="username" name="name" autocomplete="off" required="required" autofocus="autofocus"></li>
+              <li><label for= "name">Your Name:</label><input type="text" id="name" name="name" autocomplete="off" required="required" autofocus="autofocus"></li>
               <li><label for= "difficulty">Difficulty:</label>
                 <select>
                   <option value="easy">Easy (20 mins)</option>
@@ -22,7 +27,7 @@
               <li><input id="submit" type="submit" value="Submit"></li>
             </ul>
           </fieldset>
-          <div class="welcome-msg"></div>
+          <div id="welcome" class="welcome-msg"></div>
         </form>
       </section>
       <section class="index-buttons">
@@ -37,5 +42,8 @@
     <footer>
 
     </footer>
+
+    <script src="js/index.js"></script>
+    </body>
 
 </html>

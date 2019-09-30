@@ -1,25 +1,21 @@
 //variables
-function init() { }
-var form = document.getElementById('user-form');// TODO replace with a valid ID 
-var welcome = document.getElementById('welcome'); ///
+var form;// TODO replace with a valid ID 
+var welcome; ///
 
 //functions
+function init() { 
+  form = document.getElementById('user-form');
+  form.addEventListener('submit', handleForm);
+  welcome = document.getElementById('welcome');
+}
 
-
-
+User.all = [];
 function User(name, difficulty) {
   this.name = name;
   this.difficulty = difficulty;
 
   User.all.push(this);
 }
-
-User.all = [];
-
-
-
-console.log('everything starts here');
-
 
 function handleForm(event) {
   event.preventDefault();
@@ -40,14 +36,9 @@ function handleForm(event) {
   pEl.textContent = `Welcome ${name}. You have chosen ${difficulty} level.`;
   welcome.appendChild(pEl);
   updateStorage();
-
-
 }
-
-form.addEventListener('submit', handleForm);
 
 function updateStorage() {
   var storeString = JSON.stringify(User.all);
   localStorage.setItem('user', storeString);
-
 }
