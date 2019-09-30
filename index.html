@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Blow Your Mind</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-  </head>
 
   <body onload="init()" class="bg-yellow">
     <header></header>
@@ -16,12 +11,15 @@
         <form class="center">
           <fieldset class="index-form">
             <ul>
-              <li><label for= "username">Your Name:</label><input type="text" id="username"></li>
+              <li><label for= "username">Your Name:</label><input type="text" id="username" name="name" autocomplete="off" required="required" autofocus="autofocus"></li>
               <li><label for= "difficulty">Difficulty:</label>
                 <select>
-                  <option value="normal">Normal (15 min)</option>
+                  <option value="easy">Easy (20 mins)</option>
+                  <option value="normal">Normal (15 mins)</option>
+                  <option value="hard">Hard (10 mins)</option>
                 </select>
               </li>
+              <li><input id="submit" type="submit" value="Submit"></li>
             </ul>
           </fieldset>
           <div class="welcome-msg"></div>
@@ -40,6 +38,4 @@
 
     </footer>
 
-    <script src="js/index.js"></script>
-  </body>
 </html>
