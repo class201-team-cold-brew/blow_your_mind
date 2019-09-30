@@ -12,7 +12,7 @@ main {
 }
 
 .index-form-section {
-  width: 30%;
+  width: 20%;
   background: #f2b85c;
   border: 1em solid #8f631d;
   border-radius: 10px;
@@ -27,7 +27,7 @@ main {
   text-align: left;
 }
 
-.index-form-section ul {
+.index-form-section ul, .index-buttons ul {
   list-style-type: none;
   padding-left: 0px;
 }
@@ -38,5 +38,19 @@ main {
 
 .index-form-section ul li:nth-child(2) label {
   margin-right: 1.7em;
+}
+
+.welcome-msg {
+  display: none;
+}
+
+.index-buttons ul li {
+  margin: 1em;
+  display: inline-block;
+  padding: 1em;
+  background: black;
+  color: white;
+  border: 1em solid darkred;
+  border-radius: 10px;
 }
 
