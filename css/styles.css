@@ -1,0 +1,20 @@
+@import 'index.css';
+@import 'fonts.css';
+@import 'game.css';
+@import 'about.css';
+@import 'gamelose.css';
+@import 'gamewin.css';
+
+/* global css */
+.bg-yellow {
+  background-color: #d1881d;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}

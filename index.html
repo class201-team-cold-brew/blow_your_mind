@@ -2,53 +2,40 @@
 
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Blow Your Mind</title>
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
+  <body onload="init()" class="bg-yellow">
+    <header></header>
 
-<body onload="init()">
-  <header></header>
+    <main class="txt-center">
+      <img class="logo" src="http://via.placeholder.com/800x500.jpg/111"/>
+      <section class="index-form-section center">
+        <form class="center">
+          <fieldset class="index-form">
+            <ul>
+              <li><label for= "username">Your Name:</label><input type="text" id="username" name="name" autocomplete="off" required="required" autofocus="autofocus"></li>
+              <li><label for= "difficulty">Difficulty:</label>
+                <select>
+                  <option value="easy">Easy (20 mins)</option>
+                  <option value="normal">Normal (15 mins)</option>
+                  <option value="hard">Hard (10 mins)</option>
+                </select>
+              </li>
+              <li><input id="submit" type="submit" value="Submit"></li>
+            </ul>
+          </fieldset>
+          <div class="welcome-msg"></div>
+        </form>
+      </section>
+      <section class="index-buttons">
+        <ul>
+          <li>START GAME</li>
+          <li>HIGH SCORES</li>
+          <li>HOW TO PLAY</li>
+        </ul>
+      </section>
+    </main>
 
-  <main>
-    <form id="user-form">
+    <footer>
 
-      <fieldset>
-
-        <label for="name">Your Name</label>
-
-        <input id="name" type="text" name="name" autocomplete="off" required="required" autofocus="autofocus" />
-
-        </title> <br />
-
-        <label>Difficulty</label>
-        <select name="difficulty">
-          <option value="easy">Easy (20 mins)</option>
-          <option value="normal">Normal (15 mins)</option>
-          <option value="hard">Hard (10 mins)</option>
-
-        </select>
-
-
-
-        <input id="submit" type="submit" value="Submit">
-
-
-
-      </fieldset>
-
-    </form>
-    <!-- Place the welcome window here -->
-    <div id="welcome"> 
-      
-    </div>
-
-  </main>
-
-  <footer></footer>
-
-  <script src="js/index.js"></script>
-</body>
+    </footer>
 
 </html>
