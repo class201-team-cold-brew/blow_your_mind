@@ -131,7 +131,7 @@ function init() {
   // document.getElementById('resume').onclick = resume;
   run_clock('clockdiv', deadline);
   
-    for (var i = 0; i < riddleNorm.length; i++) {
+  for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
   }
 
