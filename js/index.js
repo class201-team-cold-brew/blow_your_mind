@@ -42,7 +42,7 @@ function handleForm(event) {
   welcome.appendChild(pEl);
   updateStorage();
 }
-
+///place data into local storage
 function updateStorage() {
   var storeString = JSON.stringify(User.all);
   localStorage.setItem('user', storeString);

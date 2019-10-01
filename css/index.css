@@ -1,9 +1,16 @@
-* {
+/* * {
   outline: 1px solid white;
+} */
+a *{
+  text-decoration: none;
+}
+
+body {
+  margin: 0px;
 }
 
 main {
-  text-align: center;
+  text-align: center; 
 }
 
 .logo {
@@ -12,10 +19,20 @@ main {
 }
 
 .index-form-section {
-  width: 20%;
-  background: #f2b85c;
-  border: 1em solid #8f631d;
-  border-radius: 10px;
+  position: relative;
+  top: -2em;
+  width: 342px;
+  background: #874F1D;
+  border: 1em solid #874F1D;
+  border-radius: 15px;
+}
+
+.index-form-section div:first-child{
+  background: #d1a056;
+  border: 1em solid #d1a056;
+  border-radius: 15px;
+  box-sizing: border-box;
+  min-height: 165px;
 }
 
 .index-form-section form, .welcome {
@@ -24,12 +41,17 @@ main {
 
 .index-form-section fieldset {
   border-width: 0px;
+  padding: 0;
   text-align: left;
 }
 
 .index-form-section ul, .index-buttons ul {
   list-style-type: none;
-  padding-left: 0px;
+  padding: 0;
+}
+
+.index-form-section ul li {
+  margin-top: 0.5em;
 }
 
 .index-form-section ul li:first-child label {
@@ -37,20 +59,68 @@ main {
 }
 
 .index-form-section ul li:nth-child(2) label {
-  margin-right: 1.7em;
+  margin-right: 1.2em;
+}
+
+.submit {
+  margin-top: 1em;
+  font-size: 1em;
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.submit:hover {
+  color: #b80117;
 }
 
 .welcome-msg {
   display: none;
+  font-size: 1.3em;
+}
+
+.welcome-msg p {
+  margin-top: 1.8em;
+}
+
+.index-buttons {
+  position: relative;
+  top: -3em;
 }
 
 .index-buttons ul li {
-  margin: 1em;
+  margin: 2em;
   display: inline-block;
-  padding: 1em;
-  background: black;
+  background: #562c2c;
+  border: 0.8em solid #562c2c;
+  border-radius: 20px;
+  transition: all 300ms ease;
   color: white;
-  border: 1em solid darkred;
-  border-radius: 10px;
 }
 
+.index-buttons ul li p {
+  font-size: 1.2em;
+  padding: 0.5em 1.8em 0.5em 1.8em;
+  margin: 0;
+  background: #261E1c;
+  border: 0.8em solid #261E1c;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.index-buttons ul li:hover {
+  color: #b80117;
+  background: #683232;
+  border-color: #683232;
+  transform: scale(1.1,1.1);
+  -webkit-transform: scale(1.1,1.1);
+}
+
+#rules {
+  display: none;
+}
+
+footer p {
+  padding-top: 1em;
+}
