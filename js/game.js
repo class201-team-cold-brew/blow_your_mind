@@ -22,15 +22,27 @@ var hintNorm = [
   ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.']
 ];
 
-// var normLevel = ['riddleNorm', 'answerNorm', 'hintNorm'];
-NormalQuestion.allQ = [];
 var currentRiddles = [];
-
 var answered = 0;
-
+var randomQuest = [];
 var x;
 var hint;
 var rule;
+var code;
+var codeSubmit;
+var questBox = document.getElementById('questBox');
+var btn1 = document.getElementById('btn1');
+NormalQuestion.allQ = [];
+
+function closeHint(event) {
+  hint.style.display = 'none';
+  resume();
+}
+
+function openHint() {
+  hint.style.display = 'block';
+  pause();
+}
 
 function NormalQuestion(question, answer, hint) {
   this.question = question;
@@ -45,16 +57,12 @@ function genRandom() {
   return genRandom;
 }
 
-function closeHint(event) {
-  hint.style.display = 'none';
-  resume();
+function handleQuest1() {
+  var pEl = document.createElement('p');
+  pEl.textContent = currentRiddles[answered].question;
+  questBox.appendChild(pEl);
+  console.log(currentRiddles[answered].question);
 }
-
-function openHint() {
-  hint.style.display = 'block';
-  pause();
-}
-///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
@@ -118,20 +126,23 @@ function resume() {
     run_clock('clockdiv', deadline);
   }
 }
-//console.log(timeLeft);
-// handle pause and resume button clicks
+////////////////////////////////////////////////////////////////////////////////////
 
 function init() {
   hint = document.getElementById('gamerules');
   rule = document.getElementById('rule');
+  questBox = document.getElementById('questBox');
+  btn1 = document.getElementById('btn1');
   x = document.getElementById('x');
   x.addEventListener('click', closeHint);
+  btn1.addEventListener('click', handleQuest1);
   hint.style.display = 'none';
   rule.addEventListener('click', openHint);
-  console.log('hi');
-  // document.getElementById('pause').onclick = pause;
-  // document.getElementById('resume').onclick = resume;
   run_clock('clockdiv', deadline);
+  code = document.getElementById('killCode');
+
+  codeSubmit = document.getElementById('codeSubmit');
+  codeSubmit.addEventListener('submit', getCode);W
 
   for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
@@ -147,8 +158,6 @@ function init() {
     randomQ = genRandom();
     randomA = genRandom();
     randomH = genRandom();
-
-
   }
   while (randomQ === randomA || randomA === randomH || randomQ === randomH);
 
@@ -161,14 +170,9 @@ function init() {
   console.log(NormalQuestion.allQ[randomQ]);
 }
 
-var questBox = document.getElementById('questBox');
+function getCode(event){
+  
+  event.preventDefault();
 
-var btn1 = document.getElementById('btn1');
-btn1.addEventListener('click', handleQuest1);
-
-function handleQuest1() {
-  var pEl = document.createElement('p');
-  pEl.textContent = currentRiddles[answered].question;
-  questBox.appendChild(pEl);
-  console.log(currentRiddles[answered].question);
+  var code=event.target;
 }
