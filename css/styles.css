@@ -6,9 +6,13 @@
 @import 'gamewin.css';
 
 /* color guide */
-.site-yellow  {color: #d1881b}
-.site-brown   {color: #874F1D}
-.site-black   {color: #261E1c}
+.site-yellow-lgt  {color: #d1a056}
+.site-yellow      {color: #d1881b}
+.site-yellow-drk  {color: #bf7719}
+.site-brown       {color: #874F1D}
+.site-red         {color: #b80117}
+.site-red-drk     {color: #562c2c}
+.site-black       {color: #261E1c}
 
 /* global css */
 .bg {

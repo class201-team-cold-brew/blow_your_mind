@@ -11,31 +11,33 @@
   <body onload="init()" class="bg">
     <header></header>
 
-    <main class="txt-center">
+    <main class="txt-center site-black">
       <img class="logo" src="img/logo.png" alt="logo">
       <section class="index-form-section center">
-        <form id="user-form" class="center">
-          <fieldset class="index-form">
-            <ul>
-              <li><label for="name" class="title-font">YOUR NAME:</label><input type="text" id="name" name="name" autocomplete="off" required="required" autofocus="autofocus" maxlength="10" size="10"></li>
-              <li><label for="difficulty" class="title-font">DIFFICULTY:</label>
-                <select id="difficulty">
-                  <option value="easy">Easy (20 mins)</option>
-                  <option value="normal">Normal (15 mins)</option>
-                  <option value="hard">Hard (10 mins)</option>
-                </select>
-              </li>
-              <li><input id="submit" type="submit" value="Submit"></li>
-            </ul>
-          </fieldset>
-        </form>
-        <div id="welcome" class="welcome-msg"></div>
+        <div>
+          <form id="user-form" class="center">
+            <fieldset class="index-form">
+              <ul>
+                <li><label for="name" class="title-font">YOUR NAME:</label><input type="text" id="name" name="name" autocomplete="off" required="required" autofocus="autofocus" maxlength="10" size="10"></li>
+                <li><label for="difficulty" class="title-font">DIFFICULTY:</label>
+                  <select id="difficulty">
+                    <option value="easy">Easy (20 mins)</option>
+                    <option value="normal">Normal (15 mins)</option>
+                    <option value="hard">Hard (10 mins)</option>
+                  </select>
+                </li>
+                <li class="txt-center"><input id="submit" type="submit" class="submit title-font" value="Submit"></li>
+              </ul>
+            </fieldset>
+          </form>
+          <div id="welcome" class="welcome-msg title-font txt-center"></div>
+        </div>
       </section>
-      <section class="index-buttons">
+      <section class="index-buttons title-font">
         <ul>
-          <li>START GAME</li>
-          <li>HIGH SCORES</li>
-          <li>HOW TO PLAY</li>
+          <li><p>START GAME</p></li>
+          <li><p>HIGH SCORES</p></li>
+          <li><p>HOW TO PLAY</p></li>
         </ul>
       </section>
       <div id ="rules">
@@ -45,8 +47,8 @@
       </div>
     </main>
 
-    <footer>
-
+    <footer class="txt-center">
+      <p>&copy; Team Cold Brew 2019</p>
     </footer>
 
     <script src="js/index.js"></script>
