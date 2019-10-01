@@ -22,13 +22,27 @@ var hintNorm = [
   ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.']
 ];
 
-// var normLevel = ['riddleNorm', 'answerNorm', 'hintNorm'];
-NormalQuestion.allQ = [];
 var currentRiddles = [];
-
+var answered = 0;
+var randomQuest = [];
 var x;
 var hint;
 var rule;
+var code;
+var codeSubmit;
+var questBox = document.getElementById('questBox');
+var btn1 = document.getElementById('btn1');
+NormalQuestion.allQ = [];
+
+function closeHint(event) {
+  hint.style.display = 'none';
+  resume();
+}
+
+function openHint() {
+  hint.style.display = 'block';
+  pause();
+}
 
 function NormalQuestion(question, answer, hint) {
   this.question = question;
@@ -43,25 +57,12 @@ function genRandom() {
   return genRandom;
 }
 
-var randomQuest = [];
-
-var x;
-var hint;
-var rule;
-var code;
-var codeSubmit;
-
-
-function closeHint(event) {
-  hint.style.display = 'none';
-  resume();
+function handleQuest1() {
+  var pEl = document.createElement('p');
+  pEl.textContent = currentRiddles[answered].question;
+  questBox.appendChild(pEl);
+  console.log(currentRiddles[answered].question);
 }
-
-function openHint() {
-  hint.style.display = 'block';
-  pause();
-}
-
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
@@ -106,7 +107,7 @@ function pause() {
     timer = timeRemaining(deadline).total;
 
     var convert = timerMs - timeLeft;
-    
+
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     console.log(min + ':' + sec);
@@ -125,22 +126,23 @@ function resume() {
     run_clock('clockdiv', deadline);
   }
 }
-//console.log(timeLeft);
-// handle pause and resume button clicks
+////////////////////////////////////////////////////////////////////////////////////
 
 function init() {
   hint = document.getElementById('gamerules');
   rule = document.getElementById('rule');
+  questBox = document.getElementById('questBox');
+  btn1 = document.getElementById('btn1');
   x = document.getElementById('x');
   x.addEventListener('click', closeHint);
+  btn1.addEventListener('click', handleQuest1);
   hint.style.display = 'none';
   rule.addEventListener('click', openHint);
-
   run_clock('clockdiv', deadline);
   code = document.getElementById('killCode');
 
   codeSubmit = document.getElementById('codeSubmit');
-  codeSubmit.addEventListener('submit', getCode);
+  codeSubmit.addEventListener('submit', getCode);W
 
   for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
