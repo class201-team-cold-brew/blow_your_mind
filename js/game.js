@@ -30,8 +30,8 @@ var hint;
 var rule;
 var code;
 var randomCode;
-var questBox = document.getElementById('questBox');
-var btn1 = document.getElementById('btn1');
+var questBox
+var btn1
 var answerQuestForm;
 NormalQuestion.allQ = [];
 
@@ -77,6 +77,31 @@ function handleAnswer(event) {
   } else {
     userAnswer = null;
     console.log('wrong');
+  }
+}
+
+function randomCode() {
+  var random = Math.floor(Math.random() * 9999 + 1000);
+  return random;
+}
+
+function getCode(event) {
+  event.preventDefault();
+  // randomCode = randomCode();
+  randomCode = 4444;
+  var code = event.target.killCode.value;
+  if (code == randomCode) {
+    pause();
+    var convert = timerMs - timeLeft;
+    var min = Math.floor((convert / 1000 / 60) << 0),
+      sec = Math.floor((convert / 1000) % 60);
+    var finaltime = min + ':' + sec;
+    console.log(finaltime);
+    localStorage.setItem('finaltime', finaltime);
+    // window.location.href ='gamewin.html';
+  } else {
+    pause();
+    window.location.href = 'gamelose.html';
   }
 }
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
@@ -177,29 +202,4 @@ function init() {
   console.log(currentRiddles);
 
   console.log(NormalQuestion.allQ[randomQ]);
-}
-
-function randomCode() {
-  var random = Math.floor(Math.random() * 9999 + 1000);
-  return random;
-}
-
-function getCode(event) {
-  event.preventDefault();
-  // randomCode = randomCode();
-  randomCode = 4444;
-  var code = event.target.killCode.value;
-  if (code == randomCode) {
-    pause();
-    var convert = timerMs - timeLeft;
-    var min = Math.floor((convert / 1000 / 60) << 0),
-      sec = Math.floor((convert / 1000) % 60);
-    var finaltime = min + ':' + sec;
-    console.log(finaltime);
-    localStorage.setItem('finaltime', finaltime);
-    // window.location.href ='gamewin.html';
-  } else {
-    pause();
-    window.location.href = 'gamelose.html';
-  }
 }
