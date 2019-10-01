@@ -79,11 +79,12 @@ var rule;
 
 function closeHint(event) {
   hint.style.display = 'none';
+  resume();
 }
 
 function openHint() {
-  console.log('hello');
   hint.style.display = 'block';
+pause();
 }
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
@@ -157,10 +158,11 @@ function init() {
   hint = document.getElementById('gamerules');
   rule = document.getElementById('rule');
   x = document.getElementById('x');
+  x.addEventListener('click',closeHint);
   hint.style.display = 'none';
   rule.addEventListener('click', openHint);
   console.log("hi");
-  document.getElementById('pause').onclick = pause;
-  document.getElementById('resume').onclick = resume;
+  // document.getElementById('pause').onclick = pause;
+  // document.getElementById('resume').onclick = resume;
   run_clock('clockdiv', deadline);
   }
