@@ -29,7 +29,7 @@ var x;
 var hint;
 var rule;
 var code;
-var codeSubmit;
+var randomCode;
 var questBox = document.getElementById('questBox');
 var btn1 = document.getElementById('btn1');
 NormalQuestion.allQ = [];
@@ -105,13 +105,6 @@ function pause() {
     clearInterval(timeinterval); // stop the clock
     timeLeft = timeRemaining(deadline).total; // preserve remaining time
     timer = timeRemaining(deadline).total;
-
-    var convert = timerMs - timeLeft;
-
-    var min = Math.floor((convert / 1000 / 60) << 0),
-      sec = Math.floor((convert / 1000) % 60);
-    console.log(min + ':' + sec);
-
   }
 }
 
@@ -139,10 +132,8 @@ function init() {
   hint.style.display = 'none';
   rule.addEventListener('click', openHint);
   run_clock('clockdiv', deadline);
-  code = document.getElementById('killCode');
-
-  codeSubmit = document.getElementById('codeSubmit');
-  codeSubmit.addEventListener('submit', getCode);W
+  code = document.getElementById('killcodes');
+  code.addEventListener('submit', getCode);
 
   for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
@@ -170,9 +161,27 @@ function init() {
   console.log(NormalQuestion.allQ[randomQ]);
 }
 
-function getCode(event){
-  
-  event.preventDefault();
+function randomCode() {
+  var random = Math.floor(Math.random() * 9999 + 1000);
+  return random;
+}
 
-  var code=event.target;
+function getCode(event) {
+  event.preventDefault();
+  // randomCode = randomCode();
+  randomCode = 4444;
+  var code = event.target.killCode.value;
+  if (code == randomCode) {
+    pause();
+    var convert = timerMs - timeLeft;
+    var min = Math.floor((convert / 1000 / 60) << 0),
+      sec = Math.floor((convert / 1000) % 60);
+    var finaltime = min + ':' + sec;
+    console.log(finaltime);
+    localStorage.setItem('finaltime',finaltime);
+    // window.location.href ='gamewin.html';
+  } else {
+    pause();
+    window.location.href = 'gamelose.html';
+  }
 }
