@@ -1,12 +1,17 @@
 //variables
 var form;// TODO replace with a valid ID 
 var welcome; ///
+var hint;
+var x;
 
 //functions
-function init() { 
+function init() {
   form = document.getElementById('user-form');
   form.addEventListener('submit', handleForm);
   welcome = document.getElementById('welcome');
+  hint = document.getElementById('rules');
+  x = document.getElementById('x');
+  x.addEventListener('click', closeHint);
 }
 
 User.all = [];
@@ -41,4 +46,10 @@ function handleForm(event) {
 function updateStorage() {
   var storeString = JSON.stringify(User.all);
   localStorage.setItem('user', storeString);
+}
+
+function closeHint(event) {
+  event.preventDefault();
+  hint.style.display = 'none';
+
 }
