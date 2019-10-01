@@ -49,7 +49,7 @@ function handleForm(event) {
 ///place data into local storage
 function updateStorage() {
   var storeString = JSON.stringify(User.all);
-  localStorage.setItem('user', storeString);
+  localStorage.setItem('user',storeString );
 }
 
 function closeHint(event) {

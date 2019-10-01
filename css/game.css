@@ -10,7 +10,9 @@
   width: 900px;
 }
 
+
 .game-container > div:first-child {
+
   position: relative;
   height: 444px;
   padding: 1em;
