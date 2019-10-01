@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Blow Your Mind</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Blow Your Mind</title>
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-</head>
+  <body onload="init()" class="bg">
+    <header></header>
 
-<body onload="init()" class="bg">
-  <header></header>
-
-  <main class="game-main">
-    <img src="img/logo-sm.png" alt="blow your mind!">
-    <section class="game-container center">
-      <div>
-        <div class="pipe1"></div>
-        <div class="pipe2"></div>
-        <div class="pipe3"></div>
-        <img class="btm-layer center" src="img/game-bottom-layer.png" alt="game layout">
-      </div>
-    </section>
-    <section>
-      <input id ="code" type="number">
-     <button button 
-    </section>
-    <section class="riddle-container center">
-      <div>
-
-      </div>
-      <div class="title-font">
-        <ul>
-          <li>
-            <p id="rule">HOW TO PLAY</p>
-          </li>
-          <li>
-            <p>HINTS</p>
-          </li>
-        </ul>
-      </div>
-
-    </section>
-
-    <div id="gamerules">
-      <span id="x">X</span>
-      <p>Click on an image inside the bomb. Solve the riddle that will appear. If you stuck, click on Hints. Solve 3
-        riddles to unlock a code. Enter the code under "Kill Code. You have 3 attempts. A wrong code will end the game.
-        Good luck!" </p>
-    </div>
-
-  </main>
+    <main class="game-main">
+      <img src="img/logo-sm.png" alt="blow your mind!">
+      <section class="game-container center">
+        <div>
+          <div class="pipe1"></div>
+          <div class="pipe2"></div>
+          <div class="pipe3"></div>
+          <img class="btm-layer center" src="img/game-bottom-layer.png" alt="game layout">
+          <div class="key-box">
+            <img src="http://via.placeholder.com/76x76.jpg/111"/>
+            <img src="http://via.placeholder.com/76x76.jpg/111"/>
+            <img src="http://via.placeholder.com/76x76.jpg/111"/>
+          </div>
+          <div class="btn1"></div>
+          <div class="btn2"></div>
+          <div class="btn3"></div>
+          <div class="timer-box">
+            <div class="timer">
+              <div id="clockdiv"></div>
+            </div>
+            <div class="killcode">
+              <form>
+                <fieldset>
+                  <label for="killCode" class="title-font">KILL CODE</label><br>
+                  <input id="killCode" type="number" min="0" max="9999" placeholder="Enter Kill Code...">
+                  <input id="codeSubmit" type="submit" class="title-font submit-code" value="submit">
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="riddle-container center">
+        <div>
+          
+        </div>
+        <div class="title-font">
+          <ul>
+            <li><P id ='rule'>HOW TO PLAY</P></li>
+            <li><p>HINTS</p></li>
+          </ul>
+        </div>
+      </section>
+      <div id ="gamerules">
+          <span id="x">X</span>
+          <p>Click on an image inside the bomb. Solve the riddle that will appear. If you stuck, click on Hints. Solve 3 riddles to unlock a code. Enter the code under "Kill Code. You have 3 attempts. A wrong code will end the game. Good luck!" </p>
+        </div>
+    </main>
 
   <footer class="txt-center">
 
