@@ -86,6 +86,8 @@ function openHint() {
   hint.style.display = 'block';
 pause();
 }
+
+///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
@@ -118,8 +120,6 @@ function run_clock(id, endtime) {
   update_clock(); // run function once at first to avoid delay
   timeinterval = setInterval(update_clock, 1000);
 }
-
-
 
 var paused = false; // is the clock paused?
 var timeLeft; // time left on the clock when paused
