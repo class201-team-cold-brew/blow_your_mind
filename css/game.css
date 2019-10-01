@@ -10,16 +10,19 @@
   width: 900px;
 }
 
-.game-container div:first-child {
+
+.game-container > div:first-child {
+
   position: relative;
   height: 444px;
   padding: 1em;
   border: 1em solid #261E1c;
   border-radius: 20px;
   background-image: url('../img/game-bg-pattern.png');
+  overflow: hidden;
 }
 
-.game-container div:first-child .pipe1, .game-container div:first-child .pipe2, .game-container div:first-child .pipe3 {
+.game-container > div:first-child .pipe1, .game-container > div:first-child .pipe2, .game-container > div:first-child .pipe3 {
   display: inline-block;
   position: relative;
   padding: 0px;
@@ -29,34 +32,122 @@
   height: 246px;
 }
 
-.game-container div:first-child .pipe1 {
-  left: -328px;
+.game-container > div:first-child .pipe1 {
+  left: -281px;
   top: 95px;
   background-image: url('../img/game-pipe.png');
 }
 
-.game-container div:first-child .pipe2 {
-  left: 0px;
-  top: 0px;
+.game-container > div:first-child .pipe2 {
+  left: -228px;
+  top: 95px;
   background-image: url('../img/game-pipe.png');
 }
 
-.game-container div:first-child .pipe3 {
-  left: 0px;
-  top: 0px;
+.game-container > div:first-child .pipe3 {
+  left: -179px;
+  top: 95px;
   background-image: url('../img/game-pipe.png');
 }
 
+.game-container > div:first-child .key-box {
+  display: inline-block;
+  position: relative;
+  left: -79px;
+  top: -669px;
+  width: 310px;
+  height: 104px;
+}
 
-.game-container div:first-child .btm-layer {
+.game-container > div:first-child .key-box img{
+  margin: 13px 11px 0 11px;
+}
+
+.game-container > div:first-child .btm-layer {
   position: relative;
   top: -242px;
+}
+
+.game-container > div:first-child .btn1, .game-container > div:first-child .btn2, .game-container > div:first-child .btn3 {
+  display: inline-block;
+  background-image: url('../img/game-button.png');
+  position: relative;
+  width: 96px;
+  height: 96px;
+  cursor: pointer;
+}
+
+.game-container > div:first-child .btn1:hover, .game-container > div:first-child .btn2:hover, .game-container > div:first-child .btn3:hover {
+  background-image: url('../img/game-button-hover.png');
+}
+
+.game-container > div:first-child .btn1:active, .game-container > div:first-child .btn2:active, .game-container > div:first-child .btn3:active {
+  background-image: url('../img/game-button-click.png');
+}
+
+.game-container > div:first-child .btn1 {
+  left: 1px;
+  top: -497px;
+}
+
+.game-container > div:first-child .btn2 {
+  left: 21px;
+  top: -497px;
+}
+
+.game-container > div:first-child .btn3 {
+  left: 43px;
+  top: -497px;
+}
+
+.game-container > div:first-child .timer-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  left: 27px;
+  top: -478px;
+  width: 322px;
+  height: 100px;
+}
+
+.game-container > div:first-child .timer-box .timer {
+  flex: 0 1 50%;
+  padding: 0.5em;
+}
+
+.game-container > div:first-child .timer-box .killcode {
+  flex: 0 1 50%;
+  padding: 1em 0.5em 1em 0.5em;
+  border-left: 4px dotted #562c2c; 
+}
+
+.killcode fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.killcode fieldset input {
+  margin-top: 0.5em;
+}
+
+.submit-code {
+  border-width: 0;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 300ms ease;
+  color: #261E1c;
+}
+
+.submit-code:hover {
+  color: #b80117;
 }
 
 .riddle-container {
   width: 900px;
   display: flex;
   align-items: center;
+  z-index: 10;
 }
 
 .riddle-container div:first-child {
