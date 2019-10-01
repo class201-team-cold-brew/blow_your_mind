@@ -60,15 +60,16 @@ function init() {
   }
   while (randomQ === randomA || randomA === randomH || randomQ === randomH);
 
-  // console.log(NormalQuestion.allQ[randomQ]);
+  currentRiddles.push(NormalQuestion.allQ[randomQ]);
+  currentRiddles.push(NormalQuestion.allQ[randomA]);
+  currentRiddles.push(NormalQuestion.allQ[randomH]);
+
+  console.log(currentRiddles);
+
+  console.log(NormalQuestion.allQ[randomQ]);
 }
 
 var currentRiddles = [];
-currentRiddles.push(NormalQuestion.allQ[randomQ]);
-currentRiddles.push(NormalQuestion.allQ[randomA]);
-currentRiddles.push(NormalQuestion.allQ[randomH]);
-
-console.log(currentRiddles);
 
 ///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
 
