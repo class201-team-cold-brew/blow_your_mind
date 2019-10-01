@@ -42,21 +42,21 @@ function genRandom() {
 }
 
 var randomQuest = [];
-function threeRandom() {
-  while (randomQuest.length < 3) {
-    var random = genRandom();
+// function threeRandom() {
+//   while (randomQuest.length < 3) {
+//     var random = genRandom();
 
-    while (!randomQuest.includes(random)) {
-      console.log('building randomQuest: ', randomQuest);
-      randomQuest.push(random);
-    }
-  }
-  console.log('randomQuest completed!: ', randomQuest);
-  // for (var i = 0; i < randomQuest.length; i++) {
-  //   var temp =
-  // }
-}
-threeRandom();
+//    // while (!randomQuest.includes(random)) {
+//       console.log('building randomQuest: ', randomQuest);
+//       randomQuest.push(random);
+//     }
+//   }
+//   console.log('randomQuest completed!: ', randomQuest);
+//   // for (var i = 0; i < randomQuest.length; i++) {
+//   //   var temp =
+//   // }
+// }
+// threeRandom();
 
 
 function init() {
@@ -72,15 +72,19 @@ function init() {
 }
 
 init();
-=======
-///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
+
+
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
+
+var timerMs = timer * 60000;
+
+
 var currentTime = Date.parse(new Date());
 var deadline = new Date(currentTime + timer * 60 * 1000);
-console.log(deadline);
+
 
 function timeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -114,14 +118,14 @@ function pause() {
     paused = true;
     clearInterval(timeinterval); // stop the clock
     timeLeft = timeRemaining(deadline).total; // preserve remaining time
+    timer = timeRemaining(deadline).total;
 
+    var convert = timerMs - timeLeft;
 
-    ///convert back to minutes and seconds;   
-    min = Math.floor((timeLeft / 1000 / 60) << 0),
-      sec = Math.floor((timeLeft / 1000) % 60);
-
+    var min = Math.floor((convert / 1000 / 60) << 0),
+      sec = Math.floor((convert / 1000) % 60);
     console.log(min + ':' + sec);
-    console.log(timeLeft);
+
   }
 }
 
