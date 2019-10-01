@@ -17,22 +17,36 @@ var hintNorm = [
   ['Look it’s up.', 'Look it’s up.', 'Look it’s up.'],
   ['You can swim this way.', 'You can swim this way.', 'You can swim this way.'],
   ['You can put a lid on it.', 'You can put a lid on it.', 'You can put a lid on it.'],
-  []
+  ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.']
 ];
 
-var normStack =
+// var normLevel = ['riddleNorm', 'answerNorm', 'hintNorm'];
+NormalQuestion.allQ = [];
 
-  function NormalQuestion(question, answer, hint) {
-    this.question = question;
-    this.answer = answer;
-    this.hint = hint;
-    this.correct = false;
+function NormalQuestion(question, answer, hint) {
+  this.question = question;
+  this.answer = answer;
+  this.hint = hint;
+  this.correct = false;
 
-    NormalQuestion.normStack.push(this);
-  };
+  NormalQuestion.allQ.push(this);
 
-// for (var i = 0; i < riddleNorm.length; i++) {
-//   riddleNorm[i] === answerNorm[i],
+}
 
+function genRandom() {
+  var genRandom = Math.floor(Math.random() * NormalQuestion.allQ.length);
+  return genRandom;
+}
 
-// }
+function init() {
+  for (var i = 0; i < riddleNorm.length; i++) {
+    new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
+  }
+  console.log(NormalQuestion.allQ);
+  var randomQ = genRandom();
+  var randomA = genRandom();
+  var randomH = genRandom();
+
+  console.log(randomQ, randomA, randomH);
+}
+
