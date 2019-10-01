@@ -11,10 +11,46 @@
 }
 
 .game-container div:first-child {
+  position: relative;
+  height: 444px;
   padding: 1em;
   border: 1em solid #261E1c;
   border-radius: 20px;
   background-image: url('../img/game-bg-pattern.png');
+}
+
+.game-container div:first-child .pipe1, .game-container div:first-child .pipe2, .game-container div:first-child .pipe3 {
+  display: inline-block;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  border-width: 0px;
+  width: 46px;
+  height: 246px;
+}
+
+.game-container div:first-child .pipe1 {
+  left: -328px;
+  top: 95px;
+  background-image: url('../img/game-pipe.png');
+}
+
+.game-container div:first-child .pipe2 {
+  left: 0px;
+  top: 0px;
+  background-image: url('../img/game-pipe.png');
+}
+
+.game-container div:first-child .pipe3 {
+  left: 0px;
+  top: 0px;
+  background-image: url('../img/game-pipe.png');
+}
+
+
+.game-container div:first-child .btm-layer {
+  position: relative;
+  top: -242px;
 }
 
 .riddle-container {

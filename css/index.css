@@ -113,6 +113,8 @@ main {
   color: #b80117;
   background: #683232;
   border-color: #683232;
+  transform: scale(1.1,1.1);
+  -webkit-transform: scale(1.1,1.1);
 }
 
 #rules {
