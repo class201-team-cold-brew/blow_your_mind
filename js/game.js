@@ -43,6 +43,15 @@ function genRandom() {
   return genRandom;
 }
 
+var randomQuest = [];
+
+var x;
+var hint;
+var rule;
+var code;
+var codeSubmit;
+
+
 function closeHint(event) {
   hint.style.display = 'none';
   resume();
@@ -50,9 +59,9 @@ function closeHint(event) {
 
 function openHint() {
   hint.style.display = 'block';
-pause();
+  pause();
 }
-///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
+
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
@@ -123,14 +132,16 @@ function init() {
   hint = document.getElementById('gamerules');
   rule = document.getElementById('rule');
   x = document.getElementById('x');
-  x.addEventListener('click',closeHint);
+  x.addEventListener('click', closeHint);
   hint.style.display = 'none';
   rule.addEventListener('click', openHint);
-  console.log("hi");
-  // document.getElementById('pause').onclick = pause;
-  // document.getElementById('resume').onclick = resume;
+
   run_clock('clockdiv', deadline);
-  
+  code = document.getElementById('killCode');
+
+  codeSubmit = document.getElementById('codeSubmit');
+  codeSubmit.addEventListener('submit', getCode);
+
   for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
   }
@@ -145,8 +156,6 @@ function init() {
     randomQ = genRandom();
     randomA = genRandom();
     randomH = genRandom();
-
-
   }
   while (randomQ === randomA || randomA === randomH || randomQ === randomH);
 
@@ -157,4 +166,11 @@ function init() {
   console.log(currentRiddles);
 
   console.log(NormalQuestion.allQ[randomQ]);
-  }
+}
+
+function getCode(event){
+  
+  event.preventDefault();
+
+  var code=event.target;
+}
