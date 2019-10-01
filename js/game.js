@@ -42,43 +42,61 @@ function genRandom() {
 }
 
 var randomQuest = [];
-function threeRandom() {
-  while (randomQuest.length < 3) {
-    var random = genRandom();
+// function threeRandom() {
+//   while (randomQuest.length < 3) {
+//     var random = genRandom();
 
-    while (!randomQuest.includes(random)) {
-      console.log('building randomQuest: ', randomQuest);
-      randomQuest.push(random);
-    }
-  }
-  console.log('randomQuest completed!: ', randomQuest);
-  // for (var i = 0; i < randomQuest.length; i++) {
-  //   var temp =
-  // }
-}
+//    // while (!randomQuest.includes(random)) {
+//       console.log('building randomQuest: ', randomQuest);
+//       randomQuest.push(random);
+//     }
+//   }
+//   console.log('randomQuest completed!: ', randomQuest);
+//   // for (var i = 0; i < randomQuest.length; i++) {
+//   //   var temp =
+//   // }
+// }
 // threeRandom();
 
 
-function init() {
-  for (var i = 0; i < riddleNorm.length; i++) {
-    new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
-  }
-  console.log(NormalQuestion.allQ);
-  var randomQ = genRandom();
-  var randomA = genRandom();
-  var randomH = genRandom();
+// function init() {
+//   for (var i = 0; i < riddleNorm.length; i++) {
+//     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
+//   }
+//   console.log(NormalQuestion.allQ);
+//   var randomQ = genRandom();
+//   var randomA = genRandom();
+//   var randomH = genRandom();
 
-  console.log(randomQ, randomA, randomH);
+//   console.log(randomQ, randomA, randomH);
+// }
+
+// init();
+
+var x;
+var hint;
+var rule;
+
+function closeHint(event) {
+  hint.style.display = 'none';
+}
+
+function openHint() {
+  console.log('hello');
+  hint.style.display = 'block';
 }
 
 ///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
-
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
+
+var timerMs = timer * 60000;
+
+
 var currentTime = Date.parse(new Date());
 var deadline = new Date(currentTime + timer * 60 * 1000);
-console.log(deadline);
+
 
 function timeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -101,8 +119,6 @@ function run_clock(id, endtime) {
   update_clock(); // run function once at first to avoid delay
   timeinterval = setInterval(update_clock, 1000);
 }
-//run_clock('clockdiv', deadline);
-
 
 var paused = false; // is the clock paused?
 var timeLeft; // time left on the clock when paused
@@ -112,14 +128,14 @@ function pause() {
     paused = true;
     clearInterval(timeinterval); // stop the clock
     timeLeft = timeRemaining(deadline).total; // preserve remaining time
+    timer = timeRemaining(deadline).total;
 
+    var convert = timerMs - timeLeft;
 
-    ///convert back to minutes and seconds;   
-    min = Math.floor((timeLeft / 1000 / 60) << 0),
-      sec = Math.floor((timeLeft / 1000) % 60);
-
+    var min = Math.floor((convert / 1000 / 60) << 0),
+      sec = Math.floor((convert / 1000) % 60);
     console.log(min + ':' + sec);
-    console.log(timeLeft);
+
   }
 }
 
@@ -134,7 +150,17 @@ function resume() {
     run_clock('clockdiv', deadline);
   }
 }
-console.log(timeLeft);
+//console.log(timeLeft);
 // handle pause and resume button clicks
-// document.getElementById('pause').onclick = pause;
-// document.getElementById('resume').onclick = resume;
+
+function init() {
+  hint = document.getElementById('gamerules');
+  rule = document.getElementById('rule');
+  x = document.getElementById('x');
+  hint.style.display = 'none';
+  rule.addEventListener('click', openHint);
+  console.log("hi");
+  document.getElementById('pause').onclick = pause;
+  document.getElementById('resume').onclick = resume;
+  run_clock('clockdiv', deadline);
+  }
