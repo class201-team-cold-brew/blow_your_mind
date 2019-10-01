@@ -38,6 +38,24 @@ function genRandom() {
   return genRandom;
 }
 
+var randomQuest = [];
+function threeRandom() {
+  while (randomQuest.length < 3) {
+    var random = genRandom();
+
+    while (!randomQuest.includes(random)) {
+      console.log('building randomQuest: ', randomQuest);
+      randomQuest.push(random);
+    }
+  }
+  console.log('randomQuest completed!: ', randomQuest);
+  // for (var i = 0; i < randomQuest.length; i++) {
+  //   var temp =
+  // }
+}
+threeRandom();
+
+
 function init() {
   for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
@@ -49,4 +67,4 @@ function init() {
 
   console.log(randomQ, randomA, randomH);
 }
-
+init();
