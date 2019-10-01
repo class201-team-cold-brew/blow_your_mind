@@ -1,6 +1,9 @@
 /* * {
   outline: 1px solid white;
 } */
+a *{
+  text-decoration: none;
+}
 
 body {
   margin: 0px;
@@ -109,7 +112,7 @@ main {
 .index-buttons ul li:hover {
   color: #b80117;
   background: #683232;
-  border: 1em solid #683232;
+  border-color: #683232;
 }
 
 #rules {
