@@ -59,22 +59,32 @@ var randomQuest = [];
 // threeRandom();
 
 
-function init() {
-  for (var i = 0; i < riddleNorm.length; i++) {
-    new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
-  }
-  console.log(NormalQuestion.allQ);
-  var randomQ = genRandom();
-  var randomA = genRandom();
-  var randomH = genRandom();
+// function init() {
+//   for (var i = 0; i < riddleNorm.length; i++) {
+//     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
+//   }
+//   console.log(NormalQuestion.allQ);
+//   var randomQ = genRandom();
+//   var randomA = genRandom();
+//   var randomH = genRandom();
 
-  console.log(randomQ, randomA, randomH);
+//   console.log(randomQ, randomA, randomH);
+// }
+
+// init();
+
+var x;
+var hint;
+var rule;
+
+function closeHint(event) {
+  hint.style.display = 'none';
 }
 
-init();
-
-
-
+function openHint() {
+  console.log('hello');
+  hint.style.display = 'block';
+}
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
@@ -107,7 +117,7 @@ function run_clock(id, endtime) {
   update_clock(); // run function once at first to avoid delay
   timeinterval = setInterval(update_clock, 1000);
 }
-run_clock('clockdiv', deadline);
+
 
 
 var paused = false; // is the clock paused?
@@ -140,7 +150,17 @@ function resume() {
     run_clock('clockdiv', deadline);
   }
 }
-console.log(timeLeft);
+//console.log(timeLeft);
 // handle pause and resume button clicks
-document.getElementById('pause').onclick = pause;
-document.getElementById('resume').onclick = resume;
+
+function init() {
+  hint = document.getElementById('gamerules');
+  rule = document.getElementById('rule');
+  x = document.getElementById('x');
+  hint.style.display = 'none';
+  rule.addEventListener('click', openHint);
+  console.log("hi");
+  document.getElementById('pause').onclick = pause;
+  document.getElementById('resume').onclick = resume;
+  run_clock('clockdiv', deadline);
+  }
