@@ -10,12 +10,8 @@
   width: 900px;
 }
 
-<<<<<<< HEAD
-.game-container div:first-child {
-  overflow: hidden;
-=======
 .game-container > div:first-child {
->>>>>>> acad0e2605fb58fbc6abd8a47b106781b1cd1a57
+  overflow: hidden;
   position: relative;
   height: 444px;
   padding: 1em;
