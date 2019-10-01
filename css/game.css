@@ -57,6 +57,7 @@
   width: 900px;
   display: flex;
   align-items: center;
+  z-index: 10;
 }
 
 .riddle-container div:first-child {
