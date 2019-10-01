@@ -1,6 +1,3 @@
-
-
-
 var riddleNorm = ['What has branches and leaves and no bark?', 'The more you take away from it the larger it grows, what is it?',
   'What is always on its way here, but never arrives?', 'I run all around the pasture but never move.  What am I?',
   'What can go up a chimney down but can\'t go down a chimney up?', 'Who is that with a neck and no head, two arms and no hands?',
@@ -8,7 +5,9 @@ var riddleNorm = ['What has branches and leaves and no bark?', 'The more you tak
   'A very pretty thing am I, fluttering in the pale-blue sky. Delicate, fragile on the wing, indeed I am a pretty thing. What am I?', 'A door is not a door when it is?',
   'It can\'t be seen, can\'t be felt, can\'t be heard and can\'t be smelt. It lies behind stars and under hills, and empty holes it fills. It comes first and follows after, ends life and kills laughter.',
   'No matter how little or how much you use me, you change me every month. What am I?'];
+
 var answerNorm = ['Library', 'Hole', 'Tomorrow', 'Fence', 'Umbrella', 'Shirt', 'Crane', 'Sky', 'Butterfly', 'Ajar', 'Darkness', 'Calendar'];
+
 var hintNorm = [
   ['Shhh, this is a quiet place.', 'Shhh, this is a quiet place.', 'Shhh, this is a quiet place.'],
   ['Keep diggin’, you’ll get it.', 'Keep diggin’, you’ll get it.', 'Keep diggin’, you’ll get it.'],
@@ -25,57 +24,24 @@ var hintNorm = [
 
 // var normLevel = ['riddleNorm', 'answerNorm', 'hintNorm'];
 NormalQuestion.allQ = [];
+var currentRiddles = [];
+
+var x;
+var hint;
+var rule;
 
 function NormalQuestion(question, answer, hint) {
   this.question = question;
   this.answer = answer;
   this.hint = hint;
   this.correct = false;
-
   NormalQuestion.allQ.push(this);
-
 }
 
 function genRandom() {
   var genRandom = Math.floor(Math.random() * NormalQuestion.allQ.length);
   return genRandom;
 }
-
-var randomQuest = [];
-// function threeRandom() {
-//   while (randomQuest.length < 3) {
-//     var random = genRandom();
-
-//    // while (!randomQuest.includes(random)) {
-//       console.log('building randomQuest: ', randomQuest);
-//       randomQuest.push(random);
-//     }
-//   }
-//   console.log('randomQuest completed!: ', randomQuest);
-//   // for (var i = 0; i < randomQuest.length; i++) {
-//   //   var temp =
-//   // }
-// }
-// threeRandom();
-
-
-// function init() {
-//   for (var i = 0; i < riddleNorm.length; i++) {
-//     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
-//   }
-//   console.log(NormalQuestion.allQ);
-//   var randomQ = genRandom();
-//   var randomA = genRandom();
-//   var randomH = genRandom();
-
-//   console.log(randomQ, randomA, randomH);
-// }
-
-// init();
-
-var x;
-var hint;
-var rule;
 
 function closeHint(event) {
   hint.style.display = 'none';
@@ -86,7 +52,6 @@ function openHint() {
   hint.style.display = 'block';
 pause();
 }
-
 ///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
@@ -105,7 +70,7 @@ function timeRemaining(endtime) {
   var minutes = Math.floor((t / 1000 / 60) % 60);
   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
   var days = Math.floor(t / (1000 * 60 * 60 * 24));
-  return { 'total': t, 'days': days, 'hours': hours, 'minutes': minutes, 'seconds': seconds };
+  return { 'total': t, 'days': days, 'hours': hours, 'minutes': minutes, 'seconds': seconds, };
 }
 
 var timeinterval;
@@ -132,7 +97,7 @@ function pause() {
     timer = timeRemaining(deadline).total;
 
     var convert = timerMs - timeLeft;
-
+    
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     console.log(min + ':' + sec);
@@ -165,4 +130,31 @@ function init() {
   // document.getElementById('pause').onclick = pause;
   // document.getElementById('resume').onclick = resume;
   run_clock('clockdiv', deadline);
+  
+    for (var i = 0; i < riddleNorm.length; i++) {
+    new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
+  }
+
+  console.log(NormalQuestion.allQ);
+
+  var randomQ;
+  var randomA;
+  var randomH;
+
+  do {
+    randomQ = genRandom();
+    randomA = genRandom();
+    randomH = genRandom();
+
+
+  }
+  while (randomQ === randomA || randomA === randomH || randomQ === randomH);
+
+  currentRiddles.push(NormalQuestion.allQ[randomQ]);
+  currentRiddles.push(NormalQuestion.allQ[randomA]);
+  currentRiddles.push(NormalQuestion.allQ[randomH]);
+
+  console.log(currentRiddles);
+
+  console.log(NormalQuestion.allQ[randomQ]);
   }
