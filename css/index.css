@@ -1,6 +1,6 @@
-* {
+/* * {
   outline: 1px solid white;
-}
+} */
 
 main {
   text-align: center;
@@ -12,10 +12,10 @@ main {
 }
 
 .index-form-section {
-  width: 20%;
+  width: 342px;
   background: #f2b85c;
-  border: 1em solid #8f631d;
-  border-radius: 10px;
+  border: 1em solid #874F1D;
+  border-radius: 15px;
 }
 
 .index-form-section form, .welcome {
@@ -37,7 +37,7 @@ main {
 }
 
 .index-form-section ul li:nth-child(2) label {
-  margin-right: 1.7em;
+  margin-right: 1.2em;
 }
 
 .welcome-msg {
@@ -54,3 +54,6 @@ main {
   border-radius: 10px;
 }
 
+#rules {
+  display: none;
+}

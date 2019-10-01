@@ -5,9 +5,15 @@
 @import 'gamelose.css';
 @import 'gamewin.css';
 
+/* color guide */
+.site-yellow  {color: #d1881b}
+.site-brown   {color: #874F1D}
+.site-black   {color: #261E1c}
+
 /* global css */
-.bg-yellow {
-  background-color: #d1881d;
+.bg {
+  background-image: url('../img/bgpattern.jpg');
+  background-size: contain;
 }
 
 .txt-center {
