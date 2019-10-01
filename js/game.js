@@ -56,7 +56,7 @@ function threeRandom() {
   //   var temp =
   // }
 }
-threeRandom();
+// threeRandom();
 
 
 function init() {
@@ -71,8 +71,6 @@ function init() {
   console.log(randomQ, randomA, randomH);
 }
 
-init();
-=======
 ///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
@@ -103,7 +101,7 @@ function run_clock(id, endtime) {
   update_clock(); // run function once at first to avoid delay
   timeinterval = setInterval(update_clock, 1000);
 }
-run_clock('clockdiv', deadline);
+//run_clock('clockdiv', deadline);
 
 
 var paused = false; // is the clock paused?
@@ -138,5 +136,5 @@ function resume() {
 }
 console.log(timeLeft);
 // handle pause and resume button clicks
-document.getElementById('pause').onclick = pause;
-document.getElementById('resume').onclick = resume;
+// document.getElementById('pause').onclick = pause;
+// document.getElementById('resume').onclick = resume;
