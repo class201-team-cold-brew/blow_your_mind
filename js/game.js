@@ -26,6 +26,8 @@ var hintNorm = [
 NormalQuestion.allQ = [];
 var currentRiddles = [];
 
+var answered = 0;
+
 var x;
 var hint;
 var rule;
@@ -50,7 +52,7 @@ function closeHint(event) {
 
 function openHint() {
   hint.style.display = 'block';
-pause();
+  pause();
 }
 ///////////////////////https://codepen.io/ishanbakshi/pen/pgzNMv
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
@@ -97,7 +99,7 @@ function pause() {
     timer = timeRemaining(deadline).total;
 
     var convert = timerMs - timeLeft;
-    
+
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     console.log(min + ':' + sec);
@@ -123,15 +125,15 @@ function init() {
   hint = document.getElementById('gamerules');
   rule = document.getElementById('rule');
   x = document.getElementById('x');
-  x.addEventListener('click',closeHint);
+  x.addEventListener('click', closeHint);
   hint.style.display = 'none';
   rule.addEventListener('click', openHint);
-  console.log("hi");
+  console.log('hi');
   // document.getElementById('pause').onclick = pause;
   // document.getElementById('resume').onclick = resume;
   run_clock('clockdiv', deadline);
-  
-    for (var i = 0; i < riddleNorm.length; i++) {
+
+  for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
   }
 
@@ -157,4 +159,16 @@ function init() {
   console.log(currentRiddles);
 
   console.log(NormalQuestion.allQ[randomQ]);
-  }
+}
+
+var questBox = document.getElementById('questBox');
+
+var btn1 = document.getElementById('btn1');
+btn1.addEventListener('click', handleQuest1);
+
+function handleQuest1() {
+  var pEl = document.createElement('p');
+  pEl.textContent = currentRiddles[answered].question;
+  questBox.appendChild(pEl);
+  console.log(currentRiddles[answered].question);
+}
