@@ -1,3 +1,7 @@
+.preload {
+  display: none;
+}
+
 .game-main img:first-child {
   margin-top: 1em;
 }

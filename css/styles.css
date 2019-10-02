@@ -21,6 +21,10 @@
   background-size: contain;
 }
 
+.hide {
+  opacity: 0;
+}
+
 .txt-center {
   text-align: center;
 }

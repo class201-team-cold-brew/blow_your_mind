@@ -72,7 +72,11 @@ var randomCode;
 
 //game buttons variables
 var btn1;
+var btn2;
+var btn3;
 var isBtn1Done = false;
+var isBtn2Done = false;
+var isBtn3Done = false;
 var activeBtn;
 
 //game keys variables
@@ -120,7 +124,6 @@ function genRandom() {
 function handleQuest(event) {
   stopClickEvents();
   activeBtn = event.target.id;
-
   var pEl = document.createElement('p');
   pEl.textContent = currentRiddles[answered].question;
   questBox.appendChild(pEl);
@@ -131,6 +134,24 @@ function handleQuest(event) {
 function stopClickEvents() {
   if(!isBtn1Done) {
     btn1.removeEventListener('click', handleQuest);
+  }
+  if(!isBtn2Done) {
+    btn2.removeEventListener('click', handleQuest);
+  }
+  if(!isBtn3Done) {
+    btn3.removeEventListener('click', handleQuest);
+  }
+}
+
+function startClickEvents() {
+  if(!isBtn1Done) {
+    btn1.removeEventListener('click', handleQuest);
+  }
+  if(!isBtn2Done) {
+    btn2.removeEventListener('click', handleQuest);
+  }
+  if(!isBtn3Done) {
+    btn3.removeEventListener('click', handleQuest);
   }
 }
 
@@ -149,21 +170,50 @@ function handleAnswer(event) {
 }
 
 function correctAnswer() {
+  var currentBtn;
+  var currentKey;
+  var currentNum;
   if(activeBtn === 'btn1'){
-    btn1.classList.add('fadeout-top');
-    btn1.style.cursor = 'auto';
+    currentBtn = btn1;
+    currentKey = key1;
+    currentNum = 1;
     isBtn1Done = true;
-    keyTimer = setTimeout(function(){
-      key1.classList.add('move-to-origin');
-      pipeTimer = setTimeout(key1Complete,1000);
-    },800);
   }
+  if(activeBtn === 'btn2'){
+    currentBtn = btn2;
+    currentKey = key2;
+    currentNum = 2;
+    isBtn2Done = true;
+  }
+  if(activeBtn === 'btn3'){
+    currentBtn = btn3;
+    currentKey = key3;
+    currentNum = 3;
+    isBtn3Done = true;
+  }
+  currentBtn.classList.add('fadeout-top');
+  currentBtn.style.cursor = 'auto';
+  keyTimer = setTimeout(function(){
+    currentKey.classList.add('move-to-origin');
+    pipeTimer = setTimeout(function(){
+      keyComplete(currentNum);
+    },1000);
+  },800);
 }
 
-function key1Complete() {
+function keyComplete(key) {
   clearTimeout(keyTimer);
   clearTimeout(pipeTimer);
-  pipeOne.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
+  if (key === 1) {
+    pipeOne.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
+  }
+  if (key === 2) {
+    pipeTwo.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
+  }
+  if (key === 3) {
+    pipeThree.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
+  }
+  startClickEvents();
 }
 
 function getRandomCode() {
@@ -316,6 +366,10 @@ function init() {
 
   btn1 = document.getElementById('btn1');
   btn1.addEventListener('click', handleQuest);
+  btn2 = document.getElementById('btn2');
+  btn2.addEventListener('click', handleQuest);
+  btn3 = document.getElementById('btn3');
+  btn3.addEventListener('click', handleQuest);
 
   code = document.getElementById('killcodes');
   code.addEventListener('submit', getCode);
@@ -330,6 +384,9 @@ function init() {
   key1 = document.getElementById('key1');
   key2 = document.getElementById('key2');
   key3 = document.getElementById('key3');
+  key1.classList.remove('hide');
+  key2.classList.remove('hide');
+  key3.classList.remove('hide');
 
   pipeOne = document.getElementById('pipeOne');
   pipeTwo = document.getElementById('pipeTwo');
