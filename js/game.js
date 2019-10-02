@@ -1,8 +1,47 @@
-var riddleEasy = [];
+var riddleEasy = [
+  'I can fly but have no wings. I can cry but I have no eyes. Wherever I go, darkness follows me. What am I?',
+  'The more you take, the more you leave behind.',
+  'You can see me in water, but I never get wet. What am I?',
+  'What belongs to you, but others use it more than you do?',
+  'What is easy to get into, but hard to get out of?',
+  'I\'m tall when I\'m young, I\'m short when I\'m old. What am I?',
+  'What 4-letter word can be written forward, backward or upside down, and can still be read from left to right?',
+  'Poor people have it. Rich people need it. If you eat it, you die. what is it?',
+  'Feed me and I live, yet give me a drink and I die',
+  'If you have me, you want to share me. If you share me, you haven\'t got me.What am I ?',
+  'A kind of tree can you carry in your hand?',
+  'What disappears the moment you say its name?'
+];
 
-var answerEasy = [];
+var answerEasy = [
+  'cloud',
+  'footsteps',
+  'reflection',
+  'name',
+  'trouble',
+  'candle',
+  'noon',
+  'nothing',
+  'fire',
+  'secret',
+  'palm',
+  'silence'
+];
 
-var hintEasy = [];
+var hintEasy = [
+  'I live in the sky.',
+  'I am attached to you.',
+  'The man in the mirror.',
+  'You are called by this.',
+  '"It\'s fun gettin in to _______!" (game advertisement)',
+  'I get waxy.',
+  'It\'sin the middle of the day.',
+  'If this hint was not here, you would have?',
+  'Don\'t bring red trucks and flashing lights.',
+  'They say these don\'t make friends.',
+  'You see these on tropical beaches.',
+  'Achieved by the absence of moving your mouth.'
+];
 
 var riddleNorm = [
   'What has branches and leaves and no bark?',
