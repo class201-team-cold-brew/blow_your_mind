@@ -1,20 +1,92 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Blow Your Mind</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-  </head>
 
-  <body onload="init()">
-    <header></header>
+<head>
+  <meta charset="UTF-8">
+  <title>Blow Your Mind</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
 
-    <main>
-    </main>
+<body onload="init()" class="bg">
+  <header></header>
 
-    <footer></footer>
+  <main class="game-main">
+    <img src="img/logo-sm.png" alt="blow your mind!">
+    <section class="game-container center">
+      <div>
+        <div class="pipe1"></div>
+        <div class="pipe2"></div>
+        <div class="pipe3"></div>
+        <img class="btm-layer center" src="img/game-bottom-layer.png" alt="game layout">
+        <div class="key-box">
+          <img src="http://via.placeholder.com/76x76.jpg/111" />
+          <img src="http://via.placeholder.com/76x76.jpg/111" />
+          <img src="http://via.placeholder.com/76x76.jpg/111" />
+        </div>
+        <div class="btn1" id="btn1"></div>
+        <div class="btn2"></div>
+        <div class="btn3"></div>
+        <div class="timer-box">
+          <div class="timer">
+            <div id="clockdiv"></div>
+          </div>
+          <div class="killcode">
+            <form id="killcodes">
+              <fieldset>
+                <label for="killCode" class="title-font">KILL CODE</label><br>
+                <input id="killCode" type="number" min="0" max="9999" placeholder="Enter Kill Code...">
+                <input id="codeSubmit" type="submit" class="title-font submit-code" value="submit">
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="riddle-container center">
+      <div>
+        <div id="questBox">
 
-    <script src="js/game.js"></script>
-  </body>
+        </div>
+        <div>
+          <form id="questSubmit">
+            <fieldset>
+              <label for="answer"></label>
+              <input type="text" id="answer">
+              <input type="submit" value="submit" id="questAnswer">
+            </fieldset>
+          </form>
+        </div>
+
+      </div>
+      <div class="title-font">
+        <ul>
+          <li>
+            <P id='rule'>HOW TO PLAY</P>
+          </li>
+          <li>
+            <p>HINTS</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <div id="gamerules">
+      <span id="x">X</span>
+      <p>Click on an image inside the bomb. Solve the riddle that will appear. If you stuck, click on Hints. Solve 3
+        riddles to unlock a code. Enter the code under "Kill Code. You have 3 attempts. A wrong code will end the game.
+        Good luck!" </p>
+    </div>
+  </main>
+  <footer class="txt-center">
+    <p>&copy; Team Cold Brew 2019</p>
+  </footer>
+
+
+  <script src="js/game.js"></script>
+
+
+</body>
+
 </html>
