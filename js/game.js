@@ -94,6 +94,7 @@ var pipeTimer = 0;
 //quest box generation variables
 var questBox;
 var answerQuestForm;
+var questP;
 
 //array that holds instants base on which difficulty for this session
 Question.allQ = [];
@@ -124,34 +125,27 @@ function genRandom() {
 function handleQuest(event) {
   stopClickEvents();
   activeBtn = event.target.id;
-  var pEl = document.createElement('p');
-  pEl.textContent = currentRiddles[answered].question;
-  questBox.appendChild(pEl);
+  questP.textContent = currentRiddles[answered].question;
+  questBox.appendChild(questP);
   console.log(currentRiddles[answered].question);
 }
 
 //call this function to remove all eventlisteners.
 function stopClickEvents() {
-  if(!isBtn1Done) {
-    btn1.removeEventListener('click', handleQuest);
-  }
-  if(!isBtn2Done) {
-    btn2.removeEventListener('click', handleQuest);
-  }
-  if(!isBtn3Done) {
-    btn3.removeEventListener('click', handleQuest);
-  }
+  btn1.removeEventListener('click', handleQuest);
+  btn2.removeEventListener('click', handleQuest);
+  btn3.removeEventListener('click', handleQuest);
 }
 
 function startClickEvents() {
   if(!isBtn1Done) {
-    btn1.removeEventListener('click', handleQuest);
+    btn1.addEventListener('click', handleQuest);
   }
   if(!isBtn2Done) {
-    btn2.removeEventListener('click', handleQuest);
+    btn2.addEventListener('click', handleQuest);
   }
   if(!isBtn3Done) {
-    btn3.removeEventListener('click', handleQuest);
+    btn3.addEventListener('click', handleQuest);
   }
 }
 
@@ -162,6 +156,7 @@ function handleAnswer(event) {
   if (userAnswer.toLowerCase() === questAnswer) {
     console.log('you got it');
     correctAnswer();
+    answered++;
   } else {
     userAnswer = null;
     attempts--;
@@ -213,6 +208,7 @@ function keyComplete(key) {
   if (key === 3) {
     pipeThree.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
   }
+  questP.textContent = '';
   startClickEvents();
 }
 
@@ -375,6 +371,7 @@ function init() {
   code.addEventListener('submit', getCode);
 
   questBox = document.getElementById('questBox');
+  questP = document.getElementById('questP');
   answerQuestForm = document.getElementById('questSubmit');
   answerQuestForm.addEventListener('submit', handleAnswer);
 

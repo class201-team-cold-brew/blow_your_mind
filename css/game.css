@@ -2,6 +2,10 @@
   display: none;
 }
 
+a * {
+  text-decoration: none;
+}
+
 .game-main img:first-child {
   margin-top: 1em;
 }
