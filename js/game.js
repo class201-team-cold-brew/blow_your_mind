@@ -98,11 +98,13 @@ var answerQuestForm;
 var questP;
 var attemptTxt;
 var hints;
-var hintsNum = 3;
+var hintsNum = 2;
 var riddleHints;
 var closeX;
 var hintText;
 var gameHint;
+var isFirstTime = true;
+var isRiddleInProgress = false;
 
 //array that holds instants base on which difficulty for this session
 Question.allQ = [];
@@ -121,10 +123,12 @@ function openRule() {
 }
 
 function closeHint() {
+  riddleHints.addEventListener('click', hintHandler);
   gameHint.style.right = '-100%';
 }
 
 function openHint() {
+  riddleHints.removeEventListener('click', hintHandler);
   gameHint.style.right = '0';
 }
 
@@ -145,20 +149,26 @@ function handleQuest(event) {
   activeBtn = event.target.id;
   questP.textContent = currentRiddles[answered].question;
   questBox.appendChild(questP);
+  riddleHints.addEventListener('click', hintHandler);
+  isRiddleInProgress = true;
   console.log(currentRiddles[answered].question);
 }
 
 function hintHandler(){
-  var hint = currentRiddles[answered].hint;
-  if (hintsNum > 0) {
-    hintText.textContent = hint;
-    console.log(hint);
-    hintsNum--;
-    hints.textContent = hintsNum;
-  } else {
-    hintText.textContent = 'You ran out of hints!';
+  if (isRiddleInProgress){
+    var hint = currentRiddles[answered].hint;
+    if (hintsNum > 0) {
+      hintText.textContent = hint;
+      if(isFirstTime){
+        hintsNum--;
+        isFirstTime = false;
+      }
+      hints.textContent = hintsNum;
+    } else {
+      hintText.textContent = 'You ran out of hints!';
+    }
+    openHint();  
   }
-  openHint();
 }
 
 //call this function to remove all eventlisteners.
@@ -187,6 +197,9 @@ function handleAnswer(event) {
   if (userAnswer.toLowerCase() === questAnswer) {
     console.log('you got it');
     correctAnswer();
+    closeHint();
+    isFirstTime = true;
+    isRiddleInProgress = false;
     answered++;
   } else {
     attempts--;
@@ -370,7 +383,6 @@ function init() {
   hints = document.getElementById('hints');
   hints.textContent = hintsNum;
   riddleHints = document.getElementById('riddleHints');
-  riddleHints.addEventListener('click', hintHandler);
   closeX = document.getElementById('close');
   closeX.addEventListener('click', closeHint);
   hintText = document.getElementById('hintText');
