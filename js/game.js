@@ -42,8 +42,8 @@ var hint;
 var rule;
 var code;
 var randomCode;
-var questBox = document.getElementById('questBox');
-var btn1 = document.getElementById('btn1');
+var questBox
+var btn1
 var answerQuestForm;
 NormalQuestion.allQ = [];
 
@@ -89,6 +89,31 @@ function handleAnswer(event) {
   } else {
     userAnswer = null;
     console.log('wrong');
+  }
+}
+
+function randomCode() {
+  var random = Math.floor(Math.random() * 9999 + 1000);
+  return random;
+}
+
+function getCode(event) {
+  event.preventDefault();
+  // randomCode = randomCode();
+  randomCode = 4444;
+  var code = event.target.killCode.value;
+  if (code == randomCode) {
+    pause();
+    var convert = timerMs - timeLeft;
+    var min = Math.floor((convert / 1000 / 60) << 0),
+      sec = Math.floor((convert / 1000) % 60);
+    var finaltime = min + ':' + sec;
+    console.log(finaltime);
+    localStorage.setItem('finaltime', finaltime);
+    // window.location.href ='gamewin.html';
+  } else {
+    pause();
+    window.location.href = 'gamelose.html';
   }
 }
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
@@ -191,15 +216,23 @@ function init() {
   console.log(NormalQuestion.allQ[randomQ]);
 }
 
+
 function randomCode() {
   var random = Math.floor(Math.random() * 9999 + 1000);
   return random;
 }
 
+
+// var totalUser = [];
+// var totalTime = [];
+
+
 function getCode(event) {
   event.preventDefault();
   // randomCode = randomCode();
   randomCode = 4444;
+
+  
   var code = event.target.killCode.value;
   if (code == randomCode) {
     pause();
@@ -207,11 +240,51 @@ function getCode(event) {
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
-    console.log(finaltime);
+    // console.log(finaltime);
+
+//totalTime.push(finaltime);
+
+
+
+    //var storeString = JSON.stringify(finaltime);
+
     localStorage.setItem('finaltime', finaltime);
-    // window.location.href ='gamewin.html';
+
+    // retrieveUser();
+    // getTime();
+    //window.location.href = 'gamewin.html';
   } else {
     pause();
     window.location.href = 'gamelose.html';
   }
 }
+
+
+
+
+// function retrieveUser() {
+//   // if (localStorage.mall) 
+
+//   var data = localStorage.getItem('user');
+
+//   var parsedData = JSON.parse(data);
+//   totalUser = parsedData;
+
+//   console.log(totalUser);
+// }
+
+
+// function getTime() {
+
+//   var data1 = localStorage.getItem('finaltime');
+
+//   //var parsedData1 = JSON.parse(data1);
+
+//   //totalTime = data1;
+//   console.log(data1);
+
+// }
+
+
+
+

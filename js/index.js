@@ -22,6 +22,7 @@ User.all = [];
 function User(name, difficulty) {
   this.name = name;
   this.difficulty = difficulty;
+  this.time = null;
 
   User.all.push(this);
 }
@@ -35,8 +36,7 @@ function handleForm(event) {
   var difficulty = formLocal.difficulty.value;
 
   new User(name, difficulty);
-
-  console.log(name + difficulty);
+  updateStorage();
 
   form.style.display = 'none';
   welcome.style.display = 'block';
@@ -44,22 +44,60 @@ function handleForm(event) {
   var pEl = document.createElement('p');
   pEl.textContent = `Welcome ${name}. You have chosen ${difficulty} level.`;
   welcome.appendChild(pEl);
-  updateStorage();
+
 }
 ///place data into local storage
+
 function updateStorage() {
   var storeString = JSON.stringify(User.all);
-  localStorage.setItem('user',storeString );
+  localStorage.setItem('user', storeString);
 }
+
+var storage = [];
+
+function pullData() {
+  // if (localStorage.mall) 
+
+  var data = localStorage.getItem('user');
+
+  var parsedData = JSON.parse(data);
+
+  User.all = parsedData;
+
+}
+
+pullData();
+console.log(User.all);
+
+
 
 function closeHint(event) {
   event.preventDefault();
   hint.style.display = 'none';
-
 }
 
 function displayRules(event) {
   event.preventDefault();
   hint.style.display = 'block';
+
+}
+
+var highScore = document.getElementById('highscore');
+
+highScore.addEventListener('submit', rank)
+
+function rank(event) {
+
+  for (var i = 0; i < User.all.length; i++) {
+
+
+
+  }
+
+  var ulEl = document.createElement('li');
+
+
+  ulEl.textContent = localStorage.user
+
 
 }
