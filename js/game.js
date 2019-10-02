@@ -477,11 +477,6 @@ function goLose() {
   window.location.href = 'gamelose.html';
 }
 
-
-
-
-
-
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
@@ -534,7 +529,7 @@ function init() {
   console.log(parseData);
   console.log(parseData[parseData.length - 1].difficulty);
 
-  var parse = parseData[0].difficulty;
+  var parse = parseData[parseData.length - 1].difficulty;
 
   if (parse === 'easy') {
     for (var i = 0; i < riddleEasy.length; i++) {
