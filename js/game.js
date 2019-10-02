@@ -6,7 +6,7 @@ var riddleNorm = ['What has branches and leaves and no bark?', 'The more you tak
   'It can\'t be seen, can\'t be felt, can\'t be heard and can\'t be smelt. It lies behind stars and under hills, and empty holes it fills. It comes first and follows after, ends life and kills laughter.',
   'No matter how little or how much you use me, you change me every month. What am I?'];
 
-var answerNorm = ['Library', 'Hole', 'Tomorrow', 'Fence', 'Umbrella', 'Shirt', 'Crane', 'Sky', 'Butterfly', 'Ajar', 'Darkness', 'Calendar'];
+var answerNorm = ['library', 'hole', 'tomorrow', 'fence', 'umbrella', 'shirt', 'crane', 'sky', 'butterfly', 'ajar', 'darkness', 'calendar'];
 
 var hintNorm = [
   ['Shhh, this is a quiet place.', 'Shhh, this is a quiet place.', 'Shhh, this is a quiet place.'],
@@ -30,8 +30,9 @@ var hint;
 var rule;
 var code;
 var randomCode;
-var questBox = document.getElementById('questBox');
-var btn1 = document.getElementById('btn1');
+var questBox
+var btn1
+var answerQuestForm;
 NormalQuestion.allQ = [];
 
 function closeHint(event) {
@@ -48,7 +49,6 @@ function NormalQuestion(question, answer, hint) {
   this.question = question;
   this.answer = answer;
   this.hint = hint;
-  this.correct = false;
   NormalQuestion.allQ.push(this);
 }
 
@@ -58,10 +58,51 @@ function genRandom() {
 }
 
 function handleQuest1() {
+  btn1.removeEventListener('click', handleQuest1);
+
   var pEl = document.createElement('p');
   pEl.textContent = currentRiddles[answered].question;
   questBox.appendChild(pEl);
   console.log(currentRiddles[answered].question);
+}
+
+function handleAnswer(event) {
+  event.preventDefault();
+
+  console.log(event.target.answer.value);
+  var userAnswer = event.target.answer.value;
+  var questAnswer = currentRiddles[answered].answer;
+  if (userAnswer.toLowerCase() === questAnswer) {
+    console.log('you got it');
+  } else {
+    userAnswer = null;
+    console.log('wrong');
+  }
+}
+
+function randomCode() {
+  var random = Math.floor(Math.random() * 9999 + 1000);
+  return random;
+}
+
+function getCode(event) {
+  event.preventDefault();
+  // randomCode = randomCode();
+  randomCode = 4444;
+  var code = event.target.killCode.value;
+  if (code == randomCode) {
+    pause();
+    var convert = timerMs - timeLeft;
+    var min = Math.floor((convert / 1000 / 60) << 0),
+      sec = Math.floor((convert / 1000) % 60);
+    var finaltime = min + ':' + sec;
+    console.log(finaltime);
+    localStorage.setItem('finaltime', finaltime);
+    // window.location.href ='gamewin.html';
+  } else {
+    pause();
+    window.location.href = 'gamelose.html';
+  }
 }
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
@@ -72,7 +113,6 @@ var timerMs = timer * 60000;
 
 var currentTime = Date.parse(new Date());
 var deadline = new Date(currentTime + timer * 60 * 1000);
-
 
 function timeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -134,6 +174,9 @@ function init() {
   run_clock('clockdiv', deadline);
   code = document.getElementById('killcodes');
   code.addEventListener('submit', getCode);
+  answerQuestForm = document.getElementById('questSubmit');
+  answerQuestForm.addEventListener('submit', handleAnswer);
+
 
   for (var i = 0; i < riddleNorm.length; i++) {
     new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
@@ -160,6 +203,7 @@ function init() {
 
   console.log(NormalQuestion.allQ[randomQ]);
 }
+
 
 function randomCode() {
   var random = Math.floor(Math.random() * 9999 + 1000);
@@ -228,5 +272,7 @@ function getCode(event) {
 //   console.log(data1);
 
 // }
+
+
 
 
