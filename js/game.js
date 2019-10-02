@@ -1,3 +1,9 @@
+var riddleEasy = [];
+
+var answerEasy = [];
+
+var hintEasy = [];
+
 var riddleNorm = ['What has branches and leaves and no bark?', 'The more you take away from it the larger it grows, what is it?',
   'What is always on its way here, but never arrives?', 'I run all around the pasture but never move.  What am I?',
   'What can go up a chimney down but can\'t go down a chimney up?', 'Who is that with a neck and no head, two arms and no hands?',
@@ -21,6 +27,12 @@ var hintNorm = [
   ['You can put a lid on it.', 'You can put a lid on it.', 'You can put a lid on it.'],
   ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.']
 ];
+
+var riddleHard = [];
+
+var answerHard = [];
+
+var hintHard = [];
 
 var currentRiddles = [];
 var answered = 0;
