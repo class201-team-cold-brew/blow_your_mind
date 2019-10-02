@@ -106,6 +106,12 @@ var gameHint;
 var isFirstTime = true;
 var isRiddleInProgress = false;
 
+
+///killcode variable
+var kcCode;
+
+
+
 //array that holds instants base on which difficulty for this session
 Question.allQ = [];
 
@@ -118,7 +124,7 @@ function closeRule() {
 function openRule() {
   gameRules.style.right = '0';
   pause();
- // code.value = '';
+  //document.getElementById('killCode') = null;
   code.removeEventListener('submit', getCode);
 }
 
@@ -154,6 +160,7 @@ function handleQuest(event) {
   console.log(currentRiddles[answered].question);
 }
 
+<<<<<<< HEAD
 function hintHandler(){
   if (isRiddleInProgress){
     var hint = currentRiddles[answered].hint;
@@ -168,6 +175,18 @@ function hintHandler(){
       hintText.textContent = 'You ran out of hints!';
     }
     openHint();  
+=======
+function hintHandler() {
+  var hint = currentRiddles[answered].hint;
+  if (hintsNum > 0) {
+    hintText.textContent = hint;
+    console.log(hint);
+    hintsNum--;
+    hints.textContent = hintsNum;
+  } else {
+    hintText.textContent = 'You ran out of hints!';
+
+>>>>>>> 439e70a39f4a71b11e838826637c844a79c29a68
   }
 }
 
@@ -203,10 +222,10 @@ function handleAnswer(event) {
     answered++;
   } else {
     attempts--;
-    if(attemptTxt.classList.contains('shake')){
+    if (attemptTxt.classList.contains('shake')) {
       console.log('yes');
       attemptTxt.classList.remove('shake');
-      setTimeout(function(){attemptTxt.classList.add('shake');},100);
+      setTimeout(function () { attemptTxt.classList.add('shake'); }, 100);
     } else {
       attemptTxt.classList.add('shake');
     }
@@ -214,6 +233,9 @@ function handleAnswer(event) {
     tries.textContent = attempts;
   }
   document.getElementById('answer').value = null;
+  if (attempts === 0) {
+    goLose();
+  }
 }
 
 function correctAnswer() {
@@ -269,10 +291,27 @@ function getRandomCode() {
   return random;
 }
 
+
+//populate the random code
+
+
+function createCode() {
+  randomCode = getRandomCode();
+
+  kcCode = document.getElementById('hintCode');
+
+  kcCode.textContent = randomCode;
+
+}
+
+createCode();
+
+
+
 function getCode(event) {
   event.preventDefault();
-  // randomCode = getRandomCode();
-  randomCode = 4444;
+  //randomCode = getRandomCode();
+  //randomCode = 4444;
 
   var code = event.target.killCode.value;
   if (code == randomCode) {
@@ -281,7 +320,7 @@ function getCode(event) {
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
-    console.log(finaltime);
+    //console.log(finaltime);
     localStorage.setItem('finaltime', finaltime);
     goWin();
   } else {
@@ -293,10 +332,11 @@ function getCode(event) {
   }
 }
 
+
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
 var timer = 14.99;
-
+//var timer =0.15;
 var timerMs = timer * 60000;
 
 
@@ -315,14 +355,19 @@ function timeRemaining(endtime) {
 var timeinterval;
 function runClock(id, endtime) {
   var clock = document.getElementById(id);
-  function update_clock() {
+  function updateClock() {
     var t = timeRemaining(endtime);
     //clock.innerHTML = 'minutes: ' + t.minutes + '<br>seconds: ' + t.seconds;
     clock.innerHTML = 'Time left: ' + t.minutes + ':' + t.seconds;
     if (t.total <= 0) { clearInterval(timeinterval); }
+
+    if (t.total === 0) {
+      console.log(t.total);
+      goLose();
+    }
   }
-  update_clock(); // run function once at first to avoid delay
-  timeinterval = setInterval(update_clock, 1000);
+  updateClock(); // run function once at first to avoid delay
+  timeinterval = setInterval(updateClock, 1000);
 }
 
 var paused = false; // is the clock paused?
@@ -358,6 +403,10 @@ function goLose() {
 }
 
 
+
+
+
+
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
@@ -387,6 +436,10 @@ function init() {
   closeX.addEventListener('click', closeHint);
   hintText = document.getElementById('hintText');
   gameHint = document.getElementById('gameHint');
+
+
+
+
 
 
   tries = document.getElementById('tries');
@@ -430,6 +483,4 @@ function init() {
 
   console.log(Question.allQ[randomQ]);
 }
-
-
 
