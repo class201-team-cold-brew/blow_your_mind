@@ -35,18 +35,18 @@ var answerNorm = [
 ];
 
 var hintNorm = [
-  ['Shhh, this is a quiet place.', 'Shhh, this is a quiet place.', 'Shhh, this is a quiet place.'],
-  ['Keep diggin’, you’ll get it.', 'Keep diggin’, you’ll get it.', 'Keep diggin’, you’ll get it.'],
-  ['Not a tangible object.', 'Not a tangible object.', 'Not a tangible object.'],
-  ['It keeps things inside.', 'It keeps things inside.', 'It keeps things inside.'],
-  ['When it is open you are protected.', 'When it is open you are protected.', 'When it is open you are protected.'],
-  ['You can have it in different colors.', 'You can have it in different colors.', 'You can have it in different colors.'],
-  ['You can fold paper into this.', 'You can fold paper into this.', 'You can fold paper into this.'],
-  ['Look it’s up.', 'Look it’s up.', 'Look it’s up.'],
-  ['You can swim this way.', 'You can swim this way.', 'You can swim this way.'],
-  ['You can put a lid on it.', 'You can put a lid on it.', 'You can put a lid on it.'],
-  ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.'],
-  ['Month to month', 'Month to month', 'Month to month']
+  'Shhh, this is a quiet place.',
+  'Keep diggin’, you’ll get it.',
+  'Not a tangible object.',
+  'It keeps things inside.',
+  'When it is open you are protected.',
+  'You can have it in different colors.',
+  'You can fold paper into this.',
+  'Look it’s up.',
+  'You can swim this way.',
+  'You can put a lid on it.',
+  'Can be achieved by flipping a switch.',
+  'Month to month.'
 ];
 
 var riddleHard = [];
@@ -96,6 +96,13 @@ var pipeTimer = 0;
 var questBox;
 var answerQuestForm;
 var questP;
+var attemptTxt;
+var hints;
+var hintsNum = 3;
+var riddleHints;
+var closeX;
+var hintText;
+var gameHint;
 
 //array that holds instants base on which difficulty for this session
 Question.allQ = [];
@@ -111,6 +118,14 @@ function openRule() {
   pause();
  // code.value = '';
   code.removeEventListener('submit', getCode);
+}
+
+function closeHint() {
+  gameHint.style.right = '-100%';
+}
+
+function openHint() {
+  gameHint.style.right = '0';
 }
 
 function Question(question, answer, hint) {
@@ -131,6 +146,19 @@ function handleQuest(event) {
   questP.textContent = currentRiddles[answered].question;
   questBox.appendChild(questP);
   console.log(currentRiddles[answered].question);
+}
+
+function hintHandler(){
+  var hint = currentRiddles[answered].hint;
+  if (hintsNum > 0) {
+    hintText.textContent = hint;
+    console.log(hint);
+    hintsNum--;
+    hints.textContent = hintsNum;
+  } else {
+    hintText.textContent = 'You ran out of hints!';
+  }
+  openHint();
 }
 
 //call this function to remove all eventlisteners.
@@ -161,8 +189,14 @@ function handleAnswer(event) {
     correctAnswer();
     answered++;
   } else {
-    userAnswer = null;
     attempts--;
+    if(attemptTxt.classList.contains('shake')){
+      console.log('yes');
+      attemptTxt.classList.remove('shake');
+      setTimeout(function(){attemptTxt.classList.add('shake');},100);
+    } else {
+      attemptTxt.classList.add('shake');
+    }
     console.log('wrong');
     tries.textContent = attempts;
   }
@@ -228,7 +262,6 @@ function getCode(event) {
   randomCode = 4444;
 
   var code = event.target.killCode.value;
-
   if (code == randomCode) {
     pause();
     var convert = timerMs - timeLeft;
@@ -236,12 +269,8 @@ function getCode(event) {
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
     console.log(finaltime);
-
-
     localStorage.setItem('finaltime', finaltime);
     goWin();
-
-
   } else {
     finaltime = 'fail';
     localStorage.setItem('finaltime', finaltime);
@@ -337,6 +366,15 @@ function init() {
   questP = document.getElementById('questP');
   answerQuestForm = document.getElementById('questSubmit');
   answerQuestForm.addEventListener('submit', handleAnswer);
+  attemptTxt = document.getElementById('attemptTxt');
+  hints = document.getElementById('hints');
+  hints.textContent = hintsNum;
+  riddleHints = document.getElementById('riddleHints');
+  riddleHints.addEventListener('click', hintHandler);
+  closeX = document.getElementById('close');
+  closeX.addEventListener('click', closeHint);
+  hintText = document.getElementById('hintText');
+  gameHint = document.getElementById('gameHint');
 
 
   tries = document.getElementById('tries');
