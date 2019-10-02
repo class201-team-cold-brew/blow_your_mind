@@ -160,7 +160,6 @@ function handleQuest(event) {
   console.log(currentRiddles[answered].question);
 }
 
-<<<<<<< HEAD
 function hintHandler(){
   if (isRiddleInProgress){
     var hint = currentRiddles[answered].hint;
@@ -171,22 +170,8 @@ function hintHandler(){
         isFirstTime = false;
       }
       hints.textContent = hintsNum;
-    } else {
-      hintText.textContent = 'You ran out of hints!';
     }
     openHint();  
-=======
-function hintHandler() {
-  var hint = currentRiddles[answered].hint;
-  if (hintsNum > 0) {
-    hintText.textContent = hint;
-    console.log(hint);
-    hintsNum--;
-    hints.textContent = hintsNum;
-  } else {
-    hintText.textContent = 'You ran out of hints!';
-
->>>>>>> 439e70a39f4a71b11e838826637c844a79c29a68
   }
 }
 
