@@ -108,6 +108,8 @@ function closeRule() {
 function openRule() {
   gameRules.style.right = '0';
   pause();
+ // code.value = '';
+  code.removeEventListener('submit', getCode);
 }
 
 function Question(question, answer, hint) {
@@ -138,13 +140,13 @@ function stopClickEvents() {
 }
 
 function startClickEvents() {
-  if(!isBtn1Done) {
+  if (!isBtn1Done) {
     btn1.addEventListener('click', handleQuest);
   }
-  if(!isBtn2Done) {
+  if (!isBtn2Done) {
     btn2.addEventListener('click', handleQuest);
   }
-  if(!isBtn3Done) {
+  if (!isBtn3Done) {
     btn3.addEventListener('click', handleQuest);
   }
 }
@@ -168,19 +170,19 @@ function correctAnswer() {
   var currentBtn;
   var currentKey;
   var currentNum;
-  if(activeBtn === 'btn1'){
+  if (activeBtn === 'btn1') {
     currentBtn = btn1;
     currentKey = key1;
     currentNum = 1;
     isBtn1Done = true;
   }
-  if(activeBtn === 'btn2'){
+  if (activeBtn === 'btn2') {
     currentBtn = btn2;
     currentKey = key2;
     currentNum = 2;
     isBtn2Done = true;
   }
-  if(activeBtn === 'btn3'){
+  if (activeBtn === 'btn3') {
     currentBtn = btn3;
     currentKey = key3;
     currentNum = 3;
@@ -188,12 +190,12 @@ function correctAnswer() {
   }
   currentBtn.classList.add('fadeout-top');
   currentBtn.style.cursor = 'auto';
-  keyTimer = setTimeout(function(){
+  keyTimer = setTimeout(function () {
     currentKey.classList.add('move-to-origin');
-    pipeTimer = setTimeout(function(){
+    pipeTimer = setTimeout(function () {
       keyComplete(currentNum);
-    },1000);
-  },800);
+    }, 1000);
+  }, 800);
 }
 
 function keyComplete(key) {
@@ -221,80 +223,34 @@ function getCode(event) {
   event.preventDefault();
   // randomCode = getRandomCode();
   randomCode = 4444;
+
   var code = event.target.killCode.value;
-  if (code === randomCode) {
+
+  if (code == randomCode) {
     pause();
     var convert = timerMs - timeLeft;
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
     console.log(finaltime);
+
+
     localStorage.setItem('finaltime', finaltime);
-    // window.location.href ='gamewin.html';
+    goWin();
+
+
   } else {
+    finaltime = 'fail';
+    localStorage.setItem('finaltime', finaltime);
     pause();
-    window.location.href = 'gamelose.html';
+    console.log(finaltime);
+    goLose();
   }
 }
 
-// function getCode(event) {
-//   event.preventDefault();
-//   // randomCode = randomCode();
-//   randomCode = 4444;
-
-  
-//   var code = event.target.killCode.value;
-//   if (code == randomCode) {
-//     pause();
-//     var convert = timerMs - timeLeft;
-//     var min = Math.floor((convert / 1000 / 60) << 0),
-//       sec = Math.floor((convert / 1000) % 60);
-//     var finaltime = min + ':' + sec;
-//     // console.log(finaltime);
-//     //totalTime.push(finaltime);
-//     //var storeString = JSON.stringify(finaltime);
-
-//     localStorage.setItem('finaltime', finaltime);
-
-//     // retrieveUser();
-//     // getTime();
-//     //window.location.href = 'gamewin.html';
-//   } else {
-//     pause();
-//     window.location.href = 'gamelose.html';
-//   }
-// }
-
-// function randomCode() {
-//   var random = Math.floor(Math.random() * 9999 + 1000);
-//   return random;
-// }
-
-// var totalUser = [];
-// var totalTime = [];
-
-// function retrieveUser() {
-//   // if (localStorage.mall) 
-
-//   var data = localStorage.getItem('user');
-
-//   var parsedData = JSON.parse(data);
-//   totalUser = parsedData;
-
-//   console.log(totalUser);
-// }
 
 
-// function getTime() {
 
-//   var data1 = localStorage.getItem('finaltime');
-
-//   //var parsedData1 = JSON.parse(data1);
-
-//   //totalTime = data1;
-//   console.log(data1);
-
-// }
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
@@ -316,7 +272,7 @@ function timeRemaining(endtime) {
 }
 
 var timeinterval;
-function run_clock(id, endtime) {
+function runClock(id, endtime) {
   var clock = document.getElementById(id);
   function update_clock() {
     var t = timeRemaining(endtime);
@@ -348,10 +304,18 @@ function resume() {
     deadline = new Date(Date.parse(new Date()) + timeLeft);
 
     // start the clock
-    run_clock('clockdiv', deadline);
+    runClock('clockdiv', deadline);
   }
 }
 ////////////////////////////////////////////////////////////////////////////////////
+function goWin() {
+  window.location.href = 'gamewin.html';
+}
+
+function goLose() {
+  window.location.href = 'gamelose.html';
+}
+
 
 function init() {
   gameRules = document.getElementById('gamerules');
@@ -389,7 +353,7 @@ function init() {
   pipeTwo = document.getElementById('pipeTwo');
   pipeThree = document.getElementById('pipeThree');
 
-  run_clock('clockdiv', deadline);
+  runClock('clockdiv', deadline);
 
   for (var i = 0; i < riddleNorm.length; i++) {
     new Question(riddleNorm[i], answerNorm[i], hintNorm[i]);
