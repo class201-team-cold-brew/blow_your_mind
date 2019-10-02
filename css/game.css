@@ -149,7 +149,7 @@
   z-index: 10;
 }
 
-.riddle-container div:first-child {
+.riddle-container > div:first-child {
   flex: 0 0 70%;
   min-height: 150px;
   box-sizing: border-box;
@@ -159,17 +159,44 @@
   background-color: #d1a056;
 }
 
-.riddle-container div:last-child {
+.riddle-container > div:first-child > .quest-box {
+  min-height: 40px;
+}
+
+.riddle-container > div:first-child > h3 {
+  padding: 0;
+}
+
+.riddle-container > div:first-child > .quest-box p{
+  padding: 0 1em 1em 1em;
+  margin: 0;
+}
+
+.riddle-container > div:first-child > .quest-answer fieldset {
+  border-width: 0;
+}
+
+.riddle-container > div:first-child > .quest-answer .submit-ans {
+  background-color: transparent;
+  border-width: 0;
+  cursor: pointer;
+}
+
+.riddle-container > div:first-child > .quest-answer .submit-ans:hover {
+  color: #b80117;
+}
+
+.riddle-container > div:last-child {
   flex: 0 0 30%;
   box-sizing: border-box;
 }
 
-.riddle-container div:last-child ul {
+.riddle-container > div:last-child ul {
   list-style-type: none;
   padding: 0;
 }
 
-.riddle-container div:last-child ul li {
+.riddle-container > div:last-child ul li {
   margin: 1em auto 1em auto;
   width: 150px;
   background: #562c2c;
@@ -179,7 +206,7 @@
   color: white;
 }
 
-.riddle-container div:last-child ul li p {
+.riddle-container > div:last-child ul li p {
   font-size: 1em;
   margin: 0;
   background: #261E1c;
@@ -188,8 +215,34 @@
   cursor: pointer;
 }
 
-.riddle-container div:last-child ul li:hover {
+.riddle-container > div:last-child ul li:hover {
   color: #b80117;
   background: #683232;
   border-color: #683232;
+}
+
+.game-rules {
+  position: fixed;
+  width: 300px;
+  text-align: right;
+  background-color: #874F1D;
+  border: 1em solid #874F1D;
+  border-radius: 15px;
+  right: -100%;
+  top: 30%;
+  transition: all 500ms ease-in-out;
+}
+
+.game-rules > div {
+  background-color: #d1a056;
+  border: 1em solid #d1a056;
+  border-radius: 15px;
+}
+
+.game-rules > div > span {
+  cursor: pointer;
+}
+
+.game-rules > div > span:hover {
+  color: #b80117;
 }

@@ -36,24 +36,23 @@ var hintHard = [];
 
 var currentRiddles = [];
 var answered = 0;
-var randomQuest = [];
 var x;
-var hint;
-var rule;
+var gameRules;
 var code;
 var randomCode;
-var questBox
-var btn1
+var questBox;
+var btn1;
 var answerQuestForm;
+var gameRuleBtn;
 NormalQuestion.allQ = [];
 
-function closeHint(event) {
-  hint.style.display = 'none';
+function closeRule() {
+  gameRules.style.right = '-100%';
   resume();
 }
 
-function openHint() {
-  hint.style.display = 'block';
+function openRule() {
+  gameRules.style.right = '0';
   pause();
 }
 
@@ -116,6 +115,44 @@ function getCode(event) {
     window.location.href = 'gamelose.html';
   }
 }
+
+function getCode(event) {
+  event.preventDefault();
+  // randomCode = randomCode();
+  randomCode = 4444;
+
+  
+  var code = event.target.killCode.value;
+  if (code == randomCode) {
+    pause();
+    var convert = timerMs - timeLeft;
+    var min = Math.floor((convert / 1000 / 60) << 0),
+      sec = Math.floor((convert / 1000) % 60);
+    var finaltime = min + ':' + sec;
+    // console.log(finaltime);
+
+//totalTime.push(finaltime);
+
+
+
+    //var storeString = JSON.stringify(finaltime);
+
+    localStorage.setItem('finaltime', finaltime);
+
+    // retrieveUser();
+    // getTime();
+    //window.location.href = 'gamewin.html';
+  } else {
+    pause();
+    window.location.href = 'gamelose.html';
+  }
+}
+
+function randomCode() {
+  var random = Math.floor(Math.random() * 9999 + 1000);
+  return random;
+}
+
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
 var timer = 14.99;
@@ -174,15 +211,14 @@ function resume() {
 ////////////////////////////////////////////////////////////////////////////////////
 
 function init() {
-  hint = document.getElementById('gamerules');
-  rule = document.getElementById('rule');
+  gameRules = document.getElementById('gamerules');
+  gameRuleBtn = document.getElementById('gameRuleBtn');
   questBox = document.getElementById('questBox');
   btn1 = document.getElementById('btn1');
   x = document.getElementById('x');
-  x.addEventListener('click', closeHint);
+  x.addEventListener('click', closeRule);
   btn1.addEventListener('click', handleQuest1);
-  hint.style.display = 'none';
-  rule.addEventListener('click', openHint);
+  gameRuleBtn.addEventListener('click', openRule);
   run_clock('clockdiv', deadline);
   code = document.getElementById('killcodes');
   code.addEventListener('submit', getCode);
@@ -217,50 +253,10 @@ function init() {
 }
 
 
-function randomCode() {
-  var random = Math.floor(Math.random() * 9999 + 1000);
-  return random;
-}
 
 
 // var totalUser = [];
 // var totalTime = [];
-
-
-function getCode(event) {
-  event.preventDefault();
-  // randomCode = randomCode();
-  randomCode = 4444;
-
-  
-  var code = event.target.killCode.value;
-  if (code == randomCode) {
-    pause();
-    var convert = timerMs - timeLeft;
-    var min = Math.floor((convert / 1000 / 60) << 0),
-      sec = Math.floor((convert / 1000) % 60);
-    var finaltime = min + ':' + sec;
-    // console.log(finaltime);
-
-//totalTime.push(finaltime);
-
-
-
-    //var storeString = JSON.stringify(finaltime);
-
-    localStorage.setItem('finaltime', finaltime);
-
-    // retrieveUser();
-    // getTime();
-    //window.location.href = 'gamewin.html';
-  } else {
-    pause();
-    window.location.href = 'gamelose.html';
-  }
-}
-
-
-
 
 // function retrieveUser() {
 //   // if (localStorage.mall) 
