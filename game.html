@@ -14,31 +14,31 @@
   <header></header>
 
   <main class="game-main">
-    <img src="img/logo-sm.png" alt="blow your mind!">
+    <a href="index.html"><img src="img/logo-sm.png" alt="blow your mind!"></a>
     <section class="game-container center">
       <div>
-        <div class="pipe1"></div>
-        <div class="pipe2"></div>
-        <div class="pipe3"></div>
+        <div id="pipeOne" class="pipe1"></div>
+        <div id="pipeTwo" class="pipe2"></div>
+        <div id="pipeThree" class="pipe3"></div>
         <img class="btm-layer center" src="img/game-bottom-layer.png" alt="game layout">
         <div class="key-box">
-          <img src="http://via.placeholder.com/76x76.jpg/111" />
-          <img src="http://via.placeholder.com/76x76.jpg/111" />
-          <img src="http://via.placeholder.com/76x76.jpg/111" />
+          <img id="key1" class="img1-init-pos hide" src="img/octocat.png" />
+          <img id="key2" class="img2-init-pos hide" src="img/unicorn.png" />
+          <img id="key3" class="img3-init-pos hide" src="http://via.placeholder.com/76x76.jpg/111" />
         </div>
-        <div class="btn1" id="btn1"></div>
-        <div class="btn2"></div>
-        <div class="btn3"></div>
+        <div id="btn1" class="btn1"></div>
+        <div id="btn2" class="btn2"></div>
+        <div id="btn3" class="btn3"></div>
         <div class="timer-box">
           <div class="timer">
-            <div id="clockdiv"></div>
+            <div id="clockdiv" class="title-font"></div>
           </div>
           <div class="killcode">
             <form id="killcodes">
               <fieldset>
                 <label for="killCode" class="title-font">KILL CODE</label><br>
                 <input id="killCode" type="number" min="0" max="9999" placeholder="Enter Kill Code...">
-                <input id="codeSubmit" type="submit" class="title-font submit-code" value="submit">
+                <input id="codeSubmit" type="submit" class="title-font submit-code" value="SUBMIT">
               </fieldset>
             </form>
           </div>
@@ -46,43 +46,49 @@
       </div>
     </section>
     <section class="riddle-container center">
-      <div>
-        <div id="questBox">
 
+      <div>
+        <div id="questBox" class="quest-box">
+          <h3 class="title-font">-Riddle-</h3>
+          <p id="questP"></p>
         </div>
-        <div>
+        <div class="quest-answer">
           <form id="questSubmit">
             <fieldset>
               <label for="answer"></label>
               <input type="text" id="answer">
-              <input type="submit" value="submit" id="questAnswer">
+              <input type="submit" value="SUBMIT" id="questAnswer" class="title-font submit-ans">
             </fieldset>
           </form>
+          <p class="txt-font site-red-drk">You have <span id="tries" class="title-font"></span> attempts left!</p>
         </div>
-
       </div>
+
       <div class="title-font">
         <ul>
-          <li>
-            <P id='rule'>HOW TO PLAY</P>
-          </li>
-          <li>
-            <p>HINTS</p>
-          </li>
+          <li><P id='gameRuleBtn'>HOW TO PLAY</P></li>
+          <li><p>HINTS</p></li>
         </ul>
       </div>
+
     </section>
-    <div id="gamerules">
-      <span id="x">X</span>
-      <p>Click on an image inside the bomb. Solve the riddle that will appear. If you stuck, click on Hints. Solve 3
-        riddles to unlock a code. Enter the code under "Kill Code. You have 3 attempts. A wrong code will end the game.
-        Good luck!" </p>
+    <div id="gamerules" class="game-rules txt-font">
+      <div>
+        <span id="x">X</span>
+        <p>Click on an image inside the bomb. Solve the riddle that will appear. If you stuck, click on Hints. Solve 3
+          riddles to unlock a code. Enter the code under "Kill Code. You have 3 attempts. A wrong code will end the game.
+          Good luck!" </p>
+      </div>
     </div>
   </main>
   <footer class="txt-center">
     <p>&copy; Team Cold Brew 2019</p>
   </footer>
 
+  <div class="preload">
+    <img src="img/game-button-click.png">
+    <img src="img/game-button-hover.png">
+  </div>
 
   <script src="js/game.js"></script>
 
