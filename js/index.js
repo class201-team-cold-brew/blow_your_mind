@@ -1,5 +1,5 @@
 //variables
-var form;// TODO replace with a valid ID 
+var form;// TODO replace with a valid ID
 var welcome; ///
 var indexRules;
 var x;
@@ -8,7 +8,6 @@ var start;
 var emptyText = true;
 
 //functions
-
 User.all = [];
 function User(name, difficulty, time) {
   this.name = name;
@@ -104,7 +103,7 @@ function rank(event) {
 
 start = document.getElementById('start');
 
-start.addEventListener('click', checkEmpty)
+start.addEventListener('click', checkEmpty);
 
 function checkEmpty(event) {
   if (emptyText === false) {
@@ -112,7 +111,10 @@ function checkEmpty(event) {
   }
   else {
     alert('Please enter your name before you proceed');
-    
+
+   
+
+
     form.name.focus();
   }
 }
