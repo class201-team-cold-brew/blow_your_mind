@@ -45,7 +45,8 @@ var hintNorm = [
   ['Look it’s up.', 'Look it’s up.', 'Look it’s up.'],
   ['You can swim this way.', 'You can swim this way.', 'You can swim this way.'],
   ['You can put a lid on it.', 'You can put a lid on it.', 'You can put a lid on it.'],
-  ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.']
+  ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.'],
+  ['Month to month', 'Month to month', 'Month to month']
 ];
 
 var riddleHard = [];
@@ -162,8 +163,10 @@ function handleAnswer(event) {
   } else {
     userAnswer = null;
     attempts--;
+    console.log('wrong');
     tries.textContent = attempts;
   }
+  document.getElementById('answer').value = null;
 }
 
 function correctAnswer() {
@@ -247,10 +250,6 @@ function getCode(event) {
     goLose();
   }
 }
-
-
-
-
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
@@ -338,6 +337,7 @@ function init() {
   questP = document.getElementById('questP');
   answerQuestForm = document.getElementById('questSubmit');
   answerQuestForm.addEventListener('submit', handleAnswer);
+
 
   tries = document.getElementById('tries');
   tries.textContent = attempts;
