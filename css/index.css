@@ -117,8 +117,9 @@ main {
   -webkit-transform: scale(1.1,1.1);
 }
 
-#rules {
+.index-rules {
   display: none;
+  text-align: right;
 }
 
 footer p {
