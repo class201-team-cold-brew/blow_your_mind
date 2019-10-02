@@ -111,7 +111,7 @@ function checkEmpty(event) {
     window.location.href = 'game.html';
   }
   else {
-    alert("Please enter your name before you proceed");
+    alert('Please enter your name before you proceed');
     
     form.name.focus();
   }
@@ -131,3 +131,4 @@ function init() {
   pullData();
   console.log(User.all);
 }
+
