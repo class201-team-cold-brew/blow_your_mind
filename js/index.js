@@ -4,6 +4,8 @@ var welcome; ///
 var indexRules;
 var x;
 var howtoplay;
+var start;
+var emptyText = true;
 
 //functions
 
@@ -23,6 +25,7 @@ function handleForm(event) {
 
   var name = formLocal.name.value;
   var difficulty = formLocal.difficulty.value;
+  emptyText = false;
 
   new User(name, difficulty);
   updateStorage();
@@ -97,6 +100,21 @@ function rank(event) {
 
   highScore.removeEventListener('click', rank);
 
+}
+
+start = document.getElementById('start');
+
+start.addEventListener('click', checkEmpty)
+
+function checkEmpty(event) {
+  if (emptyText === false) {
+    window.location.href = 'game.html';
+  }
+  else {
+    alert("Please enter your name before you proceed");
+    
+    form.name.focus();
+  }
 }
 
 
