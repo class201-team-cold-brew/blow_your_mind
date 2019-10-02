@@ -166,10 +166,17 @@ function randomCode() {
   return random;
 }
 
+
+// var totalUser = [];
+// var totalTime = [];
+
+
 function getCode(event) {
   event.preventDefault();
   // randomCode = randomCode();
   randomCode = 4444;
+
+  
   var code = event.target.killCode.value;
   if (code == randomCode) {
     pause();
@@ -177,11 +184,49 @@ function getCode(event) {
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
-    console.log(finaltime);
-    localStorage.setItem('finaltime',finaltime);
-    // window.location.href ='gamewin.html';
+    // console.log(finaltime);
+
+//totalTime.push(finaltime);
+
+
+
+    //var storeString = JSON.stringify(finaltime);
+
+    localStorage.setItem('finaltime', finaltime);
+
+    // retrieveUser();
+    // getTime();
+    //window.location.href = 'gamewin.html';
   } else {
     pause();
     window.location.href = 'gamelose.html';
   }
 }
+
+
+
+
+// function retrieveUser() {
+//   // if (localStorage.mall) 
+
+//   var data = localStorage.getItem('user');
+
+//   var parsedData = JSON.parse(data);
+//   totalUser = parsedData;
+
+//   console.log(totalUser);
+// }
+
+
+// function getTime() {
+
+//   var data1 = localStorage.getItem('finaltime');
+
+//   //var parsedData1 = JSON.parse(data1);
+
+//   //totalTime = data1;
+//   console.log(data1);
+
+// }
+
+
