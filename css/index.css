@@ -109,6 +109,16 @@ main {
   cursor: pointer;
 }
 
+.index-buttons ul li:nth-child(2) > p {
+  font-size: 1.2em;
+  padding: 0.5em 2.8em 0.5em 2.8em;
+  margin: 0;
+  background: #261E1c;
+  border: 0.8em solid #261E1c;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .index-buttons ul li:hover {
   color: #b80117;
   background: #683232;

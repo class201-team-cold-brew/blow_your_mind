@@ -321,6 +321,7 @@ function keyComplete(key) {
 
 function getRandomCode() {
   var random = Math.floor(Math.random() * 9999 + 1000);
+  console.log(random);
   return random;
 }
 
@@ -435,11 +436,6 @@ function goLose() {
   window.location.href = 'gamelose.html';
 }
 
-
-
-
-
-
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
@@ -492,7 +488,7 @@ function init() {
   console.log(parseData);
   console.log(parseData[parseData.length - 1].difficulty);
 
-  var parse = parseData[0].difficulty;
+  var parse = parseData[parseData.length - 1].difficulty;
 
   if (parse === 'easy') {
     for (var i = 0; i < riddleEasy.length; i++) {
