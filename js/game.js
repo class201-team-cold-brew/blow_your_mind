@@ -40,7 +40,7 @@ var hintEasy = [
   'Don\'t bring red trucks and flashing lights.',
   'They say these don\'t make friends.',
   'You see these on tropical beaches.',
-  'Achieved by the absence of moving your mouth.'
+  'Achieved by the absence of moving your'
 ];
 
 var riddleNorm = [
@@ -347,7 +347,7 @@ function getCode(event) {
   //randomCode = 4444;
 
   var code = event.target.killCode.value;
-  if (code == randomCode) {
+  if (code === randomCode) {
     pause();
     var convert = timerMs - timeLeft;
     var min = Math.floor((convert / 1000 / 60) << 0),
@@ -487,9 +487,29 @@ function init() {
 
   runClock('clockdiv', deadline);
 
-  for (var i = 0; i < riddleNorm.length; i++) {
-    new Question(riddleNorm[i], answerNorm[i], hintNorm[i]);
+  var difficulty = localStorage.getItem('user');
+  var parseData = JSON.parse(difficulty);
+  console.log(parseData);
+  console.log(parseData[parseData.length - 1].difficulty);
+
+  var parse = parseData[0].difficulty;
+
+  if (parse === 'easy') {
+    for (var i = 0; i < riddleEasy.length; i++) {
+      new Question(riddleEasy[i], answerEasy[i], hintEasy[i]);
+    }
   }
+  if (parse === 'normal') {
+    for (var j = 0; j < riddleNorm.length; j++) {
+      new Question(riddleNorm[j], answerNorm[j], hintNorm[j]);
+    }
+  }
+  if (parse === 'hard') {
+    for (var k = 0; k < riddleHard.length; k++) {
+      new Question(riddleHard[k], answerHard[k], hintHard[k]);
+    }
+  }
+
 
   console.log(Question.allQ);
 
@@ -512,4 +532,3 @@ function init() {
 
   console.log(Question.allQ[randomQ]);
 }
-
