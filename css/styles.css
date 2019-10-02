@@ -4,6 +4,7 @@
 @import 'about.css';
 @import 'gamelose.css';
 @import 'gamewin.css';
+@import 'animation.css';
 
 /* color guide */
 .site-yellow-lgt  {color: #d1a056}
@@ -20,8 +21,16 @@
   background-size: contain;
 }
 
+.hide {
+  opacity: 0;
+}
+
 .txt-center {
   text-align: center;
+}
+
+.txt-left {
+  text-align: left;
 }
 
 .center {
