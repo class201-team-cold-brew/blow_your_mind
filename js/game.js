@@ -359,8 +359,8 @@ function keyComplete(key) {
 }
 
 function getRandomCode() {
-  var random = Math.floor(Math.random() * 9999 + 1000);
-  console.log(random);
+  var random = Math.floor((Math.random() * 8999) + 1000);
+  
   return random;
 }
 
@@ -387,21 +387,23 @@ function getCode(event) {
   //randomCode = 4444;
 
   var code = event.target.killCode.value;
-  if (code === randomCode) {
+  if (code == randomCode) {
     pause();
     var convert = timerMs - timeLeft;
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
-    //console.log(finaltime);
+    console.log(finaltime);
+    console.log(code);
     localStorage.setItem('finaltime', finaltime);
-    goWin();
+    //goWin();
   } else {
     finaltime = 'fail';
     localStorage.setItem('finaltime', finaltime);
     pause();
     console.log(finaltime);
-    goLose();
+    console.log("number is "+code);
+    //goLose();
   }
 }
 

@@ -112,6 +112,9 @@ function checkEmpty(event) {
   else {
     alert('Please enter your name before you proceed');
 
+   
+
+
     form.name.focus();
   }
 }
@@ -130,3 +133,4 @@ function init() {
   pullData();
   console.log(User.all);
 }
+
