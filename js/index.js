@@ -8,7 +8,7 @@ var howtoplay;
 //functions
 
 User.all = [];
-function User(name, difficulty) {
+function User(name, difficulty, time) {
   this.name = name;
   this.difficulty = difficulty;
   this.time = null;
@@ -42,16 +42,17 @@ function updateStorage() {
   localStorage.setItem('user', storeString);
 }
 
-var storage = [];
 
+///pull name and difficulty from the local storage
 function pullData() {
-  // if (localStorage.mall) 
+  if (localStorage.user) {
 
-  var data = localStorage.getItem('user');
+    var data = localStorage.getItem('user');
 
-  var parsedData = JSON.parse(data);
+    var parsedData = JSON.parse(data);
 
-  User.all = parsedData;
+    User.all = parsedData;
+  }
 
 }
 
@@ -65,18 +66,39 @@ function displayRules() {
 }
 
 var highScore = document.getElementById('highscore');
+var rankList = document.getElementById('ranking');
 
-highScore.addEventListener('submit', rank)
+
+highScore.addEventListener('click', rank);
+
+
 
 function rank(event) {
 
+
+
+  var data = localStorage.getItem('finaltime');
+
+  User.all[User.all.length - 1].time = data;
+
+  var storeString2 = JSON.stringify(User.all);
+  localStorage.setItem('user', storeString2);
+
+
+
+  console.log(User.all);
+
   for (var i = 0; i < User.all.length; i++) {
+    var ulEl = document.createElement('li');
+
+    ulEl.textContent = `${User.all[i].name}+${User.all[i].difficulty}+${User.all[i].time}`;
+    rankList.appendChild(ulEl);
   }
-  var ulEl = document.createElement('li');
 
+  highScore.removeEventListener('click', rank);
 
-  ulEl.textContent = localStorage.user
 }
+
 
 function init() {
   form = document.getElementById('user-form');
@@ -90,5 +112,4 @@ function init() {
 
   pullData();
   console.log(User.all);
-
 }

@@ -297,7 +297,7 @@ function getCode(event) {
 // }
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
-// 20 minutes from now
+// replace with a diifuculty setting later
 var timer = 14.99;
 
 var timerMs = timer * 60000;
@@ -416,7 +416,6 @@ function init() {
 
   console.log(Question.allQ[randomQ]);
 }
-
 
 
 
