@@ -4,6 +4,7 @@
 @import 'about.css';
 @import 'gamelose.css';
 @import 'gamewin.css';
+@import 'animation.css';
 
 /* color guide */
 .site-yellow-lgt  {color: #d1a056}

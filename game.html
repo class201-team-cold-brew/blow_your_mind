@@ -17,14 +17,14 @@
     <img src="img/logo-sm.png" alt="blow your mind!">
     <section class="game-container center">
       <div>
-        <div class="pipe1"></div>
-        <div class="pipe2"></div>
-        <div class="pipe3"></div>
+        <div id="pipeOne" class="pipe1"></div>
+        <div id="pipeTwo" class="pipe2"></div>
+        <div id="pipeThree" class="pipe3"></div>
         <img class="btm-layer center" src="img/game-bottom-layer.png" alt="game layout">
         <div class="key-box">
-          <img src="http://via.placeholder.com/76x76.jpg/111" />
-          <img src="http://via.placeholder.com/76x76.jpg/111" />
-          <img src="http://via.placeholder.com/76x76.jpg/111" />
+          <img id="key1" class="img1-init-pos" src="http://via.placeholder.com/76x76.jpg/111" />
+          <img id="key2" class="img2-init-pos" src="http://via.placeholder.com/76x76.jpg/111" />
+          <img id="key3" class="img3-init-pos" src="http://via.placeholder.com/76x76.jpg/111" />
         </div>
         <div class="btn1" id="btn1"></div>
         <div class="btn2"></div>
@@ -59,6 +59,7 @@
               <input type="submit" value="SUBMIT" id="questAnswer" class="title-font submit-ans">
             </fieldset>
           </form>
+          <p class="txt-font site-red-drk">You have <span id="tries" class="title-font"></span> attempts left!</p>
         </div>
       </div>
 

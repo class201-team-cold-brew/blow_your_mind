@@ -60,6 +60,27 @@
 
 .game-container > div:first-child .key-box img{
   margin: 13px 11px 0 11px;
+  transition: all 1000ms ease-in-out;
+}
+
+.img1-init-pos {
+  transform: translate(390px, 162px);
+  -webkit-transform: translate(390px, 162px);
+}
+
+.img2-init-pos {
+  transform: translate(410px, 162px);
+  -webkit-transform: translate(410px, 162px);
+}
+
+.img3-init-pos {
+  transform: translate(430px, 162px);
+  -webkit-transform: translate(430px, 162px);
+}
+
+.move-to-origin {
+  transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
 }
 
 .game-container > div:first-child .btm-layer {
@@ -170,6 +191,14 @@
 .riddle-container > div:first-child > .quest-box p{
   padding: 0 1em 1em 1em;
   margin: 0;
+}
+
+.riddle-container > div:first-child > .quest-answer form, .riddle-container > div:first-child > .quest-answer > p {
+  display: inline-block;
+}
+
+.riddle-container > div:first-child > .quest-answer form {
+  margin-right: 1em;
 }
 
 .riddle-container > div:first-child > .quest-answer fieldset {

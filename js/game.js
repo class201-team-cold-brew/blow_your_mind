@@ -4,15 +4,35 @@ var answerEasy = [];
 
 var hintEasy = [];
 
-var riddleNorm = ['What has branches and leaves and no bark?', 'The more you take away from it the larger it grows, what is it?',
-  'What is always on its way here, but never arrives?', 'I run all around the pasture but never move.  What am I?',
-  'What can go up a chimney down but can\'t go down a chimney up?', 'Who is that with a neck and no head, two arms and no hands?',
-  'What has a long neck, A name of a bird, Feeds on cargo of ships, it\'s not alive ?', 'You can see it every day but cannot touch it at will. What is it?',
-  'A very pretty thing am I, fluttering in the pale-blue sky. Delicate, fragile on the wing, indeed I am a pretty thing. What am I?', 'A door is not a door when it is?',
+var riddleNorm = [
+  'What has branches and leaves and no bark?',
+  'The more you take away from it the larger it grows, what is it?',
+  'What is always on its way here, but never arrives?',
+  'I run all around the pasture but never move.  What am I?',
+  'What can go up a chimney down but can\'t go down a chimney up?',
+  'Who is that with a neck and no head, two arms and no hands?',
+  'What has a long neck, A name of a bird, Feeds on cargo of ships, it\'s not alive ?',
+  'You can see it every day but cannot touch it at will. What is it?',
+  'A very pretty thing am I, fluttering in the pale-blue sky. Delicate, fragile on the wing, indeed I am a pretty thing. What am I?',
+  'A door is not a door when it is?',
   'It can\'t be seen, can\'t be felt, can\'t be heard and can\'t be smelt. It lies behind stars and under hills, and empty holes it fills. It comes first and follows after, ends life and kills laughter.',
-  'No matter how little or how much you use me, you change me every month. What am I?'];
+  'No matter how little or how much you use me, you change me every month. What am I?'
+];
 
-var answerNorm = ['library', 'hole', 'tomorrow', 'fence', 'umbrella', 'shirt', 'crane', 'sky', 'butterfly', 'ajar', 'darkness', 'calendar'];
+var answerNorm = [
+  'library',
+  'hole',
+  'tomorrow',
+  'fence',
+  'umbrella',
+  'shirt',
+  'crane',
+  'sky',
+  'butterfly',
+  'ajar',
+  'darkness',
+  'calendar'
+];
 
 var hintNorm = [
   ['Shhh, this is a quiet place.', 'Shhh, this is a quiet place.', 'Shhh, this is a quiet place.'],
@@ -35,16 +55,45 @@ var answerHard = [];
 var hintHard = [];
 
 var currentRiddles = [];
+
+//riddle game logic variables
 var answered = 0;
+var attempts = 3;
+var tries;
+
+//how to play variables
 var x;
 var gameRules;
+var gameRuleBtn;
+
+//kill code variables
 var code;
 var randomCode;
-var questBox;
+
+//game buttons variables
 var btn1;
+var isBtn1Done = false;
+var activeBtn;
+
+//game keys variables
+var key1;
+var key2;
+var key3;
+var keyTimer = 0;
+
+//pipe variables
+var pipeOne;
+var pipeTwo;
+var pipeThree;
+var pipeTimer = 0;
+
+//quest box generation variables
+var questBox;
 var answerQuestForm;
-var gameRuleBtn;
-NormalQuestion.allQ = [];
+
+//array that holds instants base on which difficulty for this session
+Question.allQ = [];
+
 
 function closeRule() {
   gameRules.style.right = '-100%';
@@ -56,20 +105,21 @@ function openRule() {
   pause();
 }
 
-function NormalQuestion(question, answer, hint) {
+function Question(question, answer, hint) {
   this.question = question;
   this.answer = answer;
   this.hint = hint;
-  NormalQuestion.allQ.push(this);
+  Question.allQ.push(this);
 }
 
 function genRandom() {
-  var genRandom = Math.floor(Math.random() * NormalQuestion.allQ.length);
+  var genRandom = Math.floor(Math.random() * Question.allQ.length);
   return genRandom;
 }
 
-function handleQuest1() {
-  btn1.removeEventListener('click', handleQuest1);
+function handleQuest(event) {
+  stopClickEvents();
+  activeBtn = event.target.id;
 
   var pEl = document.createElement('p');
   pEl.textContent = currentRiddles[answered].question;
@@ -77,31 +127,56 @@ function handleQuest1() {
   console.log(currentRiddles[answered].question);
 }
 
+//call this function to remove all eventlisteners.
+function stopClickEvents() {
+  if(!isBtn1Done) {
+    btn1.removeEventListener('click', handleQuest);
+  }
+}
+
 function handleAnswer(event) {
   event.preventDefault();
-
-  console.log(event.target.answer.value);
   var userAnswer = event.target.answer.value;
   var questAnswer = currentRiddles[answered].answer;
   if (userAnswer.toLowerCase() === questAnswer) {
     console.log('you got it');
+    correctAnswer();
   } else {
     userAnswer = null;
-    console.log('wrong');
+    attempts--;
+    tries.textContent = attempts;
   }
 }
 
-function randomCode() {
+function correctAnswer() {
+  if(activeBtn === 'btn1'){
+    btn1.classList.add('fadeout-top');
+    btn1.style.cursor = 'auto';
+    isBtn1Done = true;
+    keyTimer = setTimeout(function(){
+      key1.classList.add('move-to-origin');
+      pipeTimer = setTimeout(key1Complete,1000);
+    },800);
+  }
+}
+
+function key1Complete() {
+  clearTimeout(keyTimer);
+  clearTimeout(pipeTimer);
+  pipeOne.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
+}
+
+function getRandomCode() {
   var random = Math.floor(Math.random() * 9999 + 1000);
   return random;
 }
 
 function getCode(event) {
   event.preventDefault();
-  // randomCode = randomCode();
+  // randomCode = getRandomCode();
   randomCode = 4444;
   var code = event.target.killCode.value;
-  if (code == randomCode) {
+  if (code === randomCode) {
     pause();
     var convert = timerMs - timeLeft;
     var min = Math.floor((convert / 1000 / 60) << 0),
@@ -116,42 +191,64 @@ function getCode(event) {
   }
 }
 
-function getCode(event) {
-  event.preventDefault();
-  // randomCode = randomCode();
-  randomCode = 4444;
+// function getCode(event) {
+//   event.preventDefault();
+//   // randomCode = randomCode();
+//   randomCode = 4444;
 
   
-  var code = event.target.killCode.value;
-  if (code == randomCode) {
-    pause();
-    var convert = timerMs - timeLeft;
-    var min = Math.floor((convert / 1000 / 60) << 0),
-      sec = Math.floor((convert / 1000) % 60);
-    var finaltime = min + ':' + sec;
-    // console.log(finaltime);
+//   var code = event.target.killCode.value;
+//   if (code == randomCode) {
+//     pause();
+//     var convert = timerMs - timeLeft;
+//     var min = Math.floor((convert / 1000 / 60) << 0),
+//       sec = Math.floor((convert / 1000) % 60);
+//     var finaltime = min + ':' + sec;
+//     // console.log(finaltime);
+//     //totalTime.push(finaltime);
+//     //var storeString = JSON.stringify(finaltime);
 
-//totalTime.push(finaltime);
+//     localStorage.setItem('finaltime', finaltime);
+
+//     // retrieveUser();
+//     // getTime();
+//     //window.location.href = 'gamewin.html';
+//   } else {
+//     pause();
+//     window.location.href = 'gamelose.html';
+//   }
+// }
+
+// function randomCode() {
+//   var random = Math.floor(Math.random() * 9999 + 1000);
+//   return random;
+// }
+
+// var totalUser = [];
+// var totalTime = [];
+
+// function retrieveUser() {
+//   // if (localStorage.mall) 
+
+//   var data = localStorage.getItem('user');
+
+//   var parsedData = JSON.parse(data);
+//   totalUser = parsedData;
+
+//   console.log(totalUser);
+// }
 
 
+// function getTime() {
 
-    //var storeString = JSON.stringify(finaltime);
+//   var data1 = localStorage.getItem('finaltime');
 
-    localStorage.setItem('finaltime', finaltime);
+//   //var parsedData1 = JSON.parse(data1);
 
-    // retrieveUser();
-    // getTime();
-    //window.location.href = 'gamewin.html';
-  } else {
-    pause();
-    window.location.href = 'gamelose.html';
-  }
-}
+//   //totalTime = data1;
+//   console.log(data1);
 
-function randomCode() {
-  var random = Math.floor(Math.random() * 9999 + 1000);
-  return random;
-}
+// }
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // 20 minutes from now
@@ -213,24 +310,38 @@ function resume() {
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
-  questBox = document.getElementById('questBox');
-  btn1 = document.getElementById('btn1');
+  gameRuleBtn.addEventListener('click', openRule);
   x = document.getElementById('x');
   x.addEventListener('click', closeRule);
-  btn1.addEventListener('click', handleQuest1);
-  gameRuleBtn.addEventListener('click', openRule);
-  run_clock('clockdiv', deadline);
+
+  btn1 = document.getElementById('btn1');
+  btn1.addEventListener('click', handleQuest);
+
   code = document.getElementById('killcodes');
   code.addEventListener('submit', getCode);
+
+  questBox = document.getElementById('questBox');
   answerQuestForm = document.getElementById('questSubmit');
   answerQuestForm.addEventListener('submit', handleAnswer);
 
+  tries = document.getElementById('tries');
+  tries.textContent = attempts;
+
+  key1 = document.getElementById('key1');
+  key2 = document.getElementById('key2');
+  key3 = document.getElementById('key3');
+
+  pipeOne = document.getElementById('pipeOne');
+  pipeTwo = document.getElementById('pipeTwo');
+  pipeThree = document.getElementById('pipeThree');
+
+  run_clock('clockdiv', deadline);
 
   for (var i = 0; i < riddleNorm.length; i++) {
-    new NormalQuestion(riddleNorm[i], answerNorm[i], hintNorm[i]);
+    new Question(riddleNorm[i], answerNorm[i], hintNorm[i]);
   }
 
-  console.log(NormalQuestion.allQ);
+  console.log(Question.allQ);
 
   var randomQ;
   var randomA;
@@ -243,43 +354,14 @@ function init() {
   }
   while (randomQ === randomA || randomA === randomH || randomQ === randomH);
 
-  currentRiddles.push(NormalQuestion.allQ[randomQ]);
-  currentRiddles.push(NormalQuestion.allQ[randomA]);
-  currentRiddles.push(NormalQuestion.allQ[randomH]);
+  currentRiddles.push(Question.allQ[randomQ]);
+  currentRiddles.push(Question.allQ[randomA]);
+  currentRiddles.push(Question.allQ[randomH]);
 
   console.log(currentRiddles);
 
-  console.log(NormalQuestion.allQ[randomQ]);
+  console.log(Question.allQ[randomQ]);
 }
-
-
-
-
-// var totalUser = [];
-// var totalTime = [];
-
-// function retrieveUser() {
-//   // if (localStorage.mall) 
-
-//   var data = localStorage.getItem('user');
-
-//   var parsedData = JSON.parse(data);
-//   totalUser = parsedData;
-
-//   console.log(totalUser);
-// }
-
-
-// function getTime() {
-
-//   var data1 = localStorage.getItem('finaltime');
-
-//   //var parsedData1 = JSON.parse(data1);
-
-//   //totalTime = data1;
-//   console.log(data1);
-
-// }
 
 
 
