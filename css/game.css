@@ -283,3 +283,29 @@ a * {
 .game-rules > div > span:hover {
   color: #b80117;
 }
+
+.game-hint {
+  position: fixed;
+  width: 300px;
+  text-align: right;
+  background-color: #874F1D;
+  border: 1em solid #874F1D;
+  border-radius: 15px;
+  right: -100%;
+  top: 70%;
+  transition: all 500ms ease-in-out;
+}
+
+.game-hint > div {
+  background-color: #d1a056;
+  border: 1em solid #d1a056;
+  border-radius: 15px;
+}
+
+.game-hint > div > span {
+  cursor: pointer;
+}
+
+.game-hint > div > span:hover {
+  color: #b80117;
+}

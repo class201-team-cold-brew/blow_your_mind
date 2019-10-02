@@ -56,18 +56,18 @@
           <form id="questSubmit">
             <fieldset>
               <label for="answer"></label>
-              <input type="text" id="answer">
+              <input type="text" id="answer" placeholder="Enter one word answer here">
               <input type="submit" value="SUBMIT" id="questAnswer" class="title-font submit-ans">
             </fieldset>
           </form>
-          <p class="txt-font site-red-drk">You have <span id="tries" class="title-font"></span> attempts left!</p>
+          <p id="attemptTxt" class="txt-font site-red-drk">You have <span id="tries" class="title-font"></span> attempts left!</p>
         </div>
       </div>
 
       <div class="title-font">
         <ul>
           <li><P id='gameRuleBtn'>HOW TO PLAY</P></li>
-          <li><p>HINTS</p></li>
+          <li><p id='riddleHints'>HINTS: <span id='hints'></span></p></li>
         </ul>
       </div>
 
@@ -80,6 +80,13 @@
           Good luck!" </p>
       </div>
     </div>
+    <div id="gameHint" class="game-hint txt-font">
+      <div>
+          <span id="close">X</span>
+          <p id="hintText">
+          </p>
+      </div>
+    </div>
   </main>
   <footer class="txt-center">
     <p>&copy; Team Cold Brew 2019</p>
@@ -88,6 +95,9 @@
   <div class="preload">
     <img src="img/game-button-click.png">
     <img src="img/game-button-hover.png">
+    <img src="img/game-pipe-green.png">
+    <img src="img/unicorn.png">
+    <img src="img/octocat.png">
   </div>
 
   <script src="js/game.js"></script>
