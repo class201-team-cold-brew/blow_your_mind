@@ -1,22 +1,11 @@
 //variables
 var form;// TODO replace with a valid ID 
 var welcome; ///
-var hint;
+var indexRules;
 var x;
 var howtoplay;
 
 //functions
-function init() {
-  form = document.getElementById('user-form');
-  form.addEventListener('submit', handleForm);
-  welcome = document.getElementById('welcome');
-  hint = document.getElementById('rules');
-  x = document.getElementById('x');
-  howtoplay = document.getElementById('howtoplay');
-  x.addEventListener('click', closeHint);
-  howtoplay.addEventListener('click', displayRules)
-  hint.style.display = 'none';
-}
 
 User.all = [];
 function User(name, difficulty, time) {
@@ -67,19 +56,13 @@ function pullData() {
 
 }
 
-pullData();
 
-
-
-function closeHint(event) {
-  event.preventDefault();
-  hint.style.display = 'none';
+function closeHint() {
+  indexRules.style.right = '-100%';
 }
 
-function displayRules(event) {
-  event.preventDefault();
-  hint.style.display = 'block';
-
+function displayRules() {
+  indexRules.style.right = '0%';
 }
 
 var highScore = document.getElementById('highscore');
@@ -116,3 +99,17 @@ function rank(event) {
 
 }
 
+
+function init() {
+  form = document.getElementById('user-form');
+  form.addEventListener('submit', handleForm);
+  welcome = document.getElementById('welcome');
+  indexRules = document.getElementById('rules');
+  x = document.getElementById('x');
+  howtoplay = document.getElementById('howtoplay');
+  x.addEventListener('click', closeHint);
+  howtoplay.addEventListener('click', displayRules);
+
+  pullData();
+  console.log(User.all);
+}

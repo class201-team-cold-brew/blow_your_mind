@@ -1,0 +1,30 @@
+.fadeout-top {
+  -webkit-animation: fadeout-top 800ms ease-in forwards ;
+  animation: fadeout-top 800ms ease-in forwards ;
+}
+@-webkit-keyframes fadeout-top {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+  }
+}
+@keyframes fadeout-top {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
