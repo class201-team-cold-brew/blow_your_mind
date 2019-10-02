@@ -138,6 +138,7 @@ var questP;
 var attemptTxt;
 var hints;
 var hintsNum = 2;
+var hintChances = 2;
 var riddleHints;
 var closeX;
 var hintText;
@@ -194,7 +195,6 @@ function handleQuest(event) {
   activeBtn = event.target.id;
   questP.textContent = currentRiddles[answered].question;
   questBox.appendChild(questP);
-  riddleHints.addEventListener('click', hintHandler);
   isRiddleInProgress = true;
   console.log(currentRiddles[answered].question);
 }
@@ -202,13 +202,17 @@ function handleQuest(event) {
 function hintHandler(){
   if (isRiddleInProgress){
     var hint = currentRiddles[answered].hint;
-    if (hintsNum > 0) {
-      hintText.textContent = hint;
+    if(hintsNum > 0) {
       if(isFirstTime){
         hintsNum--;
         isFirstTime = false;
       }
+    }
+    if(hintChances > 0) {
       hints.textContent = hintsNum;
+      hintText.textContent = hint;
+    } else {
+      hintText.textContent = 'You ran out of hints!';
     }
     openHint();  
   }
@@ -237,29 +241,34 @@ function handleAnswer(event) {
   event.preventDefault();
   var userAnswer = event.target.answer.value;
   var questAnswer = currentRiddles[answered].answer;
-  if (userAnswer.toLowerCase() === questAnswer) {
-    console.log('you got it');
-    correctAnswer();
-    closeHint();
-    isFirstTime = true;
-    isRiddleInProgress = false;
-    answered++;
-  } else {
-    attempts--;
-    if (attemptTxt.classList.contains('shake')) {
-      console.log('yes');
-      attemptTxt.classList.remove('shake');
-      setTimeout(function () { attemptTxt.classList.add('shake'); }, 100);
+  if(isRiddleInProgress){
+    if (userAnswer.toLowerCase() === questAnswer) {
+      console.log('you got it');
+      correctAnswer();
+      closeHint();
+      if(!isFirstTime){
+        hintChances--;
+      }
+      isFirstTime = true;
+      isRiddleInProgress = false;
+      answered++;
     } else {
-      attemptTxt.classList.add('shake');
+      attempts--;
+      if (attemptTxt.classList.contains('shake')) {
+        console.log('yes');
+        attemptTxt.classList.remove('shake');
+        setTimeout(function () { attemptTxt.classList.add('shake'); }, 100);
+      } else {
+        attemptTxt.classList.add('shake');
+      }
+      console.log('wrong');
+      tries.textContent = attempts;
     }
-    console.log('wrong');
-    tries.textContent = attempts;
+    if (attempts === 0) {
+      goLose();
+    }
   }
   document.getElementById('answer').value = null;
-  if (attempts === 0) {
-    goLose();
-  }
 }
 
 function correctAnswer() {
@@ -456,15 +465,11 @@ function init() {
   hints = document.getElementById('hints');
   hints.textContent = hintsNum;
   riddleHints = document.getElementById('riddleHints');
+  riddleHints.addEventListener('click', hintHandler);
   closeX = document.getElementById('close');
   closeX.addEventListener('click', closeHint);
   hintText = document.getElementById('hintText');
   gameHint = document.getElementById('gameHint');
-
-
-
-
-
 
   tries = document.getElementById('tries');
   tries.textContent = attempts;
