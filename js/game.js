@@ -45,7 +45,8 @@ var hintNorm = [
   ['Look it’s up.', 'Look it’s up.', 'Look it’s up.'],
   ['You can swim this way.', 'You can swim this way.', 'You can swim this way.'],
   ['You can put a lid on it.', 'You can put a lid on it.', 'You can put a lid on it.'],
-  ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.']
+  ['Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.', 'Can be achieved by flipping a switch.'],
+  ['Month to month', 'Month to month', 'Month to month']
 ];
 
 var riddleHard = [];
@@ -138,13 +139,13 @@ function stopClickEvents() {
 }
 
 function startClickEvents() {
-  if(!isBtn1Done) {
+  if (!isBtn1Done) {
     btn1.addEventListener('click', handleQuest);
   }
-  if(!isBtn2Done) {
+  if (!isBtn2Done) {
     btn2.addEventListener('click', handleQuest);
   }
-  if(!isBtn3Done) {
+  if (!isBtn3Done) {
     btn3.addEventListener('click', handleQuest);
   }
 }
@@ -160,27 +161,29 @@ function handleAnswer(event) {
   } else {
     userAnswer = null;
     attempts--;
+    console.log('wrong');
     tries.textContent = attempts;
   }
+  document.getElementById('answer').value = null;
 }
 
 function correctAnswer() {
   var currentBtn;
   var currentKey;
   var currentNum;
-  if(activeBtn === 'btn1'){
+  if (activeBtn === 'btn1') {
     currentBtn = btn1;
     currentKey = key1;
     currentNum = 1;
     isBtn1Done = true;
   }
-  if(activeBtn === 'btn2'){
+  if (activeBtn === 'btn2') {
     currentBtn = btn2;
     currentKey = key2;
     currentNum = 2;
     isBtn2Done = true;
   }
-  if(activeBtn === 'btn3'){
+  if (activeBtn === 'btn3') {
     currentBtn = btn3;
     currentKey = key3;
     currentNum = 3;
@@ -188,12 +191,12 @@ function correctAnswer() {
   }
   currentBtn.classList.add('fadeout-top');
   currentBtn.style.cursor = 'auto';
-  keyTimer = setTimeout(function(){
+  keyTimer = setTimeout(function () {
     currentKey.classList.add('move-to-origin');
-    pipeTimer = setTimeout(function(){
+    pipeTimer = setTimeout(function () {
       keyComplete(currentNum);
-    },1000);
-  },800);
+    }, 1000);
+  }, 800);
 }
 
 function keyComplete(key) {
@@ -242,7 +245,7 @@ function getCode(event) {
 //   // randomCode = randomCode();
 //   randomCode = 4444;
 
-  
+
 //   var code = event.target.killCode.value;
 //   if (code == randomCode) {
 //     pause();
@@ -274,7 +277,7 @@ function getCode(event) {
 // var totalTime = [];
 
 // function retrieveUser() {
-//   // if (localStorage.mall) 
+//   // if (localStorage.mall)
 
 //   var data = localStorage.getItem('user');
 
@@ -374,6 +377,7 @@ function init() {
   questP = document.getElementById('questP');
   answerQuestForm = document.getElementById('questSubmit');
   answerQuestForm.addEventListener('submit', handleAnswer);
+
 
   tries = document.getElementById('tries');
   tries.textContent = attempts;
