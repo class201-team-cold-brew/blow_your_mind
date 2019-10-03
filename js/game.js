@@ -133,6 +133,13 @@ var hintHard = [
   'I can be automatic piano.'
 ];
 
+var keysArray = [
+  'img/unicorn.png',
+  'img/octocat.png',
+  'img/coffee.png',
+  'img/codefellow.png'
+]
+
 var currentRiddles = [];
 
 //riddle game logic variables
@@ -187,9 +194,8 @@ var isRiddleInProgress = false;
 
 
 ///killcode variable
-var kcCode;
-
-
+var kcWindow;
+var txtCode;
 
 //array that holds instants base on which difficulty for this session
 Question.allQ = [];
@@ -228,6 +234,11 @@ function Question(question, answer, hint) {
 function genRandom() {
   var genRandom = Math.floor(Math.random() * Question.allQ.length);
   return genRandom;
+}
+
+function genKeyRandom() {
+  var randomKey = Math.floor(Math.random() * keysArray.length);
+  return randomKey;
 }
 
 function handleQuest(event) {
@@ -356,6 +367,9 @@ function keyComplete(key) {
     pipeThree.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
   }
   questP.textContent = '';
+  if(answered === 3){
+    revealCode();
+  }
   startClickEvents();
 }
 
@@ -371,16 +385,13 @@ function getRandomCode() {
 
 function createCode() {
   randomCode = getRandomCode();
-
-  kcCode = document.getElementById('hintCode');
-
-  kcCode.textContent = randomCode;
-
+  txtCode = document.getElementById('txtCode');
+  txtCode.textContent = randomCode;
 }
 
-createCode();
-
-
+function revealCode() {
+  kcWindow.style.left = '0';
+}
 
 function getCode(event) {
   event.preventDefault();
@@ -421,14 +432,14 @@ var parseData = JSON.parse(difficulty);
 var dif = parseData[parseData.length - 1].difficulty;
 
 switch (dif) {
-  case 'hard':
-    timer = 9.99;
-    break;
-  case 'normal':
-    timer = 14.99;
-    break;
-  default:
-    timer = 19.99;
+case 'hard':
+  timer = 9.99;
+  break;
+case 'normal':
+  timer = 14.99;
+  break;
+default:
+  timer = 19.99;
 }
 
 
@@ -495,9 +506,6 @@ function goLose() {
   window.location.href = 'gamelose.html';
 }
 
-
-
-
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
@@ -514,6 +522,7 @@ function init() {
 
   code = document.getElementById('killcodes');
   code.addEventListener('submit', getCode);
+  kcWindow = document.getElementById('kcCode');
 
   questBox = document.getElementById('questBox');
   questP = document.getElementById('questP');
@@ -544,6 +553,7 @@ function init() {
   pipeThree = document.getElementById('pipeThree');
 
   runClock('clockdiv', deadline);
+  createCode();
 
   var difficulty = localStorage.getItem('user');
   var parseData = JSON.parse(difficulty);
@@ -568,7 +578,6 @@ function init() {
     }
   }
 
-
   console.log(Question.allQ);
 
   var randomQ;
@@ -585,6 +594,23 @@ function init() {
   currentRiddles.push(Question.allQ[randomQ]);
   currentRiddles.push(Question.allQ[randomA]);
   currentRiddles.push(Question.allQ[randomH]);
+
+
+  //randomize key objects
+  var key1Object;
+  var key2Object;
+  var key3Object;
+
+  do {
+    key1Object = genKeyRandom();
+    key2Object = genKeyRandom();
+    key3Object = genKeyRandom();
+  }
+  while (key1Object === key2Object || key2Object === key3Object || key3Object === key1Object);
+
+  key1.src = keysArray[key1Object];
+  key2.src = keysArray[key2Object];
+  key3.src = keysArray[key3Object];
 
   console.log(currentRiddles);
 

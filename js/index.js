@@ -6,6 +6,10 @@ var x;
 var howtoplay;
 var start;
 var emptyText = true;
+var highScore;
+var rankWindow;
+var rankList;
+var rankX;
 
 //functions
 User.all = [];
@@ -58,7 +62,6 @@ function pullData() {
 
 }
 
-
 function closeHint() {
   indexRules.style.right = '-100%';
 }
@@ -67,17 +70,16 @@ function displayRules() {
   indexRules.style.right = '0%';
 }
 
-var highScore = document.getElementById('highscore');
-var rankList = document.getElementById('ranking');
+function openRank() {
+  rankWindow.style.display = 'block';
+}
 
+function closeRank() {
+  rankWindow.style.display = 'none';
+  highScore.addEventListener('click', rank);
+}
 
-highScore.addEventListener('click', rank);
-
-
-
-function rank(event) {
-
-
+function rank() {
 
   var data = localStorage.getItem('finaltime');
 
@@ -85,8 +87,6 @@ function rank(event) {
 
   var storeString2 = JSON.stringify(User.all);
   localStorage.setItem('user', storeString2);
-
-
 
   console.log(User.all);
 
@@ -96,24 +96,16 @@ function rank(event) {
     ulEl.textContent = `${User.all[i].name}+${User.all[i].difficulty}+${User.all[i].time}`;
     rankList.appendChild(ulEl);
   }
-
   highScore.removeEventListener('click', rank);
-
+  openRank();
 }
 
-start = document.getElementById('start');
-
-start.addEventListener('click', checkEmpty);
-
-function checkEmpty(event) {
+function checkEmpty() {
   if (emptyText === false) {
     window.location.href = 'game.html';
   }
   else {
     alert('Please enter your name before you proceed');
-
-   
-
 
     form.name.focus();
   }
@@ -121,6 +113,8 @@ function checkEmpty(event) {
 
 
 function init() {
+  highScore = document.getElementById('highscore');
+  rankList = document.getElementById('ranking');
   form = document.getElementById('user-form');
   form.addEventListener('submit', handleForm);
   welcome = document.getElementById('welcome');
@@ -129,7 +123,12 @@ function init() {
   howtoplay = document.getElementById('howtoplay');
   x.addEventListener('click', closeHint);
   howtoplay.addEventListener('click', displayRules);
-
+  start = document.getElementById('start');
+  start.addEventListener('click', checkEmpty);
+  highScore.addEventListener('click', rank);
+  rankWindow = document.getElementById('rankWindow');
+  rankX = document.getElementById('rankX');
+  rankX.addEventListener('click', closeRank);
   pullData();
   console.log(User.all);
 }
