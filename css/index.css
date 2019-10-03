@@ -160,3 +160,26 @@ main {
 footer p {
   padding-top: 1em;
 }
+
+.rank-window {
+  display: none;
+  background-color: #874F1D;
+  border: 1em solid #874F1D;
+  border-radius: 15px;
+  width: 50%;
+}
+
+.rank-window > ul {
+  background-color: #d1a056;
+  border: 1em solid #d1a056;
+  border-radius: 15px;
+  list-style-type: none;
+}
+
+.rank-x {
+  cursor: pointer;
+}
+
+.rank-x:hover {
+  color: #b80117;
+}
