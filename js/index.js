@@ -80,24 +80,25 @@ function closeRank() {
 }
 
 function rank() {
+  if (localStorage.finaltime) {
 
-  var data = localStorage.getItem('finaltime');
+    var data = localStorage.getItem('finaltime');
 
-  User.all[User.all.length - 1].time = data;
+    User.all[User.all.length - 1].time = data;
+    
+    var storeString2 = JSON.stringify(User.all);
+    localStorage.setItem('user', storeString2);
 
-  var storeString2 = JSON.stringify(User.all);
-  localStorage.setItem('user', storeString2);
 
-  console.log(User.all);
+    for (var i = 0; i < User.all.length; i++) {
+      var ulEl = document.createElement('li');
 
-  for (var i = 0; i < User.all.length; i++) {
-    var ulEl = document.createElement('li');
-
-    ulEl.textContent = `${User.all[i].name} played on ${User.all[i].difficulty} with ${User.all[i].time}`;
-    rankList.appendChild(ulEl);
+      ulEl.textContent = `${User.all[i].name} played on ${User.all[i].difficulty} with ${User.all[i].time}`;
+      rankList.appendChild(ulEl);
+    }
+    highScore.removeEventListener('click', rank);
+    openRank();
   }
-  highScore.removeEventListener('click', rank);
-  openRank();
 }
 
 function checkEmpty() {
@@ -132,5 +133,6 @@ function init() {
   pullData();
   console.log(User.all);
 }
+
 
 //localStorage.clear();
