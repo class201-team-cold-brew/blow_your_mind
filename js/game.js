@@ -150,6 +150,7 @@ var isRiddleInProgress = false;
 ///killcode variable
 var kcCode;
 
+var timer;
 
 
 //array that holds instants base on which difficulty for this session
@@ -368,8 +369,33 @@ function getCode(event) {
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
-var timer = 14.99;
 //var timer =0.15;
+var difficulty = localStorage.getItem('user');
+var parseData = JSON.parse(difficulty);
+console.log(parseData);
+console.log(parseData[parseData.length - 1].difficulty);
+
+var parse = parseData[parseData.length - 1].difficulty;
+
+if (parse === 'easy') {
+  timer = 20;
+  for (var i = 0; i < riddleEasy.length; i++) {
+    new Question(riddleEasy[i], answerEasy[i], hintEasy[i]);
+  }
+}
+if (parse === 'normal') {
+  for (var j = 0; j < riddleNorm.length; j++) {
+    new Question(riddleNorm[j], answerNorm[j], hintNorm[j]);
+  }
+  timer = 15;
+}
+else if (parse === 'hard') {
+  for (var k = 0; k < riddleHard.length; k++) {
+    new Question(riddleHard[k], answerHard[k], hintHard[k]);
+  }
+  timer = 10;
+}
+
 var timerMs = timer * 60000;
 
 
@@ -439,7 +465,6 @@ function goLose() {
 
 
 
-
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
@@ -487,28 +512,31 @@ function init() {
 
   runClock('clockdiv', deadline);
 
-  var difficulty = localStorage.getItem('user');
-  var parseData = JSON.parse(difficulty);
-  console.log(parseData);
-  console.log(parseData[parseData.length - 1].difficulty);
+  // var difficulty = localStorage.getItem('user');
+  // var parseData = JSON.parse(difficulty);
+  // console.log(parseData);
+  // console.log(parseData[parseData.length - 1].difficulty);
 
-  var parse = parseData[0].difficulty;
+  // var parse = parseData[parseData.length - 1].difficulty;
 
-  if (parse === 'easy') {
-    for (var i = 0; i < riddleEasy.length; i++) {
-      new Question(riddleEasy[i], answerEasy[i], hintEasy[i]);
-    }
-  }
-  if (parse === 'normal') {
-    for (var j = 0; j < riddleNorm.length; j++) {
-      new Question(riddleNorm[j], answerNorm[j], hintNorm[j]);
-    }
-  }
-  if (parse === 'hard') {
-    for (var k = 0; k < riddleHard.length; k++) {
-      new Question(riddleHard[k], answerHard[k], hintHard[k]);
-    }
-  }
+  // if (parse === 'easy') {
+  //   timer = 20;
+  //   for (var i = 0; i < riddleEasy.length; i++) {
+  //     new Question(riddleEasy[i], answerEasy[i], hintEasy[i]);
+  //   }
+  // }
+  // if (parse === 'normal') {
+  //   for (var j = 0; j < riddleNorm.length; j++) {
+  //     new Question(riddleNorm[j], answerNorm[j], hintNorm[j]);
+  //   }
+  //   timer = 15;
+  // }
+  // if (parse === 'hard') {
+  //   for (var k = 0; k < riddleHard.length; k++) {
+  //     new Question(riddleHard[k], answerHard[k], hintHard[k]);
+  //   }
+  //   timer = 10;
+  // }
 
 
   console.log(Question.allQ);
