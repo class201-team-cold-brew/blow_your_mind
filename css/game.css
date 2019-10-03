@@ -199,6 +199,7 @@ a * {
 .riddle-container > div:first-child > .quest-box p{
   padding: 0 1em 1em 1em;
   margin: 0;
+  font-size: 1.4em;
 }
 
 .riddle-container > div:first-child > .quest-answer form, .riddle-container > div:first-child > .quest-answer > p {
@@ -308,6 +309,10 @@ a * {
 
 .game-hint > div > span:hover {
   color: #b80117;
+}
+
+.game-hint > div > p {
+  font-size: 1.2em;
 }
 
 .kill-code-window {
