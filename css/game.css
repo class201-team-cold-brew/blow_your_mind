@@ -309,3 +309,26 @@ a * {
 .game-hint > div > span:hover {
   color: #b80117;
 }
+
+.kill-code-window {
+  position: fixed;
+  text-align: right;
+  width: 300px;
+  background-color: #874F1D;
+  border: 1em solid #874F1D;
+  border-radius: 15px;
+  left: -100%;
+  top: 50%;
+  transition: all 500ms ease-in-out;
+}
+
+.kill-code-window > div {
+  background-color: #d1a056;
+  border: 1em solid #d1a056;
+  border-radius: 15px;
+}
+
+.kill-code-window > div  p {
+  font-size: 4em;
+  margin: 0;
+}
