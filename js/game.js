@@ -191,6 +191,8 @@ var hintText;
 var gameHint;
 var isFirstTime = true;
 var isRiddleInProgress = false;
+var timer;
+var timerMs;
 
 
 ///killcode variable
@@ -421,9 +423,9 @@ function getCode(event) {
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
-var timer = 19.99;
+timer = 19.99;
 
-var timerMs = timer * 60000;
+//var timerMs = timer * 60000;
 
 ////set the timer depending on the difficulty
 var difficulty = localStorage.getItem('user');
@@ -434,12 +436,15 @@ var dif = parseData[parseData.length - 1].difficulty;
 switch (dif) {
 case 'hard':
   timer = 9.99;
+  timerMs = timer * 60000;
   break;
 case 'normal':
   timer = 14.99;
+  timerMs = timer * 60000;
   break;
 default:
   timer = 19.99;
+  timerMs = timer * 60000;
 }
 
 

@@ -41,3 +41,16 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+footer p {
+  padding-top: 1em;
+  font-weight: bold;
+}
+
+footer a {
+  color: #562c2c;
+}
+
+footer a:hover {
+  color: #b80117;
+}
