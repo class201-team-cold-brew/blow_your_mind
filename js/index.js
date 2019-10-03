@@ -93,7 +93,7 @@ function rank() {
   for (var i = 0; i < User.all.length; i++) {
     var ulEl = document.createElement('li');
 
-    ulEl.textContent = `${User.all[i].name}+${User.all[i].difficulty}+${User.all[i].time}`;
+    ulEl.textContent = `${User.all[i].name} played on ${User.all[i].difficulty} with ${User.all[i].time}`;
     rankList.appendChild(ulEl);
   }
   highScore.removeEventListener('click', rank);
@@ -105,7 +105,7 @@ function checkEmpty() {
     window.location.href = 'game.html';
   }
   else {
-    alert('Please enter your name before you proceed');
+    alert('Please enter your name and click submit before you proceed');
 
     form.name.focus();
   }
@@ -133,3 +133,4 @@ function init() {
   console.log(User.all);
 }
 
+//localStorage.clear();
