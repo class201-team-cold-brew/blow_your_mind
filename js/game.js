@@ -3,14 +3,14 @@ var riddleEasy = [
   'The more you take, the more you leave behind.',
   'You can see me in water, but I never get wet. What am I?',
   'What belongs to you, but others use it more than you do?',
-  'What is easy to get into, but hard to get out of?',
-  'I\'m tall when I\'m young, I\'m short when I\'m old. What am I?',
+  'If you buy a rooster for the purpose of laying eggs and you expect to get three eggs each day for breakfast, how many eggs will you have after three weeks?',
+  'The day before two days after the day before tomorrow is Saturday. What day is it today?',
   'What 4-letter word can be written forward, backward or upside down, and can still be read from left to right?',
-  'Poor people have it. Rich people need it. If you eat it, you die. what is it?',
+  'I am beautiful, up in the sky. I am magical, yet I cannot fly.nTo people I bring luck, to some people, riches. The boy at my end does whatever he wishes. What am I ?',
   'Feed me and I live, yet give me a drink and I die',
   'If you have me, you want to share me. If you share me, you haven\'t got me.What am I?',
   'A kind of tree can you carry in your hand?',
-  'What disappears the moment you say its name?'
+  'What can travel around the world while staying in a corner?'
 ];
 
 var answerEasy = [
@@ -18,14 +18,14 @@ var answerEasy = [
   'footsteps',
   'reflection',
   'name',
-  'trouble',
-  'candle',
+  'none',
+  'friday',
   'noon',
-  'nothing',
+  'rainbow',
   'fire',
   'secret',
   'palm',
-  'silence'
+  'stamp'
 ];
 
 var hintEasy = [
@@ -33,14 +33,14 @@ var hintEasy = [
   'I am attached to you.',
   'The man in the mirror.',
   'You are called by this.',
-  '"It\'s fun gettin in to _______!" (game advertisement)',
-  'I get waxy.',
+  'Who lays the eggs',
+  'I happen once a week.',
   'It\'sin the middle of the day.',
-  'If this hint was not here, you would have?',
+  'Sir Charms I say',
   'Don\'t bring red trucks and flashing lights.',
   'They say these don\'t make friends.',
   'You see these on tropical beaches.',
-  'Achieved by the absence of moving your'
+  'Page postage'
 ];
 
 var riddleNorm = [
@@ -54,7 +54,7 @@ var riddleNorm = [
   'You can see it every day but cannot touch it at will. What is it?',
   'A very pretty thing am I, fluttering in the pale-blue sky. Delicate, fragile on the wing, indeed I am a pretty thing. What am I?',
   'A door is not a door when it is?',
-  'It can\'t be seen, can\'t be felt, can\'t be heard and can\'t be smelt. It lies behind stars and under hills, and empty holes it fills. It comes first and follows after, ends life and kills laughter.',
+  'When you stop and look, you can always see me. If you try to touch, you cannot feel me. I cannot move, but as you near me, I will move away from you.',
   'No matter how little or how much you use me, you change me every month. What am I?'
 ];
 
@@ -70,7 +70,7 @@ var answerNorm = [
   'butterfly',
   'ajar',
   'darkness',
-  'calendar'
+  'horizon'
 ];
 
 var hintNorm = [
@@ -85,7 +85,7 @@ var hintNorm = [
   'You can swim this way.',
   'You can put a lid on it.',
   'Can be achieved by flipping a switch.',
-  'Month to month.'
+  'You can look at me.'
 ];
 
 var riddleHard = [
@@ -97,7 +97,7 @@ var riddleHard = [
   'As a stone inside a tree, I\'ll help your words outlive thee.  But if you push me as I stand, the more I move the less I am.',
   'What jumps when it walks and sits when it stands?',
   'A man runs away from home. He turns left and keeps running. After some time, he turns left again and keeps running. He later turns left once more and runs back home. Who was the man in the mask ?',
-  'What begins with T, ends with T, and has T in it?',
+  'My twin lives at the reverse of my house number. The difference between our house numbers ends in two. What are the lowest possible numbers of our house? (Two words or numbers separated by a space)',
   'It’s been around for millions of years but is never more than a month old. What is it?',
   'You throw away the outside, eat the inside, then throw away the inside.',
   'I am a box that holds keys without locks, yet my keys can unlock your deepest senses. What am I?'
@@ -112,7 +112,7 @@ var answerHard = [
   'pencil',
   'kangaroo',
   'catcher',
-  'teapot',
+  '19 91',
   'moon',
   'corn',
   'piano'
@@ -127,7 +127,7 @@ var hintHard = [
   'You need me on your test so you can try your best. But when I break, I won’t be as sharp as the rest.',
   'I live down under, but only found two places, I hop all day, but have no shoelaces.',
   'I guard your home, but won’t alarm you of break-ins, but you need me still because pitching ain’t easy.',
-  'If my whistle blows you know that I’m done.',
+  'Adams Family went into theaters.',
   'Hey, diddle, diddle.',
   'You pick me.',
   'I can be automatic piano.'
@@ -372,7 +372,7 @@ function keyComplete(key) {
     pipeThree.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
   }
   questP.textContent = '';
-  if(answered === 3){
+  if (answered === 3) {
     revealCode();
   }
   startClickEvents();
