@@ -189,7 +189,6 @@ var isRiddleInProgress = false;
 ///killcode variable
 var kcCode;
 
-var timer;
 
 
 //array that holds instants base on which difficulty for this session
@@ -411,7 +410,7 @@ function getCode(event) {
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
-
+var timer = 14.99;
 
 var timerMs = timer * 60000;
 
@@ -487,7 +486,7 @@ function resume() {
     runClock('clockdiv', deadline);
   }
 }
-
+////////////////////////////////////////////////////////////////////////////////////
 function goWin() {
   window.location.href = 'gamewin.html';
 }
@@ -495,7 +494,6 @@ function goWin() {
 function goLose() {
   window.location.href = 'gamelose.html';
 }
-
 
 
 
@@ -546,7 +544,6 @@ function init() {
   pipeThree = document.getElementById('pipeThree');
 
   runClock('clockdiv', deadline);
-
 
   var difficulty = localStorage.getItem('user');
   var parseData = JSON.parse(difficulty);
