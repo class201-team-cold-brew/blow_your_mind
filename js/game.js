@@ -88,11 +88,50 @@ var hintNorm = [
   'Month to month.'
 ];
 
-var riddleHard = [];
+var riddleHard = [
+  'I cannot be bought, but I can be stolen with one glance. I\'m worthless to one but priceless to two.',
+  'I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?',
+  'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?',
+  'What word in the English language does the following: the first two letters signify a male, the first three letters signify a female, the first four letters signify a great, while the entire world signifies a great woman. What is the word?',
+  'What English word has three consecutive double letters?',
+  'As a stone inside a tree, I\'ll help your words outlive thee.But if you push me as I stand, the more I move the less I am.',
+  'What jumps when it walks and sits when it stands?',
+  'A man runs away from home. He turns left and keeps running. After some time, he turns left again and keeps running. He later turns left once more and runs back home. Who was the man in the mask ?',
+  'What begins with T, ends with T, and has T in it?',
+  'It’s been around for millions of years but is never more than a month old. What is it?',
+  'You throw away the outside, eat the inside, then throw away the inside.',
+  'I am a box that holds keys without locks, yet my keys can unlock your deepest senses. What am I?'
+];
 
-var answerHard = [];
+var answerHard = [
+  'love',
+  'echo',
+  'map',
+  'heroine',
+  'bookkeeper',
+  'pencil',
+  'kangaroo',
+  'catcher',
+  'teapot',
+  'moon',
+  'corn',
+  'piano'
+];
 
-var hintHard = [];
+var hintHard = [
+  'You celebrate me on a holiday but give me every day.',
+  'Reflected sound from me to you.',
+  'Back in the day I’d fold, but now I just tell you what to do.',
+  'A woman set apart for her courage, nobility and outstanding achievements.',
+  'I may work at branches, but no books do I keep, hand me a dollar and I’ll give you a receipt.',
+  'You need me on your test so you can try your best. But when I break, I won’t be as sharp as the rest.',
+  'I live down under, but only found two places, I hop all day, but have no shoelaces.',
+  'I guard your home, but won’t alarm you of break-ins, but you need me still because pitching ain’t easy.',
+  'If my whistle blows you know that I’m done.',
+  'Hey, diddle, diddle.',
+  'You pick me.',
+  'I can be automatic piano.'
+];
 
 var currentRiddles = [];
 
@@ -157,6 +196,7 @@ var timer;
 Question.allQ = [];
 
 
+
 function closeRule() {
   gameRules.style.right = '-100%';
   resume();
@@ -200,22 +240,22 @@ function handleQuest(event) {
   console.log(currentRiddles[answered].question);
 }
 
-function hintHandler(){
-  if (isRiddleInProgress){
+function hintHandler() {
+  if (isRiddleInProgress) {
     var hint = currentRiddles[answered].hint;
-    if(hintsNum > 0) {
-      if(isFirstTime){
+    if (hintsNum > 0) {
+      if (isFirstTime) {
         hintsNum--;
         isFirstTime = false;
       }
     }
-    if(hintChances > 0) {
+    if (hintChances > 0) {
       hints.textContent = hintsNum;
       hintText.textContent = hint;
     } else {
       hintText.textContent = 'You ran out of hints!';
     }
-    openHint();  
+    openHint();
   }
 }
 
@@ -242,12 +282,12 @@ function handleAnswer(event) {
   event.preventDefault();
   var userAnswer = event.target.answer.value;
   var questAnswer = currentRiddles[answered].answer;
-  if(isRiddleInProgress){
+  if (isRiddleInProgress) {
     if (userAnswer.toLowerCase() === questAnswer) {
       console.log('you got it');
       correctAnswer();
       closeHint();
-      if(!isFirstTime){
+      if (!isFirstTime) {
         hintChances--;
       }
       isFirstTime = true;
@@ -321,7 +361,8 @@ function keyComplete(key) {
 }
 
 function getRandomCode() {
-  var random = Math.floor(Math.random() * 9999 + 1000);
+  var random = Math.floor((Math.random() * 8999) + 1000);
+
   return random;
 }
 
@@ -347,21 +388,22 @@ function getCode(event) {
   //randomCode = getRandomCode();
   //randomCode = 4444;
 
+
   var code = event.target.killCode.value;
-  if (code === randomCode) {
+  if (code == randomCode) {
     pause();
     var convert = timerMs - timeLeft;
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
-    //console.log(finaltime);
+    console.log(finaltime);
+    console.log(code);
     localStorage.setItem('finaltime', finaltime);
     goWin();
   } else {
     finaltime = 'fail';
     localStorage.setItem('finaltime', finaltime);
     pause();
-    console.log(finaltime);
     goLose();
   }
 }
@@ -369,34 +411,27 @@ function getCode(event) {
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
-//var timer =0.15;
-var difficulty = localStorage.getItem('user');
-var parseData = JSON.parse(difficulty);
-console.log(parseData);
-console.log(parseData[parseData.length - 1].difficulty);
 
-var parse = parseData[parseData.length - 1].difficulty;
-
-if (parse === 'easy') {
-  timer = 20;
-  for (var i = 0; i < riddleEasy.length; i++) {
-    new Question(riddleEasy[i], answerEasy[i], hintEasy[i]);
-  }
-}
-if (parse === 'normal') {
-  for (var j = 0; j < riddleNorm.length; j++) {
-    new Question(riddleNorm[j], answerNorm[j], hintNorm[j]);
-  }
-  timer = 15;
-}
-else if (parse === 'hard') {
-  for (var k = 0; k < riddleHard.length; k++) {
-    new Question(riddleHard[k], answerHard[k], hintHard[k]);
-  }
-  timer = 10;
-}
 
 var timerMs = timer * 60000;
+
+////set the timer depending on the difficulty
+var difficulty = localStorage.getItem('user');
+var parseData = JSON.parse(difficulty);
+
+var dif = parseData[parseData.length - 1].difficulty;
+
+switch (dif) {
+  case 'hard':
+    timer = 9.99;
+    break;
+  case 'normal':
+    timer = 14.99;
+    break;
+  default:
+    timer = 19.99;
+}
+
 
 
 var currentTime = Date.parse(new Date());
@@ -452,7 +487,7 @@ function resume() {
     runClock('clockdiv', deadline);
   }
 }
-////////////////////////////////////////////////////////////////////////////////////
+
 function goWin() {
   window.location.href = 'gamewin.html';
 }
@@ -512,31 +547,29 @@ function init() {
 
   runClock('clockdiv', deadline);
 
-  // var difficulty = localStorage.getItem('user');
-  // var parseData = JSON.parse(difficulty);
-  // console.log(parseData);
-  // console.log(parseData[parseData.length - 1].difficulty);
 
-  // var parse = parseData[parseData.length - 1].difficulty;
+  var difficulty = localStorage.getItem('user');
+  var parseData = JSON.parse(difficulty);
+  //console.log(parseData);
+  //console.log(parseData[parseData.length - 1].difficulty);
 
-  // if (parse === 'easy') {
-  //   timer = 20;
-  //   for (var i = 0; i < riddleEasy.length; i++) {
-  //     new Question(riddleEasy[i], answerEasy[i], hintEasy[i]);
-  //   }
-  // }
-  // if (parse === 'normal') {
-  //   for (var j = 0; j < riddleNorm.length; j++) {
-  //     new Question(riddleNorm[j], answerNorm[j], hintNorm[j]);
-  //   }
-  //   timer = 15;
-  // }
-  // if (parse === 'hard') {
-  //   for (var k = 0; k < riddleHard.length; k++) {
-  //     new Question(riddleHard[k], answerHard[k], hintHard[k]);
-  //   }
-  //   timer = 10;
-  // }
+  var parse = parseData[parseData.length - 1].difficulty;
+
+  if (parse === 'easy') {
+    for (var i = 0; i < riddleEasy.length; i++) {
+      new Question(riddleEasy[i], answerEasy[i], hintEasy[i]);
+    }
+  }
+  if (parse === 'normal') {
+    for (var j = 0; j < riddleNorm.length; j++) {
+      new Question(riddleNorm[j], answerNorm[j], hintNorm[j]);
+    }
+  }
+  if (parse === 'hard') {
+    for (var k = 0; k < riddleHard.length; k++) {
+      new Question(riddleHard[k], answerHard[k], hintHard[k]);
+    }
+  }
 
 
   console.log(Question.allQ);
