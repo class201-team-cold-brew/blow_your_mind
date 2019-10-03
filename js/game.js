@@ -138,7 +138,7 @@ var keysArray = [
   'img/octocat.png',
   'img/coffee.png',
   'img/codefellow.png'
-]
+];
 
 var currentRiddles = [];
 
