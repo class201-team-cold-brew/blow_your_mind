@@ -22,8 +22,8 @@
         <div id="pipeThree" class="pipe3"></div>
         <img class="btm-layer center" src="img/game-bottom-layer.png" alt="game layout">
         <div class="key-box">
-          <img id="key1" class="img1-init-pos hide" src="img/octocat.png" />
-          <img id="key2" class="img2-init-pos hide" src="img/unicorn.png" />
+          <img id="key1" class="img1-init-pos hide" src="http://via.placeholder.com/76x76.jpg/111" />
+          <img id="key2" class="img2-init-pos hide" src="http://via.placeholder.com/76x76.jpg/111" />
           <img id="key3" class="img3-init-pos hide" src="http://via.placeholder.com/76x76.jpg/111" />
         </div>
         <div id="btn1" class="btn1"></div>
@@ -37,7 +37,7 @@
             <form id="killcodes">
               <fieldset>
                 <label for="killCode" class="title-font">KILL CODE</label><br>
-                <input id="killCode" type="number" min="0" max="9999" placeholder="Enter Kill Code...">
+                <input id="killCode" type="number" min="1000" max="9999" placeholder="Kill Code">
                 <input id="codeSubmit" type="submit" class="title-font submit-code" value="SUBMIT">
               </fieldset>
             </form>
@@ -56,18 +56,23 @@
           <form id="questSubmit">
             <fieldset>
               <label for="answer"></label>
-              <input type="text" id="answer" placeholder="Enter one word answer here">
+              <input type="text" id="answer" placeholder="Enter one word answer here" autocomplete="off">
               <input type="submit" value="SUBMIT" id="questAnswer" class="title-font submit-ans">
             </fieldset>
           </form>
-          <p id="attemptTxt" class="txt-font site-red-drk">You have <span id="tries" class="title-font"></span> attempts left!</p>
+          <p id="attemptTxt" class="txt-font site-red-drk">You have <span id="tries" class="title-font"></span> attempts
+            left!</p>
         </div>
       </div>
 
       <div class="title-font">
         <ul>
-          <li><P id='gameRuleBtn'>HOW TO PLAY</P></li>
-          <li><p id='riddleHints'>HINTS: <span id='hints'></span></p></li>
+          <li>
+            <P id='gameRuleBtn'>HOW TO PLAY</P>
+          </li>
+          <li>
+            <p id='riddleHints'>HINTS: <span id='hints'></span></p>
+          </li>
         </ul>
       </div>
 
@@ -75,24 +80,27 @@
     <div id="gamerules" class="game-rules txt-font">
       <div>
         <span id="x">X</span>
-        <p>Click on an image inside the bomb. Solve the riddle that will appear. If you stuck, click on Hints. Solve 3
-          riddles to unlock a code. Enter the code under "Kill Code. You have 3 attempts. A wrong code will end the game.
-          Good luck!" </p>
+        <p>Click the red button and solve the riddle, win this game you’ll be fit as a fiddle. There’s only two hints so
+          please play nice, for the kill code to win is like rolling dice.
+          <br \>
+          <br \>
+          Sounds fun, right? Goodluck!</p>
       </div>
     </div>
     <div id="gameHint" class="game-hint txt-font">
       <div>
-          <span id="close">X</span>
-          <p id="hintText">
-          </p>
+        <span id="close">X</span>
+        <p id="hintText">
+        </p>
       </div>
     </div>
-    <div id="kcCode" >
-        <div>
-             <p id="hintCode">
-            </p>
-        </div>
+    <div id="kcCode" class="kill-code-window txt-center title-font">
+      <div>
+        <h1>KILL CODE:</h1>
+        <p id="txtCode">
+        </p>
       </div>
+    </div>
   </main>
   <footer class="txt-center">
     <p>&copy; Team Cold Brew 2019</p>
@@ -104,6 +112,8 @@
     <img src="img/game-pipe-green.png">
     <img src="img/unicorn.png">
     <img src="img/octocat.png">
+    <img src="img/coffee.png">
+    <img src="img/codefellow.png">
   </div>
 
   <script src="js/game.js"></script>

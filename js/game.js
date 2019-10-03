@@ -88,11 +88,57 @@ var hintNorm = [
   'Month to month.'
 ];
 
-var riddleHard = [];
+var riddleHard = [
+  'I cannot be bought, but I can be stolen with one glance. I\'m worthless to one but priceless to two.',
+  'I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?',
+  'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?',
+  'What word in the English language does the following: the first two letters signify a male, the first three letters signify a female, the first four letters signify a great, while the entire world signifies a great woman. What is the word?',
+  'What English word has three consecutive double letters?',
+  'As a stone inside a tree, I\'ll help your words outlive thee.But if you push me as I stand, the more I move the less I am.',
+  'What jumps when it walks and sits when it stands?',
+  'A man runs away from home. He turns left and keeps running. After some time, he turns left again and keeps running. He later turns left once more and runs back home. Who was the man in the mask ?',
+  'What begins with T, ends with T, and has T in it?',
+  'It’s been around for millions of years but is never more than a month old. What is it?',
+  'You throw away the outside, eat the inside, then throw away the inside.',
+  'I am a box that holds keys without locks, yet my keys can unlock your deepest senses. What am I?'
+];
 
-var answerHard = [];
+var answerHard = [
+  'love',
+  'echo',
+  'map',
+  'heroine',
+  'bookkeeper',
+  'pencil',
+  'kangaroo',
+  'catcher',
+  'teapot',
+  'moon',
+  'corn',
+  'piano'
+];
 
-var hintHard = [];
+var hintHard = [
+  'You celebrate me on a holiday but give me every day.',
+  'Reflected sound from me to you.',
+  'Back in the day I’d fold, but now I just tell you what to do.',
+  'A woman set apart for her courage, nobility and outstanding achievements.',
+  'I may work at branches, but no books do I keep, hand me a dollar and I’ll give you a receipt.',
+  'You need me on your test so you can try your best. But when I break, I won’t be as sharp as the rest.',
+  'I live down under, but only found two places, I hop all day, but have no shoelaces.',
+  'I guard your home, but won’t alarm you of break-ins, but you need me still because pitching ain’t easy.',
+  'If my whistle blows you know that I’m done.',
+  'Hey, diddle, diddle.',
+  'You pick me.',
+  'I can be automatic piano.'
+];
+
+var keysArray = [
+  'img/unicorn.png',
+  'img/octocat.png',
+  'img/coffee.png',
+  'img/codefellow.png'
+];
 
 var currentRiddles = [];
 
@@ -137,20 +183,23 @@ var answerQuestForm;
 var questP;
 var attemptTxt;
 var hints;
-var hintsNum = 3;
+var hintsNum = 2;
+var hintChances = 2;
 var riddleHints;
 var closeX;
 var hintText;
 var gameHint;
+var isFirstTime = true;
+var isRiddleInProgress = false;
 
 
 ///killcode variable
-var kcCode;
-
-
+var kcWindow;
+var txtCode;
 
 //array that holds instants base on which difficulty for this session
 Question.allQ = [];
+
 
 
 function closeRule() {
@@ -166,10 +215,12 @@ function openRule() {
 }
 
 function closeHint() {
+  riddleHints.addEventListener('click', hintHandler);
   gameHint.style.right = '-100%';
 }
 
 function openHint() {
+  riddleHints.removeEventListener('click', hintHandler);
   gameHint.style.right = '0';
 }
 
@@ -185,26 +236,37 @@ function genRandom() {
   return genRandom;
 }
 
+function genKeyRandom() {
+  var randomKey = Math.floor(Math.random() * keysArray.length);
+  return randomKey;
+}
+
 function handleQuest(event) {
   stopClickEvents();
   activeBtn = event.target.id;
   questP.textContent = currentRiddles[answered].question;
   questBox.appendChild(questP);
+  isRiddleInProgress = true;
   console.log(currentRiddles[answered].question);
 }
 
 function hintHandler() {
-  var hint = currentRiddles[answered].hint;
-  if (hintsNum > 0) {
-    hintText.textContent = hint;
-    console.log(hint);
-    hintsNum--;
-    hints.textContent = hintsNum;
-  } else {
-    hintText.textContent = 'You ran out of hints!';
-
+  if (isRiddleInProgress) {
+    var hint = currentRiddles[answered].hint;
+    if (hintsNum > 0) {
+      if (isFirstTime) {
+        hintsNum--;
+        isFirstTime = false;
+      }
+    }
+    if (hintChances > 0) {
+      hints.textContent = hintsNum;
+      hintText.textContent = hint;
+    } else {
+      hintText.textContent = 'You ran out of hints!';
+    }
+    openHint();
   }
-  openHint();
 }
 
 //call this function to remove all eventlisteners.
@@ -230,26 +292,34 @@ function handleAnswer(event) {
   event.preventDefault();
   var userAnswer = event.target.answer.value;
   var questAnswer = currentRiddles[answered].answer;
-  if (userAnswer.toLowerCase() === questAnswer) {
-    console.log('you got it');
-    correctAnswer();
-    answered++;
-  } else {
-    attempts--;
-    if (attemptTxt.classList.contains('shake')) {
-      console.log('yes');
-      attemptTxt.classList.remove('shake');
-      setTimeout(function () { attemptTxt.classList.add('shake'); }, 100);
+  if (isRiddleInProgress) {
+    if (userAnswer.toLowerCase() === questAnswer) {
+      console.log('you got it');
+      correctAnswer();
+      closeHint();
+      if (!isFirstTime) {
+        hintChances--;
+      }
+      isFirstTime = true;
+      isRiddleInProgress = false;
+      answered++;
     } else {
-      attemptTxt.classList.add('shake');
+      attempts--;
+      if (attemptTxt.classList.contains('shake')) {
+        console.log('yes');
+        attemptTxt.classList.remove('shake');
+        setTimeout(function () { attemptTxt.classList.add('shake'); }, 100);
+      } else {
+        attemptTxt.classList.add('shake');
+      }
+      console.log('wrong');
+      tries.textContent = attempts;
     }
-    console.log('wrong');
-    tries.textContent = attempts;
+    if (attempts === 0) {
+      goLose();
+    }
   }
   document.getElementById('answer').value = null;
-  if (attempts === 0) {
-    goLose();
-  }
 }
 
 function correctAnswer() {
@@ -297,11 +367,15 @@ function keyComplete(key) {
     pipeThree.style.backgroundImage = 'url(\'img/game-pipe-green.png\')';
   }
   questP.textContent = '';
+  if(answered === 3){
+    revealCode();
+  }
   startClickEvents();
 }
 
 function getRandomCode() {
-  var random = Math.floor(Math.random() * 9999 + 1000);
+  var random = Math.floor((Math.random() * 8999) + 1000);
+
   return random;
 }
 
@@ -311,37 +385,35 @@ function getRandomCode() {
 
 function createCode() {
   randomCode = getRandomCode();
-
-  kcCode = document.getElementById('hintCode');
-
-  kcCode.textContent = randomCode;
-
+  txtCode = document.getElementById('txtCode');
+  txtCode.textContent = randomCode;
 }
 
-createCode();
-
-
+function revealCode() {
+  kcWindow.style.left = '0';
+}
 
 function getCode(event) {
   event.preventDefault();
   //randomCode = getRandomCode();
   //randomCode = 4444;
 
+
   var code = event.target.killCode.value;
-  if (code === randomCode) {
+  if (code == randomCode) {
     pause();
     var convert = timerMs - timeLeft;
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
-    //console.log(finaltime);
+    console.log(finaltime);
+    console.log(code);
     localStorage.setItem('finaltime', finaltime);
     goWin();
   } else {
     finaltime = 'fail';
     localStorage.setItem('finaltime', finaltime);
     pause();
-    console.log(finaltime);
     goLose();
   }
 }
@@ -350,8 +422,26 @@ function getCode(event) {
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
 var timer = 14.99;
-//var timer =0.15;
+
 var timerMs = timer * 60000;
+
+////set the timer depending on the difficulty
+var difficulty = localStorage.getItem('user');
+var parseData = JSON.parse(difficulty);
+
+var dif = parseData[parseData.length - 1].difficulty;
+
+switch (dif) {
+case 'hard':
+  timer = 9.99;
+  break;
+case 'normal':
+  timer = 14.99;
+  break;
+default:
+  timer = 19.99;
+}
+
 
 
 var currentTime = Date.parse(new Date());
@@ -416,11 +506,6 @@ function goLose() {
   window.location.href = 'gamelose.html';
 }
 
-
-
-
-
-
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
@@ -437,6 +522,7 @@ function init() {
 
   code = document.getElementById('killcodes');
   code.addEventListener('submit', getCode);
+  kcWindow = document.getElementById('kcCode');
 
   questBox = document.getElementById('questBox');
   questP = document.getElementById('questP');
@@ -451,11 +537,6 @@ function init() {
   closeX.addEventListener('click', closeHint);
   hintText = document.getElementById('hintText');
   gameHint = document.getElementById('gameHint');
-
-
-
-
-
 
   tries = document.getElementById('tries');
   tries.textContent = attempts;
@@ -472,13 +553,14 @@ function init() {
   pipeThree = document.getElementById('pipeThree');
 
   runClock('clockdiv', deadline);
+  createCode();
 
   var difficulty = localStorage.getItem('user');
   var parseData = JSON.parse(difficulty);
-  console.log(parseData);
-  console.log(parseData[parseData.length - 1].difficulty);
+  //console.log(parseData);
+  //console.log(parseData[parseData.length - 1].difficulty);
 
-  var parse = parseData[0].difficulty;
+  var parse = parseData[parseData.length - 1].difficulty;
 
   if (parse === 'easy') {
     for (var i = 0; i < riddleEasy.length; i++) {
@@ -496,7 +578,6 @@ function init() {
     }
   }
 
-
   console.log(Question.allQ);
 
   var randomQ;
@@ -513,6 +594,23 @@ function init() {
   currentRiddles.push(Question.allQ[randomQ]);
   currentRiddles.push(Question.allQ[randomA]);
   currentRiddles.push(Question.allQ[randomH]);
+
+
+  //randomize key objects
+  var key1Object;
+  var key2Object;
+  var key3Object;
+
+  do {
+    key1Object = genKeyRandom();
+    key2Object = genKeyRandom();
+    key3Object = genKeyRandom();
+  }
+  while (key1Object === key2Object || key2Object === key3Object || key3Object === key1Object);
+
+  key1.src = keysArray[key1Object];
+  key2.src = keysArray[key2Object];
+  key3.src = keysArray[key3Object];
 
   console.log(currentRiddles);
 
