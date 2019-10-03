@@ -421,7 +421,7 @@ function getCode(event) {
 
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
-var timer = 14.99;
+var timer = 19.99;
 
 var timerMs = timer * 60000;
 
