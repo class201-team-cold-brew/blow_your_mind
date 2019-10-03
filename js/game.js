@@ -8,7 +8,7 @@ var riddleEasy = [
   'What 4-letter word can be written forward, backward or upside down, and can still be read from left to right?',
   'Poor people have it. Rich people need it. If you eat it, you die. what is it?',
   'Feed me and I live, yet give me a drink and I die',
-  'If you have me, you want to share me. If you share me, you haven\'t got me.What am I ?',
+  'If you have me, you want to share me. If you share me, you haven\'t got me.What am I?',
   'A kind of tree can you carry in your hand?',
   'What disappears the moment you say its name?'
 ];
@@ -94,7 +94,7 @@ var riddleHard = [
   'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?',
   'What word in the English language does the following: the first two letters signify a male, the first three letters signify a female, the first four letters signify a great, while the entire world signifies a great woman. What is the word?',
   'What English word has three consecutive double letters?',
-  'As a stone inside a tree, I\'ll help your words outlive thee.But if you push me as I stand, the more I move the less I am.',
+  'As a stone inside a tree, I\'ll help your words outlive thee.  But if you push me as I stand, the more I move the less I am.',
   'What jumps when it walks and sits when it stands?',
   'A man runs away from home. He turns left and keeps running. After some time, he turns left again and keeps running. He later turns left once more and runs back home. Who was the man in the mask ?',
   'What begins with T, ends with T, and has T in it?',
