@@ -195,6 +195,7 @@ var kcCode;
 Question.allQ = [];
 
 
+
 function closeRule() {
   gameRules.style.right = '-100%';
   resume();
@@ -360,7 +361,7 @@ function keyComplete(key) {
 
 function getRandomCode() {
   var random = Math.floor((Math.random() * 8999) + 1000);
-  
+
   return random;
 }
 
@@ -386,6 +387,7 @@ function getCode(event) {
   //randomCode = getRandomCode();
   //randomCode = 4444;
 
+
   var code = event.target.killCode.value;
   if (code == randomCode) {
     pause();
@@ -396,14 +398,12 @@ function getCode(event) {
     console.log(finaltime);
     console.log(code);
     localStorage.setItem('finaltime', finaltime);
-    //goWin();
+    goWin();
   } else {
     finaltime = 'fail';
     localStorage.setItem('finaltime', finaltime);
     pause();
-    console.log(finaltime);
-    console.log("number is "+code);
-    //goLose();
+    goLose();
   }
 }
 
@@ -411,8 +411,26 @@ function getCode(event) {
 ///////////////////////////////    https://codepen.io/yaphi1/pen/QbzrQP
 // replace with a diifuculty setting later
 var timer = 14.99;
-//var timer =0.15;
+
 var timerMs = timer * 60000;
+
+////set the timer depending on the difficulty
+var difficulty = localStorage.getItem('user');
+var parseData = JSON.parse(difficulty);
+
+var dif = parseData[parseData.length - 1].difficulty;
+
+switch (dif) {
+  case 'hard':
+    timer = 9.99;
+    break;
+  case 'normal':
+    timer = 14.99;
+    break;
+  default:
+    timer = 19.99;
+}
+
 
 
 var currentTime = Date.parse(new Date());
@@ -477,6 +495,9 @@ function goLose() {
   window.location.href = 'gamelose.html';
 }
 
+
+
+
 function init() {
   gameRules = document.getElementById('gamerules');
   gameRuleBtn = document.getElementById('gameRuleBtn');
@@ -526,8 +547,8 @@ function init() {
 
   var difficulty = localStorage.getItem('user');
   var parseData = JSON.parse(difficulty);
-  console.log(parseData);
-  console.log(parseData[parseData.length - 1].difficulty);
+  //console.log(parseData);
+  //console.log(parseData[parseData.length - 1].difficulty);
 
   var parse = parseData[parseData.length - 1].difficulty;
 
