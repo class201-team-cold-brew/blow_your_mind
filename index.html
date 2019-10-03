@@ -1,67 +1,79 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Blow Your Mind</title>
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
-        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-      </head>
 
-  <body onload="init()" class="bg">
-    <header></header>
+<head>
+  <meta charset="UTF-8">
+  <title>Blow Your Mind</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
 
-    <main class="txt-center site-black">
-      <img class="logo" src="img/logo.png" alt="logo">
-      <section class="index-form-section center">
-        <div>
-          <form id="user-form" class="center">
-            <fieldset class="index-form">
-              <ul>
-                <li><label for="name" class="title-font">YOUR NAME:</label><input type="text" id="name" name="name" autocomplete="off" required="required" autofocus="autofocus" maxlength="10" size="10"></li>
-                <li><label for="difficulty" class="title-font">DIFFICULTY:</label>
-                  <select id="difficulty">
-                    <option value="easy">Easy (20 mins)</option>
-                    <option value="normal">Normal (15 mins)</option>
-                    <option value="hard">Hard (10 mins)</option>
-                  </select>
-                </li>
-                <li class="txt-center"><input id="submit" type="submit" class="submit title-font" value="Submit"></li>
-              </ul>
-            </fieldset>
-          </form>
-          <div id="welcome" class="welcome-msg title-font txt-center"></div>
-        </div>
-      </section>
-      <section class="index-buttons title-font">
-        <ul>
-          <!-- <a href="game.html"><li><p id ="start">START GAME</p></li></a> -->
-          <li><p id ="start">START GAME</p></li>
-          <li><p id ="highscore">SCORES</p></li>
-          <li><p id='howtoplay'>HOW TO PLAY</p></li>
-        </ul>
-      </section>
-      <div id ="rules" class="index-rules txt-font">
-        <div>
-          <span id="x">X</span>
-          <p>Click on an image inside the bomb. Solve the riddle that will appear. If you are stuck, click on Hints. Solve 3 riddles to unlock a code. Enter the code under "Kill Code. You have 3 attempts. A wrong code will end the game. Good luck!" </p>
-        </div>
+<body onload="init()" class="bg">
+  <header></header>
+
+  <main class="txt-center site-black">
+    <img class="logo" src="img/logo.png" alt="logo">
+    <section class="index-form-section center">
+      <div>
+        <form id="user-form" class="center">
+          <fieldset class="index-form">
+            <ul>
+              <li><label for="name" class="title-font">YOUR NAME:</label><input type="text" id="name" name="name"
+                  autocomplete="off" required="required" autofocus="autofocus" maxlength="10" size="10"></li>
+              <li><label for="difficulty" class="title-font">DIFFICULTY:</label>
+                <select id="difficulty">
+                  <option value="easy">Easy (20 mins)</option>
+                  <option value="normal">Normal (15 mins)</option>
+                  <option value="hard">Hard (10 mins)</option>
+                </select>
+              </li>
+              <li class="txt-center"><input id="submit" type="submit" class="submit title-font" value="Submit"></li>
+            </ul>
+          </fieldset>
+        </form>
+        <div id="welcome" class="welcome-msg title-font txt-center"></div>
       </div>
-      <section>
-        <ul id="ranking">
+    </section>
+    <section class="index-buttons title-font">
+      <ul>
+        <!-- <a href="game.html"><li><p id ="start">START GAME</p></li></a> -->
+        <li>
+          <p id="start">START GAME</p>
+        </li>
+        <li>
+          <p id="highscore">SCORES</p>
+        </li>
+        <li>
+          <p id='howtoplay'>HOW TO PLAY</p>
+        </li>
+      </ul>
+    </section>
+    <div id="rules" class="index-rules txt-font">
+      <div>
+        <span id="x">X</span>
+        <p>Click the red button and solve the riddle, win this game you’ll be fit as a fiddle. There’s only two hints so
+          please play nice, for the kill code to win is like rolling dice.
+          <br \>
+          <br \>
+          Sounds fun, right? Goodluck!</p>
+      </div>
+    </div>
+    <section>
+      <ul id="ranking">
 
-        </ul>
+      </ul>
 
-      </section>
-    </main>
+    </section>
+  </main>
 
-    <footer class="txt-center">
-      <p>&copy; Team Cold Brew 2019</p>
-    </footer>
+  <footer class="txt-center">
+    <p>&copy; Team Cold Brew 2019</p>
+  </footer>
 
-    
-    <script src="js/index.js"></script>
-    </body>
+
+  <script src="js/index.js"></script>
+</body>
 
 </html>
