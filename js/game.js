@@ -333,18 +333,21 @@ function correctAnswer() {
     currentKey = key1;
     currentNum = 1;
     isBtn1Done = true;
+    key1.classList.remove('hide');
   }
   if (activeBtn === 'btn2') {
     currentBtn = btn2;
     currentKey = key2;
     currentNum = 2;
     isBtn2Done = true;
+    key2.classList.remove('hide');
   }
   if (activeBtn === 'btn3') {
     currentBtn = btn3;
     currentKey = key3;
     currentNum = 3;
     isBtn3Done = true;
+    key3.classList.remove('hide');
   }
   currentBtn.classList.add('fadeout-top');
   currentBtn.style.cursor = 'auto';
@@ -399,17 +402,14 @@ function getCode(event) {
   event.preventDefault();
   //randomCode = getRandomCode();
   //randomCode = 4444;
-
-
   var code = event.target.killCode.value;
-  if (code == randomCode) {
+  if (parseInt(code) === randomCode) {
     pause();
     var convert = timerMs - timeLeft;
     var min = Math.floor((convert / 1000 / 60) << 0),
       sec = Math.floor((convert / 1000) % 60);
     var finaltime = min + ':' + sec;
     console.log(finaltime);
-    console.log(code);
     localStorage.setItem('finaltime', finaltime);
     goWin();
   } else {
@@ -549,9 +549,6 @@ function init() {
   key1 = document.getElementById('key1');
   key2 = document.getElementById('key2');
   key3 = document.getElementById('key3');
-  key1.classList.remove('hide');
-  key2.classList.remove('hide');
-  key3.classList.remove('hide');
 
   pipeOne = document.getElementById('pipeOne');
   pipeTwo = document.getElementById('pipeTwo');
