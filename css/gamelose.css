@@ -7,6 +7,18 @@ a {
   width: 80%;
 }
 
+.lose-box {
+  position: relative;
+  width: 800px;
+  height: 600px; 
+}
+
+.lose-box img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
 .losing > div > a > div {
   margin-top: 2em;
   background: #562c2c;
