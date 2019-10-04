@@ -107,6 +107,39 @@
   }
 }
 
+.enter-bottom {
+  -webkit-animation: enter-bottom 400ms ease-in-out  forwards ;
+  animation: enter-bottom 400ms ease-in-out  forwards ;
+}
+@-webkit-keyframes enter-bottom {
+  0% {
+    -webkit-transform: translateY(360px);
+    opacity: 0;
+  }
+  80% {
+    -webkit-transform: translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes enter-bottom {
+  0% {
+    transform: translateY(360px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .fadezoombump{
   -webkit-animation: zoombump 400ms ease-in  forwards ;
   animation: zoombump 400ms ease-in  forwards ;
@@ -117,11 +150,11 @@
     opacity: 0;
   }
   60% {
-    -webkit-transform: scale(1.1, 1.1);
+    -webkit-transform: scale(1.05, 1.05);
     opacity: 1;
   }
   80% {
-    -webkit-transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.95, 0.95);
     opacity: 1;
   }
   100% {
@@ -135,11 +168,68 @@
     opacity: 0;
   }
   60% {
-    transform: scale(1.1, 1.1);
+    transform: scale(1.05, 1.05);
     opacity: 1;
   }
   80% {
+    transform: scale(0.95, 0.95);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+.fadezoombump-hero{
+  -webkit-animation: zoombump-big 600ms ease-in  forwards ;
+  animation: zoombump-big 600ms ease-in  forwards ;
+}
+@-webkit-keyframes zoombump-big {
+  0% {
+    -webkit-transform: scale(0, 0);
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: scale(1.1, 1.1);
+    opacity: 1;
+  }
+  60% {
+    -webkit-transform: scale(0.9, 0.9);
+    opacity: 1;
+  } 
+  80% {
+    -webkit-transform: scale(1.02, 1.02);
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: scale(0.98, 0.98);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+@keyframes zoombump-big {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.1, 1.1);
+    opacity: 1;
+  }
+  60% {
     transform: scale(0.9, 0.9);
+    opacity: 1;
+  } 
+  80% {
+    transform: scale(1.02, 1.02);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(0.98, 0.98);
     opacity: 1;
   }
   100% {

@@ -9,12 +9,22 @@
   <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
-<body class="bg">
-  <section class="winning center txt-center">
+<body onload="init()" class="bg">
+  <main class="winning center txt-center">
     <div class="txt-center">
-      <img src="img/winpage.png">
+      <section class="center">
+        <div id="innerBox">
+          <img id="win2" class="hide" src="img/win2.png">
+          <img id="win1" class="hide" src="img/win1.png">
+          <img id="win3" class="hide" src="img/win3.png">
+          <img id="win4" class="hide" src="img/win4.png">
+          <img id="win5" class="hide" src="img/win5.png">
+          <img id="win6" class="hide" src="img/win6.png">
+        </div>
+      </section>
       <a href="index.html"><div class="title-font center"><p>Main Menu</p></div></a>
     </div>
-  </section>
+  </main>
+  <script src="js/gamewin.js"></script>
 </body>
 </html>
