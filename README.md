@@ -118,3 +118,19 @@ As a user, I would like to be notified if I won so that I can start over if I ch
 ![domain-model](https://github.com/class201-team-cold-brew/blow_your_mind/blob/master/img/wireframe/domain-modeling.jpg)
 
 Link to domain-model: https://drive.google.com/file/d/1-VT3pGPz3JZFdIqRt7Rh8zHBYZJqypAT/view?usp=sharing
+
+
+## References to the Riddles:
+- https://riddles.fyi/
+- http://laffgaff.com/best-riddler-riddles/
+- https://riddles.tips/
+- https://www.riddles.com/
+- https://gotham.fandom.com/wiki/The_Riddler_Season_3_Riddles
+- https://www.rd.com/funny-stuff/challenging-riddles/
+- http://laffgaff.com/really-hard-riddles/
+- http://brainden.com/logic-riddles.htm
+- https://www.brainzilla.com/brain-teasers/riddles/logic/
+- https://www.businessinsider.com/tricky-math-riddles-only-the-smartest-people-can-figure-out-2018-5#10-inheritance-10
+
+## Timer Script Reference:
+- https://codepen.io/yaphi1/pen/QbzrQP
