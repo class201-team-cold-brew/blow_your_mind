@@ -7,6 +7,29 @@ a {
   width: 80%;
 }
 
+.winning > div section {
+  width: 1050px;
+  height: 620px;
+  background-image: url('../img/winpage.png');
+  background-repeat: no-repeat;
+}
+
+.winning > div section > div {
+  position: relative;
+  width: 562px;
+  height: 360px;
+}
+
+.winning > div section > div img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
 .winning > div > a > div {
   margin-top: 2em;
   background: #562c2c;
