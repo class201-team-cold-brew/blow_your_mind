@@ -6,7 +6,7 @@ var riddleEasy = [
   'If you buy a rooster for the purpose of laying eggs and you expect to get three eggs each day for breakfast, how many eggs will you have after three weeks?',
   'The day before two days after the day before tomorrow is Saturday. What day is it today?',
   'What 4-letter word can be written forward, backward or upside down, and can still be read from left to right?',
-  'I am beautiful, up in the sky. I am magical, yet I cannot fly.nTo people I bring luck, to some people, riches. The boy at my end does whatever he wishes. What am I ?',
+  'I am beautiful, up in the sky. I am magical, yet I cannot fly. To people I bring luck, to some people, riches. The boy at my end does whatever he wishes. What am I ?',
   'Feed me and I live, yet give me a drink and I die',
   'If you have me, you want to share me. If you share me, you haven\'t got me.What am I?',
   'A kind of tree can you carry in your hand?',
@@ -137,7 +137,8 @@ var keysArray = [
   'img/unicorn.png',
   'img/octocat.png',
   'img/coffee.png',
-  'img/codefellow.png'
+  'img/codefellow.png',
+  'img/net.png'
 ];
 
 var currentRiddles = [];
